@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="6500" viewBox="0 0 900 6500">
+  <rect width="900" height="6500" fill="#fbfaf7"/>
+  <defs>
+    <filter id="hand-drawn" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="1" seed="8" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <g fill="none" stroke="#343434" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand-drawn)">
+    <rect x="35" y="30" width="830" height="6420" rx="4"/>
+    <path d="M35 95H865M35 560H865M35 1110H865M35 1580H865M35 2860H865M35 3380H865M35 3740H865M35 4480H865M35 4950H865M35 6100H865"/>
+    <path d="M70 64h150M680 64h55M750 64h70"/>
+
+    <!-- Hero -->
+    <rect x="90" y="155" width="275" height="290"/>
+    <path d="M110 420L210 285l65 70 65-105M110 180l230 240M340 180L110 420" opacity=".45"/>
+    <rect x="520" y="370" width="185" height="44" rx="20"/>
+
+    <!-- About + metrics -->
+    <path d="M180 710h540M250 745h400M320 780h260"/>
+    <rect x="80" y="845" width="160" height="115"/><rect x="270" y="845" width="160" height="115"/><rect x="460" y="845" width="160" height="115"/><rect x="650" y="845" width="160" height="115"/>
+    <path d="M105 990h110M295 990h110M485 990h110M675 990h110"/>
+
+    <!-- Services -->
+    <path d="M190 1260h520M250 1295h400"/>
+    <rect x="85" y="1370" width="220" height="155"/><rect x="340" y="1370" width="220" height="155"/><rect x="595" y="1370" width="220" height="155"/>
+    <rect x="165" y="1325" width="60" height="60"/><rect x="420" y="1325" width="60" height="60"/><rect x="675" y="1325" width="60" height="60"/>
+
+    <!-- Quiz -->
+    <circle cx="245" cy="1795" r="155"/><circle cx="245" cy="1795" r="95"/>
+    <rect x="545" y="1870" width="190" height="48" rx="22"/>
+    <path d="M500 1975h280"/>
+
+    <!-- Influencer marketing: 3 alternating rows -->
+    <rect x="95" y="2160" width="240" height="190"/><path d="M115 2330l85-90 55 55 60-90"/>
+    <path d="M460 2220h300M460 2255h260M460 2290h280"/>
+    <rect x="565" y="2380" width="240" height="190"/><path d="M585 2550l85-90 55 55 60-90"/>
+    <path d="M95 2440h300M95 2475h260M95 2510h280"/>
+    <rect x="95" y="2600" width="240" height="190"/><path d="M115 2770l85-90 55 55 60-90"/>
+    <path d="M460 2660h300M460 2695h260M460 2730h280"/>
+
+    <!-- Process: centered vertical steps with a winding connector -->
+    <rect x="337" y="2980" width="226" height="82"/><rect x="337" y="3120" width="226" height="82"/><rect x="337" y="3260" width="226" height="82"/>
+    <path d="M450 3062c85 24 86 36 0 58M450 3202c-88 24-88 36 0 58"/>
+
+    <!-- Projects carousel -->
+    <path d="M70 3545l-25 25 25 25M830 3545l25 25-25 25"/>
+    <rect x="120" y="3495" width="220" height="175"/><rect x="305" y="3460" width="290" height="220"/><rect x="560" y="3495" width="220" height="175"/>
+
+    <!-- FAQ: one centered scrollable container -->
+    <rect x="165" y="3860" width="570" height="300" rx="8"/>
+    <rect x="195" y="3900" width="500" height="52"/><rect x="195" y="3968" width="500" height="52"/><rect x="195" y="4036" width="500" height="52"/><rect x="195" y="4104" width="500" height="52"/>
+    <path d="M665 3917l14 10-14 10M665 3985l14 10-14 10M665 4053l14 10-14 10M665 4121l14 10-14 10"/>
+    <rect x="710" y="3885" width="9" height="250" rx="5"/><rect x="706" y="3940" width="17" height="62" rx="8"/>
+    <!-- Contact strip -->
+    <path d="M285 4200h330M330 4225h240M370 4250h160"/>
+    <rect x="75" y="4300" width="175" height="54"/><circle cx="282" cy="4327" r="23"/>
+    <rect x="330" y="4300" width="175" height="54"/><circle cx="537" cy="4327" r="23"/>
+    <rect x="585" y="4300" width="145" height="54"/><circle cx="762" cy="4327" r="23"/>
+    <path d="M250 4400h400"/>
+
+    <!-- Testimonials -->
+    <rect x="95" y="4630" width="690" height="125"/><circle cx="710" cy="4692" r="43"/><rect x="95" y="4775" width="690" height="125"/><circle cx="710" cy="4837" r="43"/>
+    <rect x="815" y="4630" width="12" height="270" rx="6"/><rect x="812" y="4670" width="18" height="80" rx="8"/>
+
+    <!-- Blog intro + tips -->
+    <path d="M260 5040h380M300 5065h300M340 5090h220"/>
+    <rect x="85" y="5200" width="220" height="165"/><rect x="340" y="5200" width="220" height="165"/><rect x="595" y="5200" width="220" height="165"/>
+    <circle cx="195" cy="5200" r="34"/><circle cx="450" cy="5200" r="34"/><circle cx="705" cy="5200" r="34"/>
+    <rect x="825" y="5190" width="9" height="175" rx="5"/><rect x="821" y="5230" width="17" height="48" rx="8"/>
+    <!-- Blog: videos -->
+    <rect x="85" y="5510" width="220" height="190"/><rect x="340" y="5510" width="220" height="190"/><rect x="595" y="5510" width="220" height="190"/>
+    <circle cx="195" cy="5510" r="34"/><circle cx="450" cy="5510" r="34"/><circle cx="705" cy="5510" r="34"/>
+    <path d="M180 5580l42 28-42 28zM435 5580l42 28-42 28zM690 5580l42 28-42 28z"/>
+    <rect x="825" y="5500" width="9" height="200" rx="5"/><rect x="821" y="5555" width="17" height="52" rx="8"/>
+    <!-- Blog: articles -->
+    <rect x="85" y="5840" width="220" height="165"/><rect x="340" y="5840" width="220" height="165"/><rect x="595" y="5840" width="220" height="165"/>
+    <circle cx="195" cy="5840" r="34"/><circle cx="450" cy="5840" r="34"/><circle cx="705" cy="5840" r="34"/>
+    <rect x="825" y="5830" width="9" height="175" rx="5"/><rect x="821" y="5870" width="17" height="48" rx="8"/>
+    <!-- Footer -->
+    <rect x="75" y="6205" width="175" height="54"/><circle cx="282" cy="6232" r="23"/>
+    <rect x="330" y="6205" width="175" height="54"/><circle cx="537" cy="6232" r="23"/>
+    <rect x="585" y="6205" width="145" height="54"/><circle cx="762" cy="6232" r="23"/>
+    <circle cx="670" cy="6380" r="24"/><circle cx="728" cy="6380" r="24"/><circle cx="786" cy="6380" r="24"/>
+  </g>
+
+  <g fill="#242424" font-family="'Segoe Print','Comic Sans MS',cursive" direction="rtl" text-anchor="middle">
+    <text x="450" y="70" font-size="22">לוגו   |   אודות   |   שירותים   |   פרויקטים   |   בלוג   |   צרו קשר</text>
+    <text x="615" y="205" font-size="31" font-weight="700">מובילים את העסק שלך להצלחה</text>
+    <text x="615" y="255" font-size="19">אנחנו כאן כדי לעזור לך להגיע להישגים חדשים</text>
+    <text x="228" y="310" font-size="23">אילוסטרציה בהירו</text>
+    <text x="612" y="400" font-size="18">כפתור</text>
+
+    <text x="450" y="635" font-size="31" font-weight="700">קצת עלינו</text>
+    <text x="450" y="690" font-size="19">מלל המסביר מי אנחנו ומה אנחנו עושים</text>
+    <text x="160" y="900" font-size="25">נתון</text><text x="350" y="900" font-size="25">נתון</text><text x="540" y="900" font-size="25">נתון</text><text x="730" y="900" font-size="25">נתון</text>
+    <text x="450" y="1060" font-size="20">נשמח לעמוד לרשותכם ולסייע לכם להגיע לשיא!</text>
+
+    <text x="450" y="1180" font-size="31" font-weight="700">שירותי החברה</text>
+    <text x="450" y="1230" font-size="18">מלל תמציתי על שירותי החברה</text>
+    <text x="195" y="1358" font-size="16">אייקון</text><text x="450" y="1358" font-size="16">אייקון</text><text x="705" y="1358" font-size="16">אייקון</text>
+    <text x="195" y="1430" font-size="21">כותרת השירות</text><text x="450" y="1430" font-size="21">כותרת השירות</text><text x="705" y="1430" font-size="21">כותרת השירות</text>
+    <text x="195" y="1480" font-size="16">הסבר תמציתי</text><text x="450" y="1480" font-size="16">הסבר תמציתי</text><text x="705" y="1480" font-size="16">הסבר תמציתי</text>
+
+    <text x="665" y="1685" font-size="30" font-weight="700">שאלון התאמה</text>
+    <text x="665" y="1740" font-size="18">גלו איזה שיווק מתאים לעסק שלכם</text>
+    <text x="245" y="1810" font-size="20">השיווק שמתאים לך</text>
+    <text x="640" y="1902" font-size="17">התחלת שאלון</text>
+    <text x="640" y="2010" font-size="17">רוצים לדבר איתנו? צרו קשר</text>
+
+    <text x="650" y="2115" font-size="30" font-weight="700">מה זה שיווק משפיענים?</text>
+    <text x="610" y="2170" font-size="18">מלל הסבר על שיווק משפיענים</text>
+    <text x="215" y="2265" font-size="19">אילוסטרציה מתאימה</text>
+    <text x="245" y="2395" font-size="26" font-weight="700">למה זה חשוב?</text>
+    <text x="245" y="2550" font-size="18">הסבר על חשיבות שיווק משפיענים</text>
+    <text x="215" y="2705" font-size="19">אילוסטרציה מתאימה</text>
+    <text x="620" y="2605" font-size="24" font-weight="700">כיצד זה יכול לעזור לעסק שלך?</text>
+    <text x="620" y="2780" font-size="17">הסבר כיצד החברה מסייעת לעסק</text>
+
+    <text x="690" y="2935" font-size="30" font-weight="700">תהליך העבודה איתנו</text>
+    <text x="450" y="3032" font-size="20">שלב 1</text><text x="450" y="3172" font-size="20">שלב 2</text><text x="450" y="3312" font-size="20">שלב 3</text>
+    <text x="700" y="3450" font-size="30" font-weight="700">הפרויקטים שלנו</text>
+
+    <text x="680" y="3825" font-size="30" font-weight="700">שאלות ותשובות</text>
+    <text x="445" y="3932" font-size="18">שאלה ותשובה</text><text x="445" y="4000" font-size="18">שאלה ותשובה</text><text x="445" y="4068" font-size="18">שאלה ותשובה</text><text x="445" y="4136" font-size="18">שאלה ותשובה</text>
+    <text x="450" y="4550" font-size="30" font-weight="700">קצת עלינו מעיניים אחרות...</text>
+    <text x="640" y="4595" font-size="22">#חוות דעת מלקוחותינו</text>
+    <text x="380" y="4690" font-size="17">שם הלקוח וציטוט מלל</text><text x="380" y="4835" font-size="17">שם הלקוח וציטוט מלל</text>
+    <text x="710" y="4700" font-size="15">תמונה</text><text x="710" y="4845" font-size="15">תמונה</text>
+    <text x="740" y="5010" font-size="30" font-weight="700">בלוג</text>
+    <text x="740" y="5160" font-size="24" font-weight="700">#טיפים</text>
+    <text x="195" y="5210" font-size="15">אייקון</text><text x="450" y="5210" font-size="15">אייקון</text><text x="705" y="5210" font-size="15">אייקון</text>
+    <text x="195" y="5290" font-size="18">מלל של טיפ</text><text x="450" y="5290" font-size="18">מלל של טיפ</text><text x="705" y="5290" font-size="18">מלל של טיפ</text>
+    <text x="705" y="5470" font-size="24" font-weight="700">#סרטוני הדרכה</text>
+    <text x="195" y="5520" font-size="15">אייקון</text><text x="450" y="5520" font-size="15">אייקון</text><text x="705" y="5520" font-size="15">אייקון</text>
+    <text x="195" y="5675" font-size="17">שם הסרטון</text><text x="450" y="5675" font-size="17">שם הסרטון</text><text x="705" y="5675" font-size="17">שם הסרטון</text>
+    <text x="735" y="5800" font-size="24" font-weight="700">#מאמרים</text>
+    <text x="195" y="5850" font-size="15">אייקון</text><text x="450" y="5850" font-size="15">אייקון</text><text x="705" y="5850" font-size="15">אייקון</text>
+    <text x="195" y="5935" font-size="18">שם המאמר</text><text x="450" y="5935" font-size="18">שם המאמר</text><text x="705" y="5935" font-size="18">שם המאמר</text>
+    <text x="720" y="6160" font-size="30" font-weight="700">צרו קשר</text>
+    <text x="730" y="6340" font-size="19">למעקב אחר הפעילות ברשת</text>
+    <text x="670" y="6388" font-size="12">אייקון</text><text x="728" y="6388" font-size="12">אייקון</text><text x="786" y="6388" font-size="12">אייקון</text>
+  </g>
+</svg>

@@ -1,0 +1,94 @@
+/* Shared review corrections, October 26. */
+html body #about .text strong {font-weight:700;color:#fff;}
+html body #about .text .ng-about-highlight {color:var(--rose,#FF537D);}
+html[lang=he] body {--f-serif:'Assistant',Arial,sans-serif;--ng-serif:'Assistant',Arial,sans-serif;}
+html[lang=he] body *:not(svg):not(svg *):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) {font-family:'Assistant',Arial,sans-serif!important;font-style:normal!important;letter-spacing:normal!important;}
+html[lang=he] body :is(h1,h2,h3,h4,.lede) em:not(#_):not(#_):not(#_):not(#_):not(#_) {color:var(--study-accent,var(--ng-accent,var(--rose,#FF537D)))!important;font-weight:700!important;}
+html[lang=he] body .h3d h2 {direction:rtl;unicode-bidi:isolate;}
+html[lang=he] body .h3d .acc {font-weight:800!important;}
+html[lang=he] body :is(.show__dots,.lc-dots) {direction:rtl;}
+html[lang=he] body :is(.page-scroll-progress,.toc-progress) {display:flex;justify-content:flex-start;direction:rtl;}
+html[lang=he] body :is(.page-scroll-progress,.toc-progress) span {transform-origin:right center;}
+html[lang=he] body :is(.sg-step-kicker,.ad-step-kicker,.ad-showcase-kicker):not(#_):not(#_) {display:flex;direction:rtl;justify-content:flex-start;align-items:baseline;gap:.4em;unicode-bidi:isolate;}
+html[lang=he] body :is(.ng-how-num,.ng-decision-number):not(#_):not(#_):not(#_) {line-height:1.25!important;padding-block:.08em;overflow:visible;direction:ltr;unicode-bidi:isolate;font-weight:600!important;}
+html[lang=he] body .ng-lc-copy:not(#_):not(#_) {overflow:visible!important;padding-top:8px;}
+html[lang=he] body.ad-case .ad-drink-choice .ad-choice-card strong:not(#_):not(#_) {font-weight:800!important;font-size:clamp(26px,2.6vw,42px)!important;line-height:1.3!important;}
+html[lang=he] body.ad-case :is(.ad-question-line,.ad-question-typed):not(#_):not(#_) {font-weight:800!important;direction:rtl;unicode-bidi:isolate;}
+html body.ad-case .ad-choice-hint:not(#_):not(#_),html body.spaceship-case .sg-greeting .sg-card-hint:not(#_):not(#_) {font-family:'DM Sans',Arial,sans-serif!important;font-size:13px!important;line-height:1.5!important;font-weight:400!important;letter-spacing:normal!important;}
+html[lang=he] body.ad-case .ad-choice-hint:not(#_):not(#_),html[lang=he] body.spaceship-case .sg-greeting .sg-card-hint:not(#_):not(#_) {font-family:'Assistant',Arial,sans-serif!important;}
+html body.hashtag-case main .ng-decision-panel.ng-lower-media .ng-compare:not(#_):not(#_):not(#_) {margin-top:clamp(24px,3vw,48px)!important;}
+html body.ng-v2 #lc-product.lc-product .ng-lc-pin:not(#_):not(#_) {position:relative;grid-template-columns:minmax(0,1fr)!important;}
+html body.ng-v2 #lc-product.lc-product.ng-lc-scroll .ng-lc-pin:not(#_):not(#_) {position:sticky;}
+html body.ng-v2 #lc-product.lc-product .lc-product-heading:not(#_):not(#_):not(#_) {position:absolute!important;left:var(--review-dots-x,auto)!important;right:auto!important;top:var(--review-dots-y,50%)!important;transform:translateY(-50%)!important;width:28px!important;z-index:5;}
+html body.ng-v2 .ng-how-text:not(#_) {overflow:visible;padding-top:8px;}
+html body.ng-v2 .ng-how[data-view] .ng-how-dots:not(#_):not(#_) {position:absolute!important;left:var(--review-how-x,auto)!important;right:auto!important;top:var(--review-how-y,50%)!important;transform:translateY(-50%)!important;flex-direction:column!important;gap:14px!important;}
+html body.ng-v2 .ng-brief-more .ng-review-reveal:not(#_):not(#_) {opacity:0!important;transform:translateY(45px)!important;filter:none!important;transition:opacity .8s ease,transform .95s cubic-bezier(.22,1,.36,1);will-change:transform,opacity;}
+html body.ng-v2 .ng-brief-more .ng-review-reveal.is-visible:not(#_):not(#_) {opacity:1!important;transform:none!important;}
+@media(max-width:900px) {
+ html body.ad-case .ad-choice-hint:not(#_):not(#_),html body.spaceship-case .sg-greeting .sg-card-hint:not(#_):not(#_) {font-size:12px!important;}
+ html body.ng-v2 #lc-product .ng-lc-pin:not(#_):not(#_) {position:relative;}
+ html body.hashtag-case main .ng-decision-panel.ng-lower-media .ng-compare:not(#_):not(#_):not(#_) {margin-top:18px!important;}
+}
+@media(prefers-reduced-motion:reduce) {html body.ng-v2 .ng-brief-more .ng-review-reveal:not(#_):not(#_) {opacity:1!important;transform:none!important;transition:none!important;}}
+
+/* Hebrew headings keep their reading order even while each word is animated. */
+html[lang=he] body .h3d h2:not(#_):not(#_) {display:flex;flex-direction:row;direction:rtl;justify-content:center;align-items:baseline;flex-wrap:wrap;column-gap:.2em;}
+html[lang=he] body .h3d h2 .w {direction:rtl;unicode-bidi:isolate;}
+html[lang=he] body.ng-landing #introText p.lede:not(#_):not(#_) {font-size:clamp(28px,3vw,50px)!important;}
+html body.spaceship-case .sg-greeter .sg-hello>span:not(#_):not(#_) {font-size:clamp(18px,1.6vw,22px)!important;font-weight:800!important;}
+html body.spaceship-case :is(.sg-mission-line,.sg-begin-mission,.sg-type-text,.sg-begin-text):not(#_):not(#_) {font-weight:700!important;}
+html body.ng-v2 .ng-brief-more .ng-word-reveal:not(#_):not(#_):not(#_) {opacity:1!important;transform:none!important;filter:none!important;transition:none!important;}
+html body.ng-v2 .ng-word-reveal .ng-reveal-word {opacity:var(--word-light,1);transition:none;}
+@media(max-width:900px) {html[lang=he] body.ng-landing #introText p.lede:not(#_):not(#_) {font-size:clamp(23px,6.4vw,32px)!important;}}
+@media(max-width:760px) {html body.spaceship-case .sg-greeter .sg-hello>span:not(#_):not(#_) {font-size:17px!important;}}
+@media(prefers-reduced-motion:reduce) {html body.ng-v2 .ng-word-reveal .ng-reveal-word {opacity:1!important;}}
+
+/* The colored project-name word carries the same visual weight as the name. */
+html body.ng-v2 .ng-hd__name em:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) {font-weight:800!important;color:var(--ng-accent,var(--study-accent))!important;}
+/* Hebrew project navigation follows reading direction; project names stay LTR. */
+html[lang=he] body.ng-v2 .ng-project-navigation:not(#_):not(#_) {direction:ltr;}
+html[lang=he] body.ng-v2 .ng-project-navigation .ng-end__previous:not(#_):not(#_) {text-align:right!important;}
+html[lang=he] body.ng-v2 .ng-project-navigation .ng-end__next:not(#_):not(#_) {text-align:left!important;}
+html[lang=he] body.ng-v2 .ng-project-navigation .ng-end__row:not(#_):not(#_) {direction:ltr;}
+html[lang=he] body.ng-v2 .ng-end__previous .ng-end__row:not(#_):not(#_) {justify-content:flex-end!important;}
+html[lang=he] body.ng-v2 .ng-end__next .ng-end__row:not(#_):not(#_) {justify-content:flex-start!important;}
+html[lang=he] body.ng-v2 .ng-end__previous .ng-end__row svg:not(#_) {order:1;transform:rotate(180deg);}
+html[lang=he] body.ng-v2 .ng-end__next .ng-end__row svg:not(#_) {order:-1;transform:rotate(180deg);}
+html[lang=he] body.ng-v2 .ng-end__previous:hover .ng-end__row svg:not(#_) {transform:translateX(8px) rotate(180deg);}
+html[lang=he] body.ng-v2 .ng-end__next:hover .ng-end__row svg:not(#_) {transform:translateX(-8px) rotate(180deg);}
+@media(min-width:701px) {
+ html[lang=he] body.ng-v2 .ng-project-navigation .ng-end__previous:not(#_):not(#_) {grid-column:2!important;}
+ html[lang=he] body.ng-v2 .ng-project-navigation .ng-end__next:not(#_):not(#_) {grid-column:1!important;}
+}
+/* Link emphasis belongs to its destination project. */
+html body.ng-v2 .ng-project-navigation a[href*="lumina-case-study"] {--nx:#9bfb72;}
+html body.ng-v2 .ng-project-navigation a[href*="spaceship-case-study"] {--nx:#f7d35a;}
+html body.ng-v2 .ng-project-navigation a[href*="alcohol-case-study"] {--nx:#c6ff4a;}
+html body.ng-v2 .ng-project-navigation a[href*="hashtag-case-study"] {--nx:#e883b7;}
+html body.ng-v2 .ng-project-navigation a[href*="stratasys-case-study"] {--nx:#7cd8f0;}
+html body.ng-v2 .ng-project-navigation a:is(:hover,:focus-visible) :is(b,svg):not(#_):not(#_) {color:var(--nx)!important;}
+/* Center the complete hero group, using equal space above and below it. */
+html body.ng-v2 .ng-hd:not(#_):not(#_) {padding-block:96px!important;place-items:center!important;}
+html body.ng-v2 .ng-hd__in:not(#_):not(#_) {width:100%;max-width:1100px;margin-inline:auto;justify-self:center;justify-items:center;text-align:center;}
+@media(max-width:600px) {html body.ng-v2 .ng-hd:not(#_):not(#_) {padding-block:80px!important;}}
+
+/* Keep Lumina's screenshot progress in screen order in both languages. */
+html[lang=he] body.ng-v2 #lc-product .lc-gallery-controls .lc-dots:not(#_):not(#_) {direction:ltr!important;flex-direction:row!important;}
+
+/* Display typography is reserved for the large standalone numerals in Hebrew. */
+html[lang=he] body :is(.ng-how-num,.ng-decision-number):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) {font-family:'Playfair Display',Georgia,serif!important;font-weight:700!important;font-style:normal!important;}
+
+/* The pinned feature controls must remain visible after the entrance reveal. */
+html body.ng-v2 #lc-product .lc-product-heading.reveal:not(#_):not(#_):not(#_) {opacity:1!important;visibility:visible!important;translate:none!important;}
+html body.ng-v2 #lc-product .lc-tabs:not(#_):not(#_):not(#_) {display:flex!important;visibility:visible!important;opacity:1!important;}
+/* Match the English display numerals, including their italic cut and weight. */
+html[lang=he] body :is(.ng-how-num,.ng-decision-number):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) {font-family:'Playfair Display',Georgia,serif!important;font-weight:500!important;font-style:italic!important;}
+
+/* Anchor absolute navigation to the entire pin, not the former second grid column. */
+html body.ng-v2 #lc-product .lc-product-heading:not(#_):not(#_):not(#_):not(#_) {grid-column:1 / -1!important;grid-row:1 / -1!important;}
+/* Restore the original English display weight on project titles. */
+html:not([lang=he]) body.ng-v2 .ng-hd__name em:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) {font-weight:500!important;}
+
+/* English project names retain their original typography within Hebrew pages. */
+html[lang=he] body .ng-hd__name:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html[lang=he] body .ng-hd__name *:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) {font-family:'DM Sans',Arial,sans-serif!important;font-style:normal!important;font-weight:800!important;letter-spacing:-.045em!important;direction:ltr;}
+html[lang=he] body .ng-hd__name em:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html[lang=he] body .ng-hd__name em *:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) {font-family:'Playfair Display',Georgia,serif!important;font-style:italic!important;font-weight:500!important;letter-spacing:-.02em!important;}

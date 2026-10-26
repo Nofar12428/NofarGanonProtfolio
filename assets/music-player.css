@@ -1,0 +1,10 @@
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0b0e14}#portfolio-content{display:block;border:0;width:100%;height:100svh}
+.ng-music{--music-accent:#ff537d;position:fixed;right:calc(28px + env(safe-area-inset-right,0px));bottom:max(18px,env(safe-area-inset-bottom));z-index:2147483647}
+#music-expand{width:44px;height:44px;display:grid;place-items:center;padding:0;border-radius:50%;border:1px solid color-mix(in srgb,var(--music-accent) 50%,transparent);background:#0b1110eb;color:var(--music-accent);box-shadow:0 8px 24px #0005;backdrop-filter:blur(15px);cursor:pointer;transition:border-color .2s,background .2s}
+#music-expand:hover{border-color:var(--music-accent);background:#17201fee}#music-expand:focus-visible{outline:3px solid var(--music-accent);outline-offset:4px}
+#music-expand svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.is-playing .music-note{animation:music-wave 1.8s ease-in-out infinite}.is-playing .music-slash{display:none}
+@keyframes music-wave{0%,100%{opacity:.55}50%{opacity:1}}@media(prefers-reduced-motion:reduce){.is-playing .music-note{animation:none}}
+
+.music-floating-note{position:absolute;pointer-events:none;user-select:none;left:50%;bottom:34px;font:600 23px/1 Georgia,serif;color:var(--music-accent);text-shadow:0 0 7px currentColor,0 0 16px currentColor;opacity:0;animation:music-note-rise 2.8s ease-out forwards}
+@keyframes music-note-rise{0%{opacity:0;transform:translate(-50%,0) scale(.65)}15%{opacity:.95}65%{opacity:.7}100%{opacity:0;transform:translate(calc(-50% + var(--note-drift)),-115px) rotate(var(--note-turn)) scale(1.1)}}
+@media(prefers-reduced-motion:reduce){.music-floating-note{display:none;animation:none}}

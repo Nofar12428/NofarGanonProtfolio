@@ -1,0 +1,52 @@
+
+.ad-game-showcase{--showcase-green:#b2e77e;background:#10141c;color:#f5f2eb;width:100vw;margin-left:calc(50% - 50vw);overflow:hidden}
+.ad-showcase-trailer{max-width:1240px;margin:auto;padding:70px clamp(24px,6vw,90px) 120px;text-align:center}
+.ad-showcase-kicker{display:block;font:600 11px/1.5 "DM Sans",sans-serif;letter-spacing:.18em;color:var(--showcase-green);margin:0 0 24px}
+.ad-showcase-trailer h3{font:500 clamp(38px,5.5vw,78px)/1.03 "DM Sans",sans-serif;letter-spacing:-.045em;margin:0 0 45px}
+.ad-showcase-trailer h3 em{font-family:"Playfair Display",serif;font-weight:400;color:var(--showcase-green)}
+.ad-showcase-media{width:100%;aspect-ratio:16/9;background:#151c25;border:1px solid rgba(236,243,250,.15);border-radius:0;position:relative;box-shadow:0 18px 55px rgba(0,0,0,.16);overflow:hidden}
+.ad-showcase-media video,.ad-showcase-media img{display:block;width:100%;height:100%;object-fit:contain}
+.ad-showcase-step{position:relative;isolation:isolate;min-height:620px;display:grid;align-items:center;padding:100px clamp(24px,6vw,90px);background:#10141c}
+.ad-showcase-step::before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--drive-scene);background-size:cover;background-position:center;opacity:.3}
+.ad-showcase-step::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#10141c,rgba(16,20,28,.25) 27%,rgba(16,20,28,.42) 73%,#10141c),linear-gradient(90deg,rgba(16,20,28,.45),rgba(16,20,28,.9))}
+.ad-showcase-step-inner{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:center;gap:clamp(35px,6vw,85px);max-width:1240px;width:100%;margin:auto}
+.ad-showcase-copy h3{font:500 clamp(30px,3.2vw,49px)/1.08 "DM Sans",sans-serif;letter-spacing:-.035em;margin:0 0 23px}
+.ad-showcase-copy p{font:400 clamp(15px,1.25vw,18px)/1.7 "DM Sans",sans-serif;color:#d6d9dc;max-width:390px;margin:0}
+.ad-showcase-step:nth-child(odd) .ad-showcase-media{grid-column:2;grid-row:1}.ad-showcase-step:nth-child(odd) .ad-showcase-copy{grid-column:1;grid-row:1}
+.ad-showcase-step:nth-child(odd) .ad-showcase-step-inner{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}
+.ad-showcase-reveal{transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+.ad-showcase-reveal.ad-showcase-pending{opacity:0;transform:translateY(45px)}
+@media(max-width:760px){.ad-showcase-trailer{padding:48px 24px 75px}.ad-showcase-trailer h3{margin-bottom:30px}.ad-showcase-step{min-height:0;padding:65px 24px}.ad-showcase-step-inner,.ad-showcase-step:nth-child(odd) .ad-showcase-step-inner{grid-template-columns:1fr;gap:30px}.ad-showcase-step:nth-child(odd) .ad-showcase-media,.ad-showcase-step:nth-child(odd) .ad-showcase-copy{grid-column:auto;grid-row:auto}.ad-showcase-copy h3{font-size:32px}.ad-showcase-kicker{font-size:10px;margin-bottom:16px}.ad-showcase-copy p{font-size:15px}.ad-showcase-step::after{background:linear-gradient(180deg,#10141c,rgba(16,20,28,.65) 30%,rgba(16,20,28,.8) 75%,#10141c)}}
+@media(prefers-reduced-motion:reduce){.ad-showcase-reveal{transition:none}.ad-showcase-reveal.ad-showcase-pending{opacity:1;transform:none}}
+
+/* One continuous city scene, bounded by the gameplay showcase. */
+body.ad-case .ad-overview{padding-bottom:0!important}
+.ad-game-showcase{position:relative;isolation:isolate;overflow:clip;background:#10151e;margin-bottom:0}
+.ad-showcase-backdrop{position:sticky;top:0;height:100svh;margin-bottom:-100svh;z-index:-1;background:linear-gradient(180deg,#10151e 0%,rgba(16,21,30,.64) 24%,rgba(16,21,30,.7) 100%),url("simulation-mockup/assets/6923392ced0b7ce0b592752793bb93e8.jpg") center/cover no-repeat;pointer-events:none}
+.ad-showcase-step{background:transparent;isolation:auto}
+.ad-showcase-step::before,.ad-showcase-step::after{content:none}
+.ad-showcase-trailer,.ad-showcase-step{position:relative;z-index:1}
+.ad-showcase-step:last-child{padding-bottom:110px;margin-bottom:0}
+@media(max-width:760px){.ad-showcase-backdrop{background-position:center;background-size:cover}.ad-showcase-step:last-child{padding-bottom:80px}}
+
+/* Slow forward camera drift toward the road's vanishing point. */
+.ad-showcase-backdrop{background:none;overflow:hidden}
+.ad-showcase-backdrop::before{content:"";position:absolute;inset:-5%;background:url("simulation-mockup/assets/6923392ced0b7ce0b592752793bb93e8.jpg") center/cover no-repeat;filter:blur(3px);transform-origin:50% 44%;animation:ad-road-forward 24s ease-in-out infinite alternate;will-change:transform}
+.ad-showcase-backdrop::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#10151e 0%,rgba(16,21,30,.64) 24%,rgba(16,21,30,.7) 100%)}
+@keyframes ad-road-forward{from{transform:scale(1.02) translateY(0)}to{transform:scale(1.2) translateY(1.5%)}}
+@media(max-width:760px){.ad-showcase-backdrop::before{filter:blur(2px);animation-duration:28s}}
+@media(prefers-reduced-motion:reduce){.ad-showcase-backdrop::before{animation:none;transform:scale(1.05);will-change:auto}}
+
+/* Static road reference until the real driving footage arrives. */
+.ad-showcase-backdrop::before{inset:0;animation:none!important;transform:none!important;filter:none!important;will-change:auto;background-size:cover}
+
+/* r188: actual continuous city footage, softly blurred behind the showcase. */
+.ad-showcase-backdrop{background:#10151e url("simulation/city-background-r188.jpg") center/cover no-repeat}
+.ad-showcase-backdrop::before{content:none!important}
+.ad-showcase-backdrop .ad-backdrop-video{position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);max-width:none;object-fit:cover;filter:blur(4px);pointer-events:none}
+.ad-showcase-backdrop::after{z-index:1;background:linear-gradient(180deg,#10151e 0%,rgba(16,21,30,.62) 20%,rgba(16,21,30,.68) 100%)}
+@media(max-width:760px){.ad-showcase-backdrop .ad-backdrop-video{filter:blur(3px)}}
+
+/* Preblurred footage avoids a full-screen blur pass on every decoded frame. */
+.ad-showcase-backdrop {contain:paint;transform:translateZ(0);}
+.ad-showcase-backdrop .ad-backdrop-video {inset:0;width:100%;height:100%;filter:none!important;transform:translateZ(0);backface-visibility:hidden;}

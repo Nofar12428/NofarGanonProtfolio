@@ -1,0 +1,3 @@
+/* Match the main project headings independently of disclosure state. */
+body .unified-projects .unified-projects__head{width:calc(100% - 2 * var(--project-heading-inset,8vw))!important;margin-left:var(--project-heading-inset,8vw)!important;margin-right:var(--project-heading-inset,8vw)!important}
+body .unified-projects .unified-track{padding-left:var(--project-heading-inset,8vw)!important;padding-right:var(--project-heading-inset,8vw)!important}

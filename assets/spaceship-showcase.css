@@ -1,0 +1,72 @@
+/* r196: staged gameplay presentation with upload-ready media slots. */
+body.spaceship-concept .sg-game-showcase{width:100%;margin:48px auto 0}
+body.spaceship-concept .sg-showcase-step{padding:clamp(55px,8vw,110px) 0;background:transparent}
+body.spaceship-concept .sg-showcase-step-inner{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(30px,5vw,80px);align-items:center;max-width:1240px;margin:auto}
+body.spaceship-concept .sg-showcase-step:nth-child(even) .sg-showcase-step-inner{grid-template-columns:minmax(0,1fr) minmax(0,1.55fr)}
+body.spaceship-concept .sg-showcase-step:nth-child(even) .sg-step-media{grid-column:2;grid-row:1}
+body.spaceship-concept .sg-showcase-step:nth-child(even) .sg-step-copy{grid-column:1;grid-row:1}
+body.spaceship-concept .sg-step-media{aspect-ratio:16/9;width:100%;min-width:0;background:rgba(2,13,31,.72);border:1px solid rgba(181,209,235,.19);box-sizing:border-box;overflow:hidden}
+body.spaceship-concept .sg-step-media video{display:block;width:100%;height:100%;object-fit:contain}
+body.spaceship-concept .sg-step-kicker{display:block;color:#f7d35a;font:600 11px/1.5 'DM Sans',sans-serif;letter-spacing:.16em;margin-bottom:22px}
+body.spaceship-concept .sg-step-copy h3{font:500 clamp(30px,3.3vw,49px)/1.1 'DM Sans',sans-serif;letter-spacing:-.035em;color:#f4f6f9;margin:0 0 22px}
+body.spaceship-concept .sg-step-copy p{font:400 clamp(15px,1.25vw,18px)/1.7 'DM Sans',sans-serif;color:#cad9e7;margin:0;max-width:390px}
+body.spaceship-concept .sg-supplementary-gallery{margin:85px 0 105px;width:100%;min-width:0}
+body.spaceship-concept .sg-supplementary-heading h2{font:500 clamp(32px,4vw,54px)/1.08 'DM Sans',sans-serif;letter-spacing:-.035em;margin:0 0 16px}
+body.spaceship-concept .sg-supplementary-heading em{font-family:'Playfair Display',serif;color:#f7d35a}
+body.spaceship-concept .sg-supplementary-heading>p{color:#cad9e7;margin-bottom:30px;font-size:16px}
+body.spaceship-concept .sg-screen-strip{display:flex;gap:24px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;scroll-padding:2px;padding:0 2px 18px;scrollbar-width:thin;scrollbar-color:#979fa7 #25354a}
+body.spaceship-concept .sg-screen-strip::-webkit-scrollbar{height:4px}
+body.spaceship-concept .sg-screen-strip::-webkit-scrollbar-track{background:#25354a}
+body.spaceship-concept .sg-screen-strip::-webkit-scrollbar-thumb{background:#979fa7;border-radius:4px}
+body.spaceship-concept .sg-screen-strip figure{flex:0 0 clamp(260px,35vw,430px);margin:0;scroll-snap-align:start;min-width:0}
+body.spaceship-concept .sg-screen-strip button{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:0;padding:0;background:transparent;cursor:zoom-in}
+body.spaceship-concept .sg-screen-strip img{display:block;width:100%;height:100%;object-fit:contain;border-radius:0}
+body.spaceship-concept .sg-screen-strip h3{font-size:17px;color:#f4f6f9;margin:16px 0 8px}
+body.spaceship-concept .sg-screen-strip p{font-size:14px;line-height:1.6;color:#cad9e7;margin:0}
+@media(max-width:760px){body.spaceship-concept .sg-showcase-step{padding:45px 0}body.spaceship-concept .sg-showcase-step-inner,body.spaceship-concept .sg-showcase-step:nth-child(even) .sg-showcase-step-inner{grid-template-columns:minmax(0,1fr);gap:26px}body.spaceship-concept .sg-showcase-step:nth-child(even) :is(.sg-step-media,.sg-step-copy){grid-column:auto;grid-row:auto}body.spaceship-concept .sg-step-copy h3{font-size:30px}body.spaceship-concept .sg-supplementary-gallery{margin:65px 0 75px}body.spaceship-concept .sg-screen-strip{gap:18px}body.spaceship-concept .sg-screen-strip figure{flex-basis:83%}}
+
+/* r198: the content generator is an extension of the game case study. */
+body.spaceship-concept .sg-generator-extension{margin:75px 0 90px;padding:65px 0 0;border-top:1px solid rgba(210,227,245,.22)}
+body.spaceship-concept .sg-extension-heading{max-width:880px;margin-bottom:36px}
+body.spaceship-concept .sg-extension-heading h2{font:500 clamp(34px,4.5vw,60px)/1.12 'DM Sans',sans-serif;letter-spacing:-.035em;margin:0 0 25px;color:#f4f6f9}
+body.spaceship-concept .sg-extension-heading h2 em{font-family:'Rubik Bubbles',sans-serif;font-style:normal;font-weight:400;color:#f7d35a}
+body.spaceship-concept .sg-extension-heading p{font:400 clamp(15px,1.25vw,18px)/1.75 'DM Sans',sans-serif;color:#cad9e7;margin:0}
+body.spaceship-concept .sg-extension-screens{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:center}
+body.spaceship-concept .sg-extension-screens figure{margin:0;min-width:0}
+body.spaceship-concept .sg-extension-screens button{display:block;width:100%;border:0;border-radius:0;padding:0;background:transparent;cursor:zoom-in}
+body.spaceship-concept .sg-extension-screens img{display:block;width:100%;height:auto;max-height:390px;object-fit:contain;border-radius:0}
+body.spaceship-concept .sg-extension-screens figcaption{font-size:13px;line-height:1.5;color:#cad9e7;margin-top:15px}
+body.spaceship-concept .sg-extension-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px}
+body.spaceship-concept .sg-extension-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 22px;border:1px solid #f7d35a;border-radius:999px;background:transparent;color:#f7d35a;font:600 14px/1.4 'DM Sans',sans-serif;text-decoration:none}
+body.spaceship-concept .sg-extension-actions a:hover,body.spaceship-concept .sg-extension-actions a:focus-visible{background:#f7d35a;color:#03172c}
+@media(max-width:760px){body.spaceship-concept .sg-generator-extension{margin:55px 0 65px;padding-top:45px}body.spaceship-concept .sg-extension-screens{grid-template-columns:1fr;gap:30px}body.spaceship-concept .sg-extension-actions{gap:12px}body.spaceship-concept .sg-extension-actions a{font-size:13px;padding:11px 18px}}
+
+/* r199: compact authoring extension, portfolio typography, centred promo slot. */
+body.spaceship-concept .sg-extension-heading h2{font-family:'Assistant',sans-serif;font-weight:600;font-size:clamp(30px,3.2vw,44px);letter-spacing:-.025em}
+body.spaceship-concept .sg-extension-heading p,body.spaceship-concept .sg-extension-actions a,body.spaceship-concept .sg-extension-screens figcaption{font-family:'Assistant',sans-serif}
+body.spaceship-concept .sg-generator-extension{margin:65px 0;padding-top:45px}
+body.spaceship-concept .sg-extension-heading{max-width:780px;margin-bottom:26px}
+body.spaceship-concept .sg-extension-screens{grid-template-columns:repeat(2,minmax(0,260px));gap:24px;justify-content:start}
+body.spaceship-concept .sg-extension-screens img{height:150px;max-height:150px;object-fit:contain;object-position:left center}
+body.spaceship-concept .sg-extension-screens figcaption{font-size:13px;margin-top:10px}
+body.spaceship-concept .sg-extension-actions{margin-top:25px}
+body.spaceship-concept .sg-promo{width:min(100%,960px);margin:0 auto clamp(45px,7vw,100px)}
+body.spaceship-concept .sg-promo-media{aspect-ratio:16/9}
+@media(max-width:760px){body.spaceship-concept .sg-extension-screens{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}body.spaceship-concept .sg-extension-screens img{height:105px;max-height:105px}body.spaceship-concept .sg-generator-extension{margin:45px 0}}
+
+/* r200: the case study rises over the game presentation as one blue surface. */
+body.spaceship-concept .sg-reading-world{position:relative;z-index:1;padding-bottom:100px}
+body.spaceship-concept .sg-case-layer{position:relative;z-index:3;isolation:isolate;background:#082b50;color:#e9f3fb;margin-top:-70px;border-radius:28px 28px 0 0;box-shadow:0 -28px 65px rgba(0,9,24,.3);padding-top:20px;overflow:clip}
+body.spaceship-concept .sg-case-layer>.sg-brief,body.spaceship-concept .sg-case-layer>.sg-decisions,body.spaceship-concept .sg-case-layer>.sg-details{background:#082b50!important}
+body.spaceship-concept .sg-case-layer .sg-details>summary{background:#082b50;color:#e9f3fb}
+body.spaceship-concept .sg-case-layer .sg-extension-heading p,body.spaceship-concept .sg-case-layer .sg-extension-screens figcaption{color:#cad9e7}
+@media(max-width:760px){body.spaceship-concept .sg-reading-world{padding-bottom:65px}body.spaceship-concept .sg-case-layer{margin-top:-45px;border-radius:20px 20px 0 0;padding-top:10px}}
+@media(prefers-reduced-motion:reduce){body.spaceship-concept .sg-case-layer{transform:none!important}}
+
+/* r201: pin the outgoing presentation while the straight-edged blue layer covers it. */
+body.spaceship-concept .sg-layer-stack{position:relative;isolation:isolate;overflow:visible}
+body.spaceship-concept .sg-layer-stack>.sg-reading-world{position:sticky!important;top:var(--sg-world-pin-top,0px);z-index:1;align-self:start;padding-bottom:100px}
+body.spaceship-concept .sg-case-layer{background:#03172c!important;border-radius:0!important;transform:none!important;overflow:visible;box-shadow:0 -28px 65px rgba(0,9,24,.42);margin-top:-70px;min-height:100svh}
+body.spaceship-concept .sg-case-layer>.sg-brief,body.spaceship-concept .sg-case-layer>.sg-decisions,body.spaceship-concept .sg-case-layer>.sg-details,body.spaceship-concept .sg-case-layer .sg-details>summary{background:#03172c!important}
+@media(max-width:760px){body.spaceship-concept .sg-layer-stack>.sg-reading-world{padding-bottom:65px}body.spaceship-concept .sg-case-layer{margin-top:-45px}}
+@media(prefers-reduced-motion:reduce){body.spaceship-concept .sg-layer-stack>.sg-reading-world{position:relative!important;top:auto}}

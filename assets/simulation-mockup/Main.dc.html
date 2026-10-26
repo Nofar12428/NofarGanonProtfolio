@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Start screen — City road</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:wght@400;500;600;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1280px; height: 720px; position: relative; overflow: hidden; background: #0B0E14; font-family: 'Archivo', sans-serif; color: #F4F1EA">
+
+  <img src="{{t.bg}}" alt="" style="position: absolute; left: 0; top: 0; width: 1280px; height: 720px; object-fit: cover; transform-origin: 53% 40%; transform: scale({{zoom}})">
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(8,10,14,0.78) 0%, rgba(8,10,14,0.45) 38%, rgba(8,10,14,0) 62%)"></div>
+  <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 260px; background: {{t.scrim}}"></div>
+  <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 160px; background: linear-gradient(to top, rgba(8,10,14,0.7), rgba(8,10,14,0))"></div>
+
+  <div style="position: absolute; left: 64px; top: 48px; display: flex; align-items: center; gap: 10px; height: 36px; box-sizing: border-box; padding: 0 16px 0 14px; border-radius: 999px; border: 1px solid rgba(244,241,234,0.75); background: rgba(8,10,14,0.55); font-size: 14px; font-weight: 500; letter-spacing: 0.04em">
+    <span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: {{accent}}"></span>
+    DRIVING SIMULATION
+  </div>
+
+  <div style="position: absolute; left: 72px; top: 150px; display: flex; flex-direction: column; align-items: flex-start">
+    <h1 style="margin: 0; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 104px; line-height: 0.98; letter-spacing: 0.02em; color: #F4F1EA; text-shadow: 5px 5px 0 rgba(0,0,0,0.6)">ONE MORE<br>FOR THE ROAD<span style="color: {{accent}}; margin-left: 10px">?</span></h1>
+
+    <div style="margin-top: 42px; display: flex; gap: 24px; align-items: center">
+      <button onClick="{{onStart}}" onMouseEnter="{{hoverStart}}" onMouseLeave="{{unhover}}" onFocus="{{hoverStart}}" onBlur="{{unhover}}" style="display: flex; align-items: center; justify-content: space-between; width: 250px; height: 68px; box-sizing: border-box; padding: 0 30px 0 38px; border: 0; border-radius: 18px; background: {{accent}}; color: #0B0E14; font-family: 'Archivo', sans-serif; font-size: 21px; font-weight: 800; letter-spacing: 0.04em; cursor: pointer; outline: none; transition: transform 120ms ease, box-shadow 120ms ease; transform: {{startT}}; box-shadow: {{startS}}">
+        START
+        <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"></path><path d="M14 6l6 6-6 6"></path></svg>
+      </button>
+      <button onClick="{{onHow}}" onMouseEnter="{{hoverHow}}" onMouseLeave="{{unhover}}" onFocus="{{hoverHow}}" onBlur="{{unhover}}" style="display: flex; align-items: center; width: 170px; height: 68px; box-sizing: border-box; padding: 0 30px; border: 1.5px solid {{howBorder}}; border-radius: 18px; background: rgba(8,10,14,0.92); color: #F4F1EA; font-family: 'Archivo', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: 0.04em; cursor: pointer; outline: none; transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease; transform: {{howT}}; box-shadow: {{howS}}">HOW TO PLAY</button>
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 72px; right: 70px; bottom: 34px; display: flex; flex-direction: column; gap: 16px">
+    <div aria-hidden="true" style="height: 1px; background: rgba(244,241,234,0.55)"></div>
+    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 15px; font-weight: 500; letter-spacing: 0.03em; color: #E6E3DA"><span>SIMULATION ONLY  ·  IF YOU DRINK, DON’T DRIVE.</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"time":{"editor":"enum","options":["morning","sunset","night"],"default":"night"},"accent":{"editor":"color","options":["#C6FF4A","#FFB020","#5CE1E6"]},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { hov: null };
+  }
+  renderVals() {
+    // One brand palette for every background: only the photo and the scrim strength change.
+    const BG = {
+      morning: { bg: './assets/bc9db980e6bd88d1d04ebc5c25296f87.jpg', scrim: 'linear-gradient(to bottom, rgba(8,10,14,0.5), rgba(8,10,14,0))' },
+      sunset: { bg: './assets/6923392ced0b7ce0b592752793bb93e8.jpg', scrim: 'linear-gradient(to bottom, rgba(8,10,14,0.35), rgba(8,10,14,0))' },
+      night: { bg: './assets/e3cccc54f8e8f7eec9db0c18ef3054b3.jpg', scrim: 'linear-gradient(to bottom, rgba(8,10,14,0.25), rgba(8,10,14,0))' }
+    };
+    const t = BG[this.props.time] || BG.night;
+    const accent = this.props.accent || '#C6FF4A';
+    // Rest: lifted, sits on a hard shadow. Hover: the button sinks into its shadow (moves 4/5 px, shadow becomes an inner shadow).
+    const REST_T = 'translate(0px, 0px)', SUNK_T = 'translate(4px, 5px)';
+    const REST_S = '4px 5px 0 rgba(0,0,0,0.65)', SUNK_S = 'inset 0 3px 0 rgba(0,0,0,0.28)';
+    const h = this.state.hov;
+    return {
+      t: t, accent: accent, zoom: this.props.zoom ?? 1,
+      startT: h === 'start' ? SUNK_T : REST_T, startS: h === 'start' ? SUNK_S : REST_S,
+      howT: h === 'how' ? SUNK_T : REST_T, howS: h === 'how' ? SUNK_S : REST_S,
+      howBorder: h === 'how' ? accent : 'rgba(244,241,234,0.9)',
+      onStart: () => { if (this.props.onStart) this.props.onStart(); },
+      onHow: () => { if (this.props.onHow) this.props.onHow(); },
+      hoverStart: () => this.setState({ hov: 'start' }),
+      hoverHow: () => this.setState({ hov: 'how' }),
+      unhover: () => this.setState({ hov: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

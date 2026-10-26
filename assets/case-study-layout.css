@@ -1,0 +1,1080 @@
+/* Case-study explanations: one column, one type scale, one spacing scale.
+   Hierarchy comes from size and brightness, not from more fonts or colours. */
+
+/* ---------- Tokens ---------- */
+html body.ng-v2 {
+  --study-fg:#f7fafc;
+  --study-soft:rgba(247,250,252,.8);   /* body text: passes AA on every palette */
+  --study-dim:rgba(247,250,252,.55);   /* second half of a heading */
+  --study-accent:var(--ng-accent,var(--unified-accent,#c6f29a));
+  --study-col:1100px;
+
+  --t-section:500 clamp(38px,4.2vw,60px)/1.08 var(--ng-sans);
+  --t-item:500 clamp(24px,2.1vw,30px)/1.22 var(--ng-sans);
+  --t-big:500 clamp(18px,1.5vw,21px)/1.5 var(--ng-sans);
+  --t-body:400 clamp(15px,1.2vw,17px)/1.7 var(--ng-sans);
+  --t-small:400 14px/1.65 var(--ng-sans);
+  --t-label:600 12px/1.4 var(--ng-sans);
+
+  --s-label:14px;   /* label → heading */
+  --s-text:14px;    /* heading → text */
+  --s-item:72px;    /* between items */
+  --s-block:96px;   /* between blocks inside a section */
+}
+
+/* ---------- One column, one left edge ---------- */
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.sg-brief,.ad-brief,.lc-brief,.ht-key-decisions,.lc-key-decisions)>*,
+html body.ng-v2.ng-v2.ng-v2 main .lc-brief>div.reveal>*,
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude) {
+  box-sizing:border-box; width:100%!important; max-width:var(--study-col)!important;
+  margin-left:auto!important; margin-right:auto!important; text-align:left!important;
+}
+html body.ng-v2.ng-flow main :is(.lc-key-decisions,.ht-key-decisions) {padding-left:var(--ng-line,8vw)!important; padding-right:var(--ng-line,8vw)!important;}
+
+/* ---------- Labels: one style everywhere ---------- */
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-kicker,.ht-eyebrow,.lc-kicker,.ng-fact-label,.ad-ai-label),
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-meta,.lc-project-meta) dt,
+html body.ng-v2.ng-v2.ng-v2 .ng-decision-tag,
+html body.ng-v2.ng-v2.ng-v2 .ng-decision-note>span {
+  display:block!important; margin-top:0!important; margin-bottom:var(--s-label)!important; padding:0!important; border:0!important; background:transparent!important;
+  color:var(--study-accent)!important; font:var(--t-label)!important; letter-spacing:.14em!important; text-transform:uppercase!important;
+}
+
+/* ---------- Section headings ---------- */
+html body.ng-v2 main :is(.ht-brief,.sg-brief,.ad-brief,.lc-brief,.ht-key-decisions,.lc-key-decisions) h2,
+html body.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude)>h2 {
+  margin-top:0!important; margin-bottom:56px!important; color:var(--study-fg)!important;
+  font:var(--t-section)!important; letter-spacing:-.035em!important;
+}
+
+/* ---------- Project facts (meta row) ---------- */
+html body.ng-v2 main :is(.ht-meta,.lc-project-meta) {
+  display:grid!important; grid-template-columns:repeat(4,minmax(0,1fr))!important; gap:32px!important;
+  margin-top:0!important; margin-bottom:var(--s-block)!important; padding:0!important; border:0!important; background:transparent!important;
+}
+html body.ng-v2 main :is(.ht-meta,.lc-project-meta)>div {min-width:0; padding:0!important; margin:0!important; border:0!important; background:transparent!important;}
+html body.ng-v2 main :is(.ht-meta,.lc-project-meta) dt {margin-bottom:8px!important;}
+html body.ng-v2 main :is(.ht-meta,.lc-project-meta) dd {margin:0!important; color:var(--study-soft)!important; font:300 16px/1.55 var(--ng-sans)!important;}
+
+/* ---------- Explanation pairs ---------- */
+html body.ng-v2 .ng-project-facts {display:block!important; padding:0!important; margin-top:0!important; margin-bottom:0!important; font-family:var(--ng-sans);}
+html body.ng-v2 main .ng-fact-pair {
+  display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:var(--s-item) clamp(40px,6vw,96px)!important; min-height:0!important; height:auto!important;
+  margin:0 0 var(--s-item)!important; padding:0!important; border:0!important; background:transparent!important; align-items:start!important;
+}
+html body.ng-v2 main .ng-fact {min-width:0; padding:0!important; margin:0!important; border:0!important; background:transparent!important; box-shadow:none!important; text-align:left!important;}
+html body.ng-v2 main :is(.ng-fact,.ng-context-note) .ng-fact-takeaway {
+  max-width:22ch; margin:0 0 var(--s-text)!important; color:var(--study-fg)!important;
+  font:var(--t-item)!important; letter-spacing:-.025em!important; text-transform:none!important;
+}
+/* The emphasised half of a heading: the special serif in the project colour. */
+html body.ng-v2 main .ng-fact-takeaway em {font-family:var(--ng-serif)!important; font-style:italic!important; font-weight:500!important; color:var(--study-accent)!important;}
+html body.ng-v2 main .ng-fact-detail p {max-width:52ch; margin:0!important; color:var(--study-soft)!important; font:var(--t-body)!important; letter-spacing:0!important;}
+
+/* A single note (AI & ethics) sits on the same left edge, half width like a pair item. */
+html body.ng-v2 main .ng-context-note {
+  display:block; margin-top:0!important; margin-bottom:0!important; padding:0!important;
+  border:0!important; background:transparent!important; color:var(--study-fg)!important;
+}
+html body.ng-v2 main .ng-context-note>* {max-width:calc((var(--study-col) - 96px)/2)!important;}
+
+/* Small print */
+html body.ng-v2 main :is(.ng-project-context,.lc-ai-note,.ad-note) {
+  margin-top:0!important; margin-bottom:var(--s-item)!important; padding:0!important; border:0!important; background:transparent!important;
+  color:var(--study-soft)!important; font:var(--t-small)!important;
+}
+html body.ng-v2 main .ng-project-context {font:var(--t-body)!important;}
+html body.ng-v2 main .ad-note em {font-style:normal;}
+
+/* ---------- Key decisions ---------- */
+html body.ng-v2 main :is(.lc-decision-tabs,.ht-decision-tabs) {
+  justify-content:flex-start!important; flex-wrap:nowrap!important; overflow-x:auto!important;
+  margin-bottom:24px!important; scrollbar-width:thin; scrollbar-color:#92989e transparent!important;
+}
+html body.ng-v2 :is(.lc-decision-tabs,.ht-decision-tabs) button {flex-shrink:0; border:0!important; border-radius:0!important; background:transparent!important;}
+html body.ng-v2 :is(.lc-decision-tabs,.ht-decision-tabs) button[aria-selected="true"] {font-weight:700!important; color:var(--study-accent)!important;}
+
+html body.ng-v2 main .ng-decision-panel:not([hidden]) {
+  display:grid!important; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)!important; align-items:center!important;
+  gap:clamp(40px,6vw,96px)!important; min-height:0!important; padding:40px 0!important; border:0!important; text-align:left!important; color:var(--study-fg)!important;
+}
+html body.ng-v2 .ng-decision-panel[hidden] {display:none!important;}
+html body.ng-v2 .ng-decision-copy {min-width:0; max-width:52ch; color:var(--study-fg)!important;}
+html body.ng-v2 .ng-decision-number {display:block; margin:0 0 20px!important; color:var(--study-accent)!important; font:italic 500 clamp(46px,5vw,72px)/1 var(--ng-serif)!important; letter-spacing:0!important;}
+html body.ng-v2 .ng-decision-takeaway {margin:0 0 32px!important; color:var(--study-fg)!important; font:var(--t-item)!important; letter-spacing:-.025em!important; text-transform:none!important;}
+html body.ng-v2 .ng-decision-note {display:block!important; margin:0 0 20px!important; padding:0!important; border:0!important; background:transparent!important;}
+html body.ng-v2 .ng-decision-note>span {margin-bottom:4px!important; font-size:11px!important;}
+html body.ng-v2 .ng-decision-note p {margin:0!important; color:var(--study-soft)!important; font:var(--t-body)!important; letter-spacing:0!important;}
+html body.ng-v2 main .ng-decision-text-only.ng-decision-panel:not([hidden]) {grid-template-columns:1fr!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-text-only:not([hidden]) {width:100%!important; max-width:var(--study-col)!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-text-only .ng-decision-copy {width:100%!important; max-width:none!important; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 48px;}
+html body.ng-v2 .ng-decision-text-only :is(.ng-decision-number,.ng-decision-tag,.ng-decision-takeaway) {grid-column:1/-1;}
+html body.ng-v2 .ng-decision-text-only .ng-decision-takeaway {max-width:28ch;}
+
+/* ---------- Contribution / Working with Claude ---------- */
+html body.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude) {margin-top:var(--s-block)!important; padding:0!important; border:0!important; background:transparent!important; color:var(--study-fg)!important;}
+html body.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude)>h2 {margin-bottom:24px!important;}
+html body.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude)>p {max-width:60ch; margin:0 0 16px!important; color:var(--study-soft)!important; font:var(--t-body)!important;}
+html body.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude) li {color:var(--study-soft)!important; font:var(--t-body)!important;}
+html body.ng-v2 main :is(.ht-contribution-grid,.lc-contribution-grid) {display:grid!important; grid-template-columns:1fr!important; gap:36px!important; max-width:62ch; margin:48px 0!important; padding:0!important;}
+html body.ng-v2 main :is(.ht-contribution-grid,.lc-contribution-grid)>div {min-width:0; padding:0!important; margin:0!important; border:0!important; background:transparent!important;}
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-contribution-grid,.lc-contribution-grid) h3 {margin:0 0 8px!important; color:var(--study-accent)!important; font:var(--t-big)!important; font-weight:600!important; letter-spacing:-.01em;}
+html body.ng-v2 main :is(.ht-contribution-grid,.lc-contribution-grid) p {margin:0!important; color:var(--study-soft)!important; font:var(--t-body)!important;}
+
+/* ---------- Before / after compare (behaviour unchanged) ---------- */
+html body.ng-v2 .ng-compare {min-width:0; width:100%; max-width:100%; margin:0 auto!important; padding:0!important; border:0!important; background:transparent!important;}
+html body.ng-v2 .ng-compare-stage {position:relative; aspect-ratio:var(--compare-ratio); max-height:580px; width:min(100%,calc(580px * var(--compare-ratio))); margin-inline:auto; overflow:hidden; isolation:isolate; border-radius:0; background:transparent;}
+html body.ng-v2 .ng-compare-stage img {display:block!important; position:absolute!important; inset:0!important; width:100%!important; height:100%!important; max-height:none!important; max-width:none!important; object-fit:contain!important; margin:0!important; border-radius:0!important; background:transparent!important;}
+html body.ng-v2 .ng-compare-before {position:absolute; inset:0; z-index:1; clip-path:inset(0 calc(100% - var(--split)) 0 0);}
+/* Each image shows only on its own side of the divider, so images with different proportions never leave black bars. */
+html body.ng-v2 main .ng-compare-before {background:transparent!important;}
+html body.ng-v2 main .ng-compare-stage>.ng-compare-after {clip-path:inset(0 0 0 var(--split));}
+html body.ng-v2 .ng-compare-divider {position:absolute; z-index:2; inset:0 auto 0 var(--split); width:2px; transform:translateX(-50%); background:#fff; pointer-events:none; box-shadow:0 0 5px #0008;}
+html body.ng-v2 main .ng-compare-divider {left:clamp(22px,var(--split),calc(100% - 22px));}
+html body.ng-v2 .ng-compare-divider>span {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:44px; height:44px; display:grid; place-items:center; border:2px solid #fff; border-radius:50%; background:#10151de6; color:#fff; font:22px/1 var(--ng-sans);}
+html body.ng-v2 .ng-compare-range {position:absolute!important; z-index:3; inset:0!important; width:100%!important; height:100%!important; margin:0!important; opacity:0!important; cursor:ew-resize; touch-action:pan-y;}
+html body.ng-v2 .ng-compare-stage:focus-within {outline:2px solid var(--study-accent); outline-offset:7px;}
+html body.ng-v2 .ng-compare .ng-compare-labels {display:flex!important; justify-content:space-between; gap:12px; margin:16px auto 0!important; padding:0!important; max-width:100%; color:var(--study-fg)!important; font:var(--t-label)!important; letter-spacing:.1em!important;}
+html body.ng-v2 .ng-compare-labels span[hidden] {display:none!important;}
+html body.ng-v2 .ng-compare-labels.is-endpoint {justify-content:center;}
+html body.ng-v2 main .ng-compare-unified {width:min(100%,calc(510px * var(--compare-ratio)))!important; max-width:100%; margin:0 auto!important;}
+html body.ng-v2 main .ng-compare-unified .ng-compare-stage {width:100%!important; max-height:none!important; aspect-ratio:var(--compare-ratio);}
+html body.ng-v2 main .ng-compare-unified .ng-compare-labels {position:relative!important; display:grid!important; grid-template-columns:1fr!important; width:100%!important; min-height:18px; margin:16px 0 0!important; text-align:center!important;}
+html body.ng-v2 main .ng-compare-labels :is([data-compare-before],[data-compare-after]) {grid-area:1 / 1; justify-self:center;}
+html body.ng-v2 main .ng-compare-labels span[hidden] {display:block!important; visibility:hidden;}
+html body.ng-v2 .ng-compare-pair {display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important; align-items:center!important; gap:28px!important; margin:0!important; min-width:0;}
+html body.ng-v2 #lc-decision-0 .ng-compare-pair {grid-template-columns:2.19fr 1fr!important;}
+html body.ng-v2 #lc-decision-2 .ng-compare-pair {grid-template-columns:1.5fr 1fr!important;}
+html body.ng-v2 .ng-compare-pair figure {min-width:0; margin:0!important; padding:0!important; border:0!important; background:transparent!important;}
+html body.ng-v2 .ng-compare-pair img {width:100%!important; height:auto!important; max-height:490px!important; object-fit:contain!important; background:transparent!important; border-radius:0!important;}
+html body.ng-v2 .ng-compare-pair figure+figure:before {background:#ffffff70!important;}
+html body.ng-v2 .ng-compare-pair :is(figcaption,figcaption strong) {color:var(--study-fg)!important; text-align:center!important; font:var(--t-label)!important; margin-top:16px!important;}
+html body.ng-v2 main .ng-compare-tools {display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px 20px; margin-top:18px; color:var(--study-soft); font:400 12px/1.5 var(--ng-sans);}
+html body.ng-v2 main .ng-compare-versions {display:flex; align-items:center; gap:7px;}
+html body.ng-v2 main .ng-compare-versions>span {margin-right:4px;}
+html body.ng-v2 main .ng-compare-versions button {display:grid; place-items:center; width:28px; height:28px; padding:0; border:1px solid #ffffff55; border-radius:50%; background:transparent; color:var(--study-fg); font:500 11px/1 var(--ng-sans); cursor:pointer;}
+html body.ng-v2 main .ng-compare-versions button[aria-pressed="true"] {border-color:var(--study-accent); color:var(--study-accent);}
+html body.ng-v2 main .ng-compare-expand {padding:0; border:0; border-radius:0; background:transparent; color:var(--study-soft); font:500 12px/1.5 var(--ng-sans); cursor:pointer;}
+html body.ng-v2 main .ng-compare-tools button:focus-visible {outline:2px solid var(--study-accent); outline-offset:3px;}
+.ng-compare-modal {background:#0b0e14; color:#f7fafc; border:1px solid #ffffff40; padding:45px 20px 20px; max-width:94vw; max-height:94svh;}
+.ng-compare-modal::backdrop {background:#000c;}
+.ng-compare-modal img {display:block; max-width:85vw; max-height:80svh; width:auto; height:auto; object-fit:contain;}
+.ng-compare-modal button {position:absolute; right:10px; top:6px; border:0; padding:6px 12px; background:transparent; color:#fff; font:24px/1 system-ui; cursor:pointer;}
+
+/* ---------- Mobile ---------- */
+@media(max-width:700px) {
+  html body.ng-v2 {--s-item:48px; --s-block:64px;}
+  html body.ng-v2 main :is(.ht-brief,.sg-brief,.ad-brief,.lc-brief,.ht-key-decisions,.lc-key-decisions) h2,
+  html body.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude)>h2 {margin-bottom:36px!important;}
+  html body.ng-v2 main :is(.ht-meta,.lc-project-meta) {grid-template-columns:repeat(2,minmax(0,1fr))!important; gap:24px 20px!important;}
+  html body.ng-v2 main .ng-fact-pair {grid-template-columns:1fr!important;}
+  html body.ng-v2 main .ng-context-note>* {max-width:none!important;}
+  html body.ng-v2 main .ng-decision-panel:not([hidden]) {grid-template-columns:1fr!important; gap:32px!important; padding-block:28px!important;}
+  html body.ng-v2 .ng-decision-text-only .ng-decision-copy {display:block!important;}
+  html body.ng-v2 main :is(.ht-contribution-grid,.lc-contribution-grid) {gap:28px!important; margin-block:36px!important;}
+  html body.ng-v2 .ng-compare-stage {max-height:460px; width:min(100%,calc(460px * var(--compare-ratio)));}
+  html body.ng-v2 main .ng-compare-unified {width:min(100%,calc(420px * var(--compare-ratio)))!important;}
+  html body.ng-v2 .ng-compare-pair {gap:20px!important;}
+  html body.ng-v2 .ng-compare-pair img {max-height:380px!important;}
+}
+@media(prefers-reduced-motion:reduce) {
+  html body.ng-v2 .ng-decision-panel {animation:none!important; transition:none!important;}
+}
+
+/* Fewer editorial layers: the first sentence is the takeaway, not a second summary. */
+html body.ng-v2 {--s-item:56px; --s-block:64px; --t-section:500 clamp(34px,3.5vw,48px)/1.12 var(--ng-sans);}
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.sg-brief,.ad-brief,.lc-brief,.ht-key-decisions,.lc-key-decisions) h2 {margin-bottom:32px!important;}
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-meta,.lc-project-meta) {margin-bottom:48px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-fact-takeaway {font:500 clamp(22px,2.1vw,29px)/1.3 var(--ng-sans)!important; max-width:30ch;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-tag {color:var(--study-soft)!important; letter-spacing:.06em!important; font-size:11px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-takeaway {margin-bottom:22px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-paragraph {display:block; margin:0 0 20px!important; padding:0!important; border:0!important; background:transparent!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-paragraph p {margin:0!important; color:var(--study-soft)!important; font:var(--t-body)!important; letter-spacing:0!important;}
+html body.ng-v2.ng-v2.ng-v2 main .lc-key-notes {display:block!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-text-only .ng-decision-copy {display:block!important; max-width:72ch!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-text-only .ng-decision-takeaway {max-width:34ch;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-list {list-style:none; padding:0!important; margin:24px 0 0!important; max-width:72ch;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-list li {display:block; margin:0 0 18px!important; padding:0!important; border:0!important; background:transparent!important; color:var(--study-soft)!important; font:var(--t-body)!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-list strong {display:inline!important; color:var(--study-fg)!important; font:600 1em/1.7 var(--ng-sans)!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-personal-challenge {margin-top:24px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-context-copy {max-width:62ch!important; margin:0!important; color:var(--study-soft)!important; font:var(--t-body)!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-context-note {margin-bottom:12px!important;}
+@media(max-width:700px) {
+ html body.ng-v2 {--s-item:40px; --s-block:52px;}
+ html body.ng-v2.ng-v2.ng-v2 main :is(.ht-meta,.lc-project-meta) {margin-bottom:36px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-list li {margin-bottom:16px!important;}
+}
+
+/* Editorial character, without adding another layer of copy. */
+html body.ng-v2 {--study-heading:color-mix(in srgb,var(--study-accent) 45%,var(--study-fg));}
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.sg-brief,.ad-brief,.lc-brief,.ht-key-decisions,.lc-key-decisions) h2,
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude)>h2 {color:var(--study-heading)!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-fact-takeaway {color:color-mix(in srgb,var(--study-accent) 22%,var(--study-fg))!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-number {display:block!important; color:color-mix(in srgb,var(--study-accent) 82%,var(--study-fg))!important; font:italic 500 clamp(52px,5vw,72px)/1 var(--ng-serif)!important; letter-spacing:-.04em!important; margin:0 0 20px!important;}
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude,.ng-context-note) {min-height:0!important; height:auto!important;}
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude) {margin-top:40px!important; padding:0!important;}
+html body.ng-v2.ng-v2.ng-v2 main .sc-next-steps {margin-top:36px!important;}
+@media(max-width:700px) {
+ html body.ng-v2.ng-v2.ng-v2 main .ng-decision-number {font-size:52px!important; margin-bottom:18px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude) {margin-top:28px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .sc-next-steps {margin-top:28px!important;}
+}
+
+/* One left edge shared with the product gallery, with readable lines inside it. */
+html body.ng-v2 {--study-col:1200px; --study-fg:#fff; --study-soft:#ccd3dc; --s-item:64px;}
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.sg-brief,.ad-brief,.lc-brief,.ht-key-decisions,.lc-key-decisions)>*,
+html body.ng-v2.ng-v2.ng-v2 main .lc-brief>div.reveal>*,
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude,.ng-decision-panel,.ng-project-facts,.ng-context-note) {
+ margin-left:0!important; margin-right:auto!important; text-align:left!important;
+}
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.sg-brief,.ad-brief,.lc-brief,.ht-key-decisions,.lc-key-decisions) {
+ padding-left:var(--ng-line,8vw)!important; padding-right:var(--ng-line,8vw)!important;
+}
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.sg-brief,.ad-brief,.lc-brief,.ht-key-decisions,.lc-key-decisions) h2,
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-contribution,.lc-contribution,.ad-claude)>h2 {
+ color:#fff!important; font:600 clamp(36px,4.2vw,58px)/1.12 var(--ng-sans)!important; letter-spacing:-.035em!important; margin-bottom:36px!important;
+}
+html body.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.sg-brief,.ad-brief,.lc-brief,.ht-key-decisions,.lc-key-decisions,.ht-contribution,.lc-contribution,.ad-claude) h2 em {
+ color:var(--study-accent)!important; font-family:var(--ng-serif)!important; font-style:italic!important; font-weight:500!important;
+}
+html body.ng-v2.ng-v2.ng-v2 main .ng-fact-takeaway {color:#fff!important; font:500 clamp(24px,2.2vw,31px)/1.3 var(--ng-sans)!important; margin-bottom:22px!important; max-width:28ch;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-fact-detail p {color:#ccd3dc!important; font:400 clamp(15px,1.15vw,17px)/1.8 var(--ng-sans)!important; max-width:48ch;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-fact-pair {column-gap:clamp(48px,7vw,110px)!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-takeaway {color:#fff!important; font:500 clamp(26px,2.4vw,34px)/1.25 var(--ng-sans)!important; margin-bottom:26px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-panel:not([hidden]) {gap:clamp(48px,7vw,100px)!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-paragraph p {color:#ccd3dc!important; font:400 clamp(15px,1.15vw,17px)/1.8 var(--ng-sans)!important; max-width:49ch;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-paragraph {margin-bottom:24px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-list {max-width:74ch; margin-top:28px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-list li {color:#ccd3dc!important; font:400 clamp(15px,1.15vw,17px)/1.85 var(--ng-sans)!important; margin-bottom:22px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-list strong {color:#fff!important; font-weight:700!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ht-overview-heading {margin-left:0!important; margin-right:auto!important;}
+html body.ng-v2.ng-v2.ng-v2 main .lc-product-heading {box-sizing:border-box; margin-left:calc(var(--ng-line,8vw) - 5vw)!important; margin-right:0!important; width:calc(100% - var(--ng-line,8vw) + 5vw)!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-decision-number {color:var(--study-accent)!important;}
+@media(max-width:700px) {
+ html body.ng-v2 {--s-item:44px;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-decision-panel:not([hidden]) {gap:36px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-fact-takeaway {margin-bottom:18px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-list li {margin-bottom:20px!important;}
+}
+
+/* The project introduction uses the same two-column rhythm as the landing page. */
+html body.ng-v2.ng-v2.ng-v2 main .ng-brief-intro {display:grid!important; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start; gap:clamp(40px,6vw,90px); margin-bottom:44px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-brief-title {min-width:0;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-brief-title h2 {max-width:19ch; margin:0 0 24px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-brief-intro :is(.ht-meta,.lc-project-meta) {display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important; width:100%!important; gap:32px 28px!important; margin:8px 0 0!important; padding:0!important; min-width:0;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-brief-intro :is(.ht-meta,.lc-project-meta) dd {font-size:17px!important; line-height:1.6!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-brief-title .lc-ai-note {margin:20px 0 0!important; max-width:44ch;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout {display:grid!important; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:24px clamp(40px,6vw,86px); align-items:start;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-intro {grid-column:1; grid-row:1 / span 2; min-width:0;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-intro h2 {margin:0 0 24px!important; max-width:13ch; color:#fff!important; font:600 clamp(36px,4.2vw,58px)/1.12 var(--ng-sans)!important; letter-spacing:-.035em!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-intro h2 em {color:var(--study-accent)!important; font:italic 500 1em/1.12 var(--ng-serif)!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-intro>p {font:400 17px/1.8 var(--ng-sans)!important; color:var(--study-soft)!important; max-width:43ch; margin:0!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout>.ng-contribution-list {grid-column:2; grid-row:1; margin:8px 0 0!important; max-width:none;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout>.ng-personal-challenge {grid-column:2; margin:0!important; max-width:56ch;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout.sc-next-steps {margin-top:44px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-ai-layout {display:grid!important; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:24px clamp(40px,6vw,86px);}
+html body.ng-v2.ng-v2.ng-v2 main .ng-ai-intro h2 {font:600 clamp(36px,4.2vw,58px)/1.12 var(--ng-sans)!important; color:#fff!important; margin:0!important; max-width:13ch;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-ai-intro h2 em {color:var(--study-accent)!important; font:italic 500 1em/1.12 var(--ng-serif)!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-ai-detail :is(p,li) {font:400 17px/1.8 var(--ng-sans)!important; color:var(--study-soft)!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-ai-detail p {margin:0 0 18px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-ai-detail ul {margin:0 0 18px; padding-left:20px;}
+html body.ng-v2.ng-v2.ng-v2 main :is(.ad-asset-credit,.sg-credits) h2 {font:700 24px/1.3 'Assistant',sans-serif!important; letter-spacing:normal!important; margin:0 0 14px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ad-asset-credit h2 {color:#c6ff4a!important;}
+html body.ng-v2.ng-v2.ng-v2 main .sg-credits h2 {color:#f7d35a!important;}
+@media(min-width:801px) {
+ html body.ng-v2 #sc-overview .sc-screen-rail {max-width:1082px!important; gap:72px 8px!important;}
+ html body.ng-v2 #sc-overview .sc-screen-rail>figure,
+ html body.ng-v2 #sc-overview .sc-screen-rail>figure:first-child {flex:0 0 calc((100% - 32px)/5)!important; width:calc((100% - 32px)/5)!important; max-width:210px!important;}
+ html body.ng-v2 #sc-overview .sc-screen-rail .sc-phone {width:100%!important; max-width:210px!important;}
+}
+@media(max-width:800px) {
+ html body.ng-v2.ng-v2.ng-v2 main .ng-brief-intro {grid-template-columns:1fr; gap:26px; margin-bottom:36px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-brief-title h2 {max-width:24ch;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout {display:block!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-ai-layout {display:block!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-ai-detail {margin-top:28px;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout>.ng-contribution-list {margin:28px 0 0!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout>.ng-personal-challenge {margin-top:24px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout.sc-next-steps {margin-top:32px!important;}
+}
+@media(max-width:600px) {
+ html body.ng-v2.ng-v2.ng-v2 main :is(.ad-asset-credit,.sg-credits) h2 {font-size:22px!important;}
+}
+
+/* Product / challenge / audience: one aligned row with space weighted by content. */
+html body.ng-v2.ng-v2.ng-v2 main .ng-project-facts-three {
+ display:grid!important; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,.85fr)!important;
+ align-items:start!important; gap:clamp(32px,4vw,64px)!important; margin:0!important; padding:0!important;
+}
+html body.ng-v2.ng-v2.ng-v2 main .ng-project-facts-three .ng-fact-label {margin:0 0 16px!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-project-facts-three .ng-fact-takeaway {
+ font:500 clamp(24px,2vw,30px)/1.25 var(--ng-sans)!important; margin:0 0 18px!important;
+ max-width:none!important; text-wrap:balance; overflow-wrap:normal; word-break:normal;
+}
+html body.ng-v2.ng-v2.ng-v2 main .ng-project-facts-three .ng-fact-detail p {
+ font:400 clamp(16px,1.18vw,17px)/1.7 var(--ng-sans)!important;
+ max-width:48ch!important; text-wrap:pretty; overflow-wrap:normal; word-break:normal;
+}
+@media(max-width:1099px) {
+ html body.ng-v2.ng-v2.ng-v2 main .ng-project-facts-three {grid-template-columns:1fr!important; gap:38px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-project-facts-three .ng-fact {max-width:680px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-project-facts-three .ng-fact-takeaway {font-size:clamp(23px,3.8vw,30px)!important; max-width:32ch!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-project-facts-three .ng-fact-detail p {max-width:62ch!important;}
+}
+@media(max-width:600px) {
+ html body.ng-v2.ng-v2.ng-v2 main .ng-project-facts-three {gap:32px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-project-facts-three .ng-fact-label {margin-bottom:12px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-project-facts-three .ng-fact-takeaway {margin-bottom:14px!important;}
+}
+
+/* Project metadata belongs below the title, on its own row. */
+html body.ng-v2.ng-v2.ng-v2 main .ng-brief-intro {
+ display:block!important; margin-bottom:52px!important;
+}
+html body.ng-v2.ng-v2.ng-v2 main .ng-brief-title h2 {max-width:none!important;}
+html body.ng-v2.ng-v2.ng-v2 main .ng-brief-intro :is(.ht-meta,.lc-project-meta) {
+ grid-template-columns:repeat(4,minmax(0,1fr))!important;
+ gap:28px 36px!important; margin:36px 0 0!important;
+}
+@media(max-width:800px) {
+ html body.ng-v2.ng-v2.ng-v2 main .ng-brief-intro {margin-bottom:38px!important;}
+ html body.ng-v2.ng-v2.ng-v2 main .ng-brief-intro :is(.ht-meta,.lc-project-meta) {
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:24px 20px!important; margin-top:28px!important;
+ }
+}
+
+/* ==========================================================================
+   "Behind the project" — final arrangement (overrides the layers above).
+   A centred composition with left-aligned text:
+   label → title → facts row → the product as the lead statement →
+   challenge | audience in two equal columns → notes.
+   ========================================================================== */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) {
+  display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important; justify-content:stretch!important;
+  column-gap:clamp(48px,6vw,80px)!important; row-gap:0!important; align-content:center!important;
+  grid-template-areas:"kicker kicker" "product product" "meta meta" "ainote ainote" "challenge audience" "note note";
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ng-brief-intro,.ng-brief-title,.ng-project-facts-three) {display:contents!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ht-kicker,.ht-eyebrow,.lc-kicker,h2,.ht-meta,.lc-project-meta,.lc-ai-note,.ng-fact,.ng-context-note,.ad-note) {
+  max-width:none!important; width:auto!important; margin-left:0!important; margin-right:0!important; text-align:left!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ht-kicker,.ht-eyebrow,.lc-kicker) {grid-area:kicker; margin-top:0!important; margin-bottom:14px!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-brief-title h2 {grid-area:title; margin:0!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ht-meta,.lc-project-meta) {
+  grid-area:meta; display:grid!important; grid-template-columns:repeat(4,minmax(0,1fr))!important; gap:20px 32px!important; margin:56px 0 0!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ht-meta,.lc-project-meta) dt {margin:0 0 6px!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ht-meta,.lc-project-meta) dd {font:300 16px/1.55 var(--ng-sans)!important; color:var(--study-soft)!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .lc-ai-note {grid-area:ainote; margin:20px 0 0!important; font:400 14px/1.7 var(--ng-sans)!important; color:var(--study-soft)!important;}
+
+/* The product: the lead statement of the section */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-fact-product {grid-area:product; margin:8px 0 0!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-fact-product .ng-fact-label {display:none!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-fact-product .ng-fact-takeaway {font:500 clamp(36px,3.6vw,52px)/1.15 var(--ng-sans)!important; letter-spacing:-.03em!important; max-width:22ch!important; margin:0 0 20px!important; text-wrap:balance;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-fact-product .ng-fact-detail p {font:400 18px/1.7 var(--ng-sans)!important; max-width:56ch!important;}
+
+/* Challenge | audience: two equal columns, tops aligned */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-fact-challenge {grid-area:challenge; margin:88px 0 0!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-fact-audience {grid-area:audience; margin:88px 0 0!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ng-fact-challenge,.ng-fact-audience) .ng-fact-takeaway {font:500 clamp(22px,1.9vw,26px)/1.3 var(--ng-sans)!important; max-width:22ch!important; margin:0 0 14px!important; text-wrap:balance;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ng-fact-challenge,.ng-fact-audience) .ng-fact-detail p {font:400 17px/1.75 var(--ng-sans)!important; max-width:46ch!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-fact .ng-fact-label {margin:0 0 14px!important;}
+
+/* Notes */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ng-context-note,.ad-note) {grid-area:note; margin:80px 0 0!important; padding:0!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-context-copy {max-width:60ch!important; font:400 16px/1.75 var(--ng-sans)!important; color:var(--study-soft)!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ad-note {max-width:60ch!important; font:400 14px/1.7 var(--ng-sans)!important; color:var(--study-soft)!important;}
+
+@media(max-width:900px) {
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) {grid-template-columns:minmax(0,1fr)!important; grid-template-areas:"kicker" "product" "meta" "ainote" "challenge" "audience" "note";}
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ht-meta,.lc-project-meta) {grid-template-columns:repeat(2,minmax(0,1fr))!important; margin-top:28px!important;}
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-fact-challenge {margin-top:56px!important;}
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-fact-audience {margin-top:44px!important;}
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ng-context-note,.ad-note) {margin-top:56px!important;}
+}
+
+/* Room between key decisions and what follows them */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.sc-next-steps,.ng-ai-layout,.ad-asset-credit,.sg-credits,.sg-generator-extension) {margin-top:clamp(120px,16vh,176px)!important;}
+
+/* "Product overview." / "Game overview." / "Meet the team." — same as every other section heading */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-overview-heading,.lc-product-heading) h2 {color:#fff!important; font:600 clamp(36px,4.2vw,58px)/1.12 var(--ng-sans)!important; letter-spacing:-.035em!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-overview-heading,.lc-product-heading) h2 br {display:none;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-overview-heading,.lc-product-heading) h2 em {color:var(--study-accent)!important; font:italic 500 1em/1.12 var(--ng-serif)!important; letter-spacing:-.02em!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-overview-heading,.lc-product-heading) h2 em::before {content:" ";}
+
+/* Motion: My contribution and the sections after it enter from their own side (as in the About block
+   on the landing page); in the brief, explanation text rises into place. Classes are added by case-study-layout.js, so without JS nothing is hidden. */
+html body.ng-v2 :is(.cs-from-l,.cs-from-r) {opacity:0; filter:blur(8px); transition:opacity 1s ease,transform 1.1s cubic-bezier(.2,.9,.2,1),filter 1s ease;}
+html body.ng-v2 .cs-from-l {transform:translateX(-90px);}
+html body.ng-v2 .cs-from-r {transform:translateX(90px);}
+html body.ng-v2 .cs-rise {opacity:0; transform:translateY(40px); transition:opacity .9s ease .2s,transform 1.1s cubic-bezier(.2,.9,.2,1) .2s;}
+html body.ng-v2 :is(.cs-from-l,.cs-from-r,.cs-rise).cs-in {opacity:1; transform:none; filter:none;}
+@media(prefers-reduced-motion:reduce) {
+  html body.ng-v2 :is(.cs-from-l,.cs-from-r,.cs-rise) {opacity:1; transform:none; filter:none; transition:none;}
+}
+
+/* Contribution item names in the project colour */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-contribution-list strong {display:block!important; margin-bottom:4px; color:var(--study-accent)!important;}
+
+/* One centred column for every section: on wide screens the shared left edge moves in,
+   so the brief, the gallery headings, the decisions, the contribution and the ending all start on the same line. */
+@media(min-width:901px) {
+  html body.ng-v2 {--ng-line:max(8vw,calc((100vw - 1240px) / 2));}
+  /* the game's overview section keeps its own 8vw padding; only its headings move to the shared edge */
+  html body.ng-v2.ng-v2.ng-v2 main .sg-overview .ht-overview-heading {margin-left:calc(var(--ng-line) - 8vw)!important; width:auto!important;}
+}
+
+/* Still on scroll: gallery, brief, facts row and key decisions don't fade in.
+   (Motion lives only in the explanation text, the tab switch, and My contribution onwards.) */
+html body.ng-v2 main :is(.reveal,.ng-rise):not(.cs-from-l):not(.cs-from-r):not(.cs-rise) {opacity:1!important; transform:none!important; filter:none!important; transition:none!important; animation:none!important;}
+html body.ng-v2 main :is(.sg-gallery-reveal,.sg-brief,.sg-decisions).sg-scroll-section {translate:none!important; opacity:1!important;}
+
+/* ==========================================================================
+   One idea per screen (as in the reference portfolio).
+   Screen 1: the product statement + facts. Screen 2: challenge | audience.
+   Then decisions, contribution, AI, what's next — each its own screen.
+   Content sits in the shared centred column; text stays left-aligned inside it.
+   ========================================================================== */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) {
+  grid-template-columns:minmax(0,1fr)!important; grid-template-areas:"kicker" "product" "meta" "ainote"!important; align-content:center!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) .ng-fact-product .ng-fact-detail p {max-width:60ch!important;}
+
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more {
+  display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important; grid-template-areas:"challenge audience" "note note";
+  column-gap:clamp(48px,7vw,112px)!important; row-gap:0!important; align-content:center!important; align-items:start!important;
+  box-sizing:border-box; min-height:100svh; padding:clamp(80px,12vh,120px) var(--ng-line,8vw)!important; background:transparent!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more>* {margin:0!important; max-width:none!important; width:auto!important; text-align:left!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more .ng-fact-challenge {grid-area:challenge;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more .ng-fact-audience {grid-area:audience;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more :is(.ng-context-note,.ad-note) {grid-area:note; margin-top:88px!important; padding:0!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more .ng-fact-label {margin:0 0 16px!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more .ng-fact-takeaway {font:500 clamp(28px,2.6vw,38px)/1.2 var(--ng-sans)!important; letter-spacing:-.025em!important; max-width:20ch!important; margin:0 0 20px!important; text-wrap:balance;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more .ng-fact-detail p {font:400 18px/1.75 var(--ng-sans)!important; max-width:44ch!important; color:var(--study-soft)!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more .ng-context-copy {max-width:60ch!important; font:400 16px/1.75 var(--ng-sans)!important; color:var(--study-soft)!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more .ad-note {max-width:60ch!important; font:400 14px/1.7 var(--ng-sans)!important; color:var(--study-soft)!important;}
+
+/* AI section gets its own screen too; full-screen blocks don't need extra spacers */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-ai-layout,.ng-contribution-layout) {min-height:100svh!important; height:auto!important; box-sizing:border-box; align-content:center!important; align-items:start;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.sc-next-steps,.ng-ai-layout) {margin-top:0!important;}
+
+@media(max-width:900px) {
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more {grid-template-columns:minmax(0,1fr)!important; grid-template-areas:"challenge" "audience" "note"; row-gap:56px!important;}
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more :is(.ng-context-note,.ad-note) {margin-top:0!important;}
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-ai-layout,.ng-contribution-layout) {min-height:0!important; padding-block:64px!important;}
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more .ng-fact-label {color:var(--study-accent)!important;}
+
+/* ==========================================================================
+   Product story (Stratasys / Hashtag): every text sits next to a visual.
+   Device frames follow the original gallery (dark bezel #111c26 / #101820).
+   ========================================================================== */
+/* Product intro: statement + facts left, a desktop + phone mockup right */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief):has(.ng-intro-media) {
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important; column-gap:clamp(40px,5vw,80px)!important;
+  grid-template-areas:"kicker media" "product media" "meta meta"!important; align-items:center!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-intro-media {grid-area:media; margin:0!important; align-self:center;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :has(> .ng-intro-media) .ng-fact-product .ng-fact-takeaway {font-size:clamp(32px,3.1vw,46px)!important; max-width:16ch!important;}
+html body.ng-v2 .ng-mockup {position:relative; padding:0 0 9% 0;}
+html body.ng-v2 .ng-mock-desk {background:#101820; border-radius:16px; padding:9px; box-shadow:0 40px 80px -30px rgba(0,0,0,.7); width:78%;}
+html body.ng-v2 .ng-mock-desk img {display:block; width:100%; height:auto; border-radius:8px;}
+html body.ng-v2 .ng-mock-phone {position:absolute; right:0; bottom:0; width:24%; aspect-ratio:9/20.5; box-sizing:border-box; background:#111c26; padding:7px; border-radius:26px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(0,0,0,.8);}
+html body.ng-v2 .ng-mock-phone img {display:block; width:100%; height:100%; object-fit:contain; border-radius:20px; background:#f8fafb;}
+
+/* How it works: the whole section stays pinned while the scroll moves through the steps */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-how {
+  display:block!important; position:relative; height:calc(var(--how-steps,4) * 100svh)!important; min-height:0!important;
+  padding:0 var(--ng-line,8vw)!important; background:transparent!important;
+}
+html body.ng-v2 .ng-how-pin {
+  position:sticky; top:0; height:100svh; box-sizing:border-box; padding:96px 0 48px;
+  display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); column-gap:clamp(40px,6vw,96px); align-items:center;
+}
+html body.ng-v2 .ng-how-steps {min-width:0;}
+html body.ng-v2 .ng-how-steps>.ht-kicker {display:block; color:var(--study-accent)!important; font:600 12px/1.4 var(--ng-sans)!important; letter-spacing:.14em!important; text-transform:uppercase; margin:0 0 28px!important;}
+html body.ng-v2 .ng-how-text {display:grid;}
+html body.ng-v2 .ng-how-step {grid-area:1/1; opacity:0; transform:translateY(28px); transition:opacity .45s ease,transform .6s cubic-bezier(.2,.9,.2,1); pointer-events:none;}
+html body.ng-v2 .ng-how-step.is-on {opacity:1; transform:none; pointer-events:auto;}
+html body.ng-v2 .ng-how-num {display:block; color:var(--study-accent); font:italic 500 clamp(64px,6vw,96px)/1 var(--ng-serif); margin:0 0 12px;}
+html body.ng-v2 .ng-how-step h3 {margin:0 0 14px!important; color:#fff!important; font:500 clamp(30px,2.8vw,40px)/1.15 var(--ng-sans)!important; letter-spacing:-.025em;}
+html body.ng-v2 .ng-how-step p {margin:0!important; max-width:36ch; color:var(--study-soft)!important; font:400 18px/1.7 var(--ng-sans)!important;}
+html body.ng-v2 .ng-how-stage {min-width:0; display:flex; flex-direction:column; align-items:center; gap:20px;}
+html body.ng-v2 .ng-how-views {display:flex; gap:24px;}
+html body.ng-v2 .ng-how-views button {padding:0 0 6px; border:0; border-bottom:2px solid transparent; background:none; color:#fff; font:500 14px/1.4 var(--ng-sans); cursor:pointer;}
+html body.ng-v2 .ng-how-views button[aria-pressed="true"] {color:var(--study-accent); border-bottom-color:var(--study-accent);}
+html body.ng-v2 .ng-how-views button:focus-visible {outline:2px solid var(--study-accent); outline-offset:4px;}
+html body.ng-v2 .ng-how-device {position:relative; width:100%; display:flex; justify-content:center; align-items:center;}
+/* step dots, to the right of the device */
+html body.ng-v2 .ng-how-dots {position:absolute; right:0; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:14px;}
+html body.ng-v2 .ng-how[data-view="mobile"] .ng-how-dots {right:calc(50% - 125px - 44px);}
+html body.ng-v2 .ng-how[data-view="desktop"] .ng-how-dots {right:-34px;}
+html body.ng-v2 .ng-how-dots button {width:12px; height:12px; padding:0; border-radius:50%; border:1.5px solid rgba(255,255,255,.7); background:transparent; cursor:pointer; transition:background .3s,border-color .3s,transform .3s;}
+html body.ng-v2 .ng-how-dots button[aria-current="step"] {background:var(--study-accent); border-color:var(--study-accent); transform:scale(1.15);}
+html body.ng-v2 .ng-how-dots button:focus-visible {outline:2px solid var(--study-accent); outline-offset:3px;}
+/* Device frames: exactly the original gallery frames (stratasys-project.css), nothing cropped */
+html body.ng-v2 .ng-how-phone {width:min(250px,calc((100svh - 230px) * 9 / 20.5)); max-width:100%; aspect-ratio:9/20.5; box-sizing:border-box; background:#111c26; padding:7px; border-radius:26px; overflow:hidden; box-shadow:0 12px 28px #103c4c12;}
+html body.ng-v2 .ng-how-desk {width:calc(100% - 40px); max-width:1100px; box-sizing:border-box; background:#101820; padding:9px; border-radius:16px; overflow:hidden;}
+html body.ng-v2 .ng-how[data-view="mobile"] .ng-how-desk, html body.ng-v2 .ng-how[data-view="desktop"] .ng-how-phone {display:none;}
+html body.ng-v2 .ng-how-media {display:none;}
+html body.ng-v2 .ng-how-media.is-on {display:block; animation:ng-how-in .45s ease;}
+html body.ng-v2 .ng-how-phone .ng-how-media {width:100%; height:100%; object-fit:contain; background:#f8fafb; border-radius:20px;}
+html body.ng-v2 .ng-how-desk .ng-how-media {width:100%; height:auto; border-radius:8px;}
+@keyframes ng-how-in {from{opacity:0}}
+
+/* Challenge / audience / AI & ethics labels: project colour, light */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-brief-more .ng-fact-label {color:var(--study-accent)!important; font-weight:400!important;}
+
+/* Explanation under the bold line rises with the scroll (driven by --rise from JS) */
+html body.ng-v2 .cs-scrub {opacity:calc(1 - var(--rise,1)); transform:translateY(calc(var(--rise,1) * 56px)); will-change:transform,opacity;}
+
+@media(max-width:900px) {
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief):has(.ng-intro-media) {grid-template-columns:minmax(0,1fr)!important; grid-template-areas:"kicker" "product" "media" "meta"!important;}
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-intro-media {margin-top:32px!important;}
+  html body.ng-v2 .ng-how-step p {font-size:16px!important;}
+}
+@media(prefers-reduced-motion:reduce) {html body.ng-v2 :is(.ng-how-step,.ng-how-media) {transition:none; animation:none;} html body.ng-v2 .cs-scrub {opacity:1; transform:none;}}
+
+/* My contribution / What's next / AI: heading on top, the points side by side underneath, block centred on the screen */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout {display:grid!important; grid-template-columns:minmax(0,1fr)!important; align-content:center!important; row-gap:0!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout>.ng-contribution-intro {grid-column:1!important; grid-row:auto!important; max-width:62ch;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-contribution-intro h2 {max-width:none!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout>.ng-contribution-list {grid-column:1!important; grid-row:auto!important; display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); gap:40px clamp(32px,4vw,64px)!important; margin:56px 0 0!important; max-width:none!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-contribution-list li {margin:0!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout>.ng-personal-challenge {grid-column:1!important; margin:48px 0 0!important; max-width:62ch;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-ai-layout {grid-template-columns:minmax(0,1fr)!important; row-gap:32px!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-ai-detail {max-width:62ch;}
+
+
+/* More room between sections */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief,.ng-brief-more,.ng-how,.ht-key-decisions,.lc-key-decisions,.ng-ai-layout,.ng-end),
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.sc-next-steps) {margin-top:clamp(96px,14vh,180px)!important;}
+
+@media(max-width:900px) {
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-contribution-layout>.ng-contribution-list {grid-template-columns:minmax(0,1fr); gap:28px!important; margin-top:36px!important;}
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief,.ng-brief-more,.ng-how,.ht-key-decisions,.lc-key-decisions,.ng-ai-layout,.ng-end),
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.sc-next-steps) {margin-top:72px!important;}
+}
+
+/* Small labels (The challenge / The audience / AI & ethics) in the project colour, light weight;
+   :not(#_) only lifts specificity above the shell's "all body text is white" rule */
+html body.ng-v2 main .ng-brief-more p.ng-fact-label:not(#_) {color:var(--study-accent)!important; font-weight:400!important;}
+html body.ng-v2 main .ng-brief-more :is(.ng-fact-detail p,.ng-context-copy,.ad-note):not(#_) {color:var(--study-soft)!important;}
+
+/* How it works: the active text follows the wheel — rises in at the start of its step, lifts away at the end */
+html body.ng-v2 .ng-how-step.is-on {opacity:var(--o,1); transform:translateY(var(--y,0px)); transition:none;}
+
+/* Key-decision tags styled like the hero tags, a little smaller; everything scales together with the screen */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-decision-tag {
+  display:inline-block!important; width:auto!important; margin:0 0 18px!important; padding:.5em 1em!important; border-radius:999px!important;
+  border:1px solid color-mix(in srgb,var(--ng-accent) 45%,transparent)!important; background:transparent!important;
+  color:var(--ng-accent)!important; font:400 clamp(11px,.85vw,13px)/1.2 var(--ng-sans)!important; letter-spacing:0!important; text-transform:none!important;
+}
+
+/* Hero: room between the project name and its tags */
+html body.ng-v2 .ng-hd__tags {margin-top:clamp(36px,5.5vh,60px)!important;}
+
+/* No single word left alone on a line */
+html body.ng-v2 :is(main,.ng-hd,.ng-end) :is(p,li,dd,figcaption) {text-wrap:pretty;}
+html body.ng-v2 :is(main,.ng-hd,.ng-end) :is(h1,h2,h3,h4) {text-wrap:balance;}
+
+/* How it works on phones: text on top, device underneath, dots under the device */
+@media(max-width:900px) {
+  html body.ng-v2 .ng-how-pin {grid-template-columns:minmax(0,1fr); grid-template-rows:auto 1fr; align-items:start; row-gap:20px; padding:88px 0 24px;}
+  html body.ng-v2 .ng-how-steps>.ht-kicker {margin-bottom:14px!important;}
+  html body.ng-v2 .ng-how-num {font-size:44px; margin-bottom:6px;}
+  html body.ng-v2 .ng-how-step h3 {font-size:26px!important; margin-bottom:8px!important;}
+  html body.ng-v2 .ng-how-step p {font-size:15px!important; line-height:1.6!important;}
+  html body.ng-v2 .ng-how-stage {gap:14px; min-height:0;}
+  html body.ng-v2 .ng-how-views button {font-size:13px;}
+  html body.ng-v2 .ng-how-device {flex-direction:column; gap:14px;}
+  html body.ng-v2 .ng-how-phone {width:min(250px,calc(min(46svh,400px) * 9 / 20.5));}
+  html body.ng-v2 .ng-how-desk {width:100%;}
+  html body.ng-v2 .ng-how-dots, html body.ng-v2 .ng-how[data-view] .ng-how-dots {position:static; transform:none; flex-direction:row; gap:12px;}
+}
+
+/* Hero tags: text in the project colour */
+html body.ng-v2 .ng-hd__tags li {color:var(--ng-accent)!important;}
+
+/* Website mockup (desktop only) */
+html body.ng-v2 .ng-mockup-desk {padding:0;}
+html body.ng-v2 .ng-mockup-desk .ng-mock-desk {width:100%;}
+
+/* Lumina: the product display stays pinned; scrolling walks through the features (the tabs act as the step list) */
+@media(min-width:901px) {
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main #lc-product.lc-product.ng-lc-scroll {display:block!important; height:calc(var(--lc-steps,7) * 100svh)!important; min-height:0!important; position:relative; padding-top:0!important; padding-bottom:0!important;}
+  html body.ng-v2 .lc-product.ng-lc-scroll .ng-lc-pin {position:sticky; top:0; height:100svh; box-sizing:border-box; padding:88px 0 32px; display:flex; flex-direction:column; justify-content:center; overflow:hidden;}
+}
+/* pinned sections need the page itself to scroll: clip sideways overflow instead of hiding it */
+html:has(body.ng-v2), html body.ng-v2 {overflow-x:clip!important;}
+
+/* ==========================================================================
+   Lumina "How it works": number + feature + explanation on the left, the phone carousel on the right,
+   feature names on the side marking where we are. (Her fan / carousel itself is unchanged.)
+   ========================================================================== */
+html body.ng-v2 #lc-product.lc-product .ng-lc-copy {min-width:0;}
+html body.ng-v2 #lc-product.lc-product .ng-lc-copy .lc-kicker {display:block; color:var(--study-accent)!important; font:600 12px/1.4 var(--ng-sans)!important; letter-spacing:.14em!important; text-transform:uppercase; margin:0 0 28px!important;}
+html body.ng-v2 #lc-product.lc-product .ng-lc-copy .ng-how-num {display:block; color:var(--study-accent); font:italic 500 clamp(64px,6vw,96px)/1 var(--ng-serif); margin:0 0 12px;}
+html body.ng-v2 #lc-product.lc-product .ng-lc-copy h3 {margin:0 0 14px!important; color:#fff!important; font:500 clamp(30px,2.8vw,40px)/1.15 var(--ng-sans)!important; letter-spacing:-.025em;}
+html body.ng-v2 #lc-product.lc-product .ng-lc-copy .lc-description {
+  position:static!important; width:auto!important; max-width:36ch!important; height:auto!important; min-height:0!important; flex:none!important;
+  margin:0!important; text-align:left!important; color:var(--study-soft)!important; font:400 18px/1.7 var(--ng-sans)!important;
+}
+html body.ng-v2 #lc-product.lc-product .ng-lc-copy .ng-feature-copy-mobile {display:none!important;}
+html body.ng-v2 #lc-product.lc-product .ng-lc-copy .ng-feature-copy-full {display:inline!important;}
+html body.ng-v2 #lc-product.lc-product .lc-overview-title {display:none!important;}
+
+@media(min-width:901px) {
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main #lc-product.lc-product {padding-left:var(--ng-line,8vw)!important; padding-right:var(--ng-line,8vw)!important;}
+  html body.ng-v2 #lc-product.lc-product .ng-lc-pin {display:grid!important; grid-template-columns:minmax(0,1fr) auto; column-gap:clamp(24px,3vw,48px); align-items:center; justify-content:stretch;}
+  html body.ng-v2 #lc-product.lc-product .lc-product-heading {grid-column:2; grid-row:1; display:block!important; margin:0!important; padding:0!important; width:auto!important;}
+  html body.ng-v2 #lc-product.lc-product .lc-tabs {display:flex!important; flex-direction:column!important; align-items:flex-start!important; gap:16px!important; width:auto!important; margin:0!important; padding:0 0 0 18px!important; border:0!important; border-left:1px solid rgba(255,255,255,.16)!important; background:none!important; overflow:visible!important;}
+  html body.ng-v2 #lc-product.lc-product .lc-tabs::before, html body.ng-v2 #lc-product.lc-product .lc-tabs::after {display:none!important;}
+  html body.ng-v2 #lc-product.lc-product .lc-tabs button {position:relative; padding:0!important; border:0!important; background:none!important; color:rgba(255,255,255,.7)!important; font:500 14px/1.3 var(--ng-sans)!important; text-align:left; white-space:nowrap; cursor:pointer;}
+  html body.ng-v2 #lc-product.lc-product .lc-tabs button[aria-selected="true"] {color:var(--study-accent)!important;}
+  html body.ng-v2 #lc-product.lc-product .lc-tabs button[aria-selected="true"]::before {content:""; position:absolute; left:-23px; top:50%; width:9px; height:9px; margin-top:-4.5px; border-radius:50%; background:var(--study-accent);}
+  html body.ng-v2 #lc-product.lc-product .lc-panel:not([hidden]) {grid-column:1; grid-row:1; display:grid!important; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); grid-template-rows:auto auto; column-gap:clamp(40px,5vw,80px); align-items:center; align-content:center; margin:0!important; padding:0!important; height:auto!important; min-height:0!important;}
+  html body.ng-v2 #lc-product.lc-product .ng-lc-copy {grid-column:1; grid-row:1 / span 2;}
+  html body.ng-v2 #lc-product.lc-product .lc-fan {grid-column:2; grid-row:1; height:min(66svh,600px)!important; min-height:0!important; flex:none!important;}
+  html body.ng-v2 #lc-product.lc-product .lc-gallery-controls {grid-column:2; grid-row:2;}
+}
+@media(max-width:900px) {
+  html body.ng-v2 #lc-product.lc-product .ng-lc-copy {margin:24px 0 8px;}
+  html body.ng-v2 #lc-product.lc-product .ng-lc-copy .ng-how-num {font-size:44px; margin-bottom:6px;}
+  html body.ng-v2 #lc-product.lc-product .ng-lc-copy h3 {font-size:26px!important;}
+  html body.ng-v2 #lc-product.lc-product .ng-lc-copy .lc-description {font-size:15px!important;}
+}
+
+/* Lumina intro mockup: two phones */
+html body.ng-v2 .ng-mockup-phones {position:relative; display:flex; justify-content:center; padding:0; height:min(64svh,560px);}
+html body.ng-v2 .ng-mockup-phones .ng-mock-phone {position:relative; right:auto; bottom:auto; width:auto; height:100%; aspect-ratio:9/20.5;}
+html body.ng-v2 .ng-mockup-phones .ng-mock-phone + .ng-mock-phone {margin-left:-6%; transform:translateY(8%);}
+
+/* Key decisions: copy starts at the top (tall images no longer push it down); thin line under the tabs */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-decision-panel:not([hidden]) {align-items:start!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-decision-tabs,.lc-decision-tabs) {border-bottom:1px solid rgba(255,255,255,.14)!important; padding-bottom:12px!important;}
+
+/* October review: keep the game presentation and decisions in separate flow boxes. */
+html body.ng-v2.pal-spaceship {--ng-accent:#f7d35a; --study-accent:#f7d35a;}
+html body.ng-v2.pal-spaceship main .sg-case-layer {margin-top:0!important; padding-top:clamp(48px,7vw,96px)!important;}
+html body.ng-v2.pal-spaceship main .sg-overview {padding-bottom:clamp(48px,7vw,96px)!important;}
+html body.ng-v2.pal-spaceship main .sg-case-layer .sg-decisions {margin-top:0!important;}
+html body.ng-v2.pal-spaceship :is(.sg-gallery-heading,.ht-overview-heading,.ht-overview-title,.sg-overview-title) em {color:#f7d35a!important;}
+/* AI is prose, with the same body style as the rest of the explanation. */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-ai-detail p {margin:0 0 16px!important;}
+/* Keep Lumina's label and product statement in one group beside the mockup. */
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .lc-brief:has(.ng-lumina-intro-copy) {
+ grid-template-areas:"intro media" "meta meta"!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-lumina-intro-copy {grid-area:intro; align-self:center; min-width:0;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-lumina-intro-copy>.lc-kicker {margin:0 0 16px!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-lumina-intro-copy>.ng-fact-product {margin:0!important;}
+/* The screenshot determines the phone's inner proportions: no letterboxing. */
+html body.ng-v2.ng-v2 main .ng-mockup-phones {
+ height:auto!important; align-items:flex-start; padding-bottom:30px; gap:0;
+}
+html body.ng-v2.ng-v2 main .ng-mockup-phones .ng-mock-phone {
+ height:auto!important; width:clamp(130px,16vw,240px)!important; flex:none; aspect-ratio:auto!important;
+ padding:6px; border-radius:28px; background:#090d13;
+}
+html body.ng-v2.ng-v2 main .ng-mockup-phones .ng-mock-phone img {
+ display:block; width:100%!important; height:auto!important; aspect-ratio:393 / 852; object-fit:contain!important;
+ border-radius:22px; background:#000;
+}
+html body.ng-v2 .ng-mock-desk .ng-website-scroll {display:block; width:100%; aspect-ratio:16 / 9; height:auto; border-radius:8px; background:#fff;}
+/* Compact the final sequence instead of allocating a full viewport to each block. */
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ad-case main :is(.ng-contribution-layout,.ng-ai-layout,.ad-asset-credit) {
+ min-height:0!important; height:auto!important; padding-block:0!important; margin-top:64px!important;
+}
+@media(max-width:900px) {
+ html body.ng-v2.ng-v2.ng-v2.ng-v2 main .lc-brief:has(.ng-lumina-intro-copy) {grid-template-areas:"intro" "media" "meta"!important;}
+ html body.ng-v2.ng-v2 main .ng-mockup-phones .ng-mock-phone {width:clamp(115px,32vw,210px)!important;}
+ html body.ng-v2.ng-v2.ng-v2.ng-v2.ad-case main :is(.ng-contribution-layout,.ng-ai-layout,.ad-asset-credit) {margin-top:44px!important;}
+}
+
+/* October 24: concise product statements, aligned with the mockup. */
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.lc-brief,.ht-brief,.sg-brief,.ad-brief):has(.ng-product-intro-copy) {
+ grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;
+ grid-template-areas:"intro media" "meta meta"!important; align-items:center!important;
+ min-height:0!important; padding-block:80px!important; margin-top:64px!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-product-intro-copy {
+ grid-area:intro; position:relative; align-self:center!important; min-width:0;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-product-intro-copy>:is(.lc-kicker,.ht-kicker,.ht-eyebrow) {
+ position:absolute; bottom:calc(100% + 18px); left:0; margin:0!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-product-intro-copy .ng-fact-product,
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-product-intro-copy .ng-fact-takeaway {margin:0!important;}
+/* Fixed upper bounds on explanatory spacing at large viewport heights. */
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-brief-more,.ht-key-decisions,.lc-key-decisions) {
+ min-height:0!important; margin-top:64px!important; padding-block:64px!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.ng-ai-layout,.sc-next-steps) {
+ min-height:0!important; height:auto!important; padding-block:0!important; margin-top:64px!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.sg-credits,.ad-asset-credit,.sg-generator-extension) {margin-top:64px!important;}
+/* Compact lines beside overview headings. */
+html body.ng-v2 main .ht-heading-line {flex:0 1 180px!important; width:180px!important; max-width:18vw;}
+html body.ng-v2 main .ht-overview-heading {justify-content:flex-start!important; gap:32px!important;}
+/* Restore the laptop and continuous one-page presentation. */
+html body.ng-v2 main .ht-website-showcase {padding:64px var(--ng-line,8vw); margin-top:64px;}
+html body.ng-v2 main .ht-website-showcase .ht-showcase {width:min(100%,960px); max-width:960px; margin:40px auto 0;}
+html body.ng-v2 main .ht-website-showcase .ht-site-preview-page img {display:block; width:100%; height:auto; border:0; border-radius:0;}
+/* Preserve the space image's framing and native detail. */
+html body.ng-v2 main .sg-brief .ng-mock-desk {max-width:760px; margin:auto;}
+html body.ng-v2 main .sg-brief .ng-mock-desk img {width:100%!important; height:auto!important; object-fit:contain!important; aspect-ratio:1672 / 941; filter:none!important;}
+html body.ng-v2.spaceship-case .sg-reading-world::before {
+ background-size:auto, min(100vw,1080px) auto!important;
+ background-repeat:repeat!important; background-attachment:scroll!important; filter:none!important;
+}
+/* Lumina feature navigation matches the side dots used in Stratasys. */
+html body.ng-v2 #lc-product .lc-tabs:not(#_) {
+ border:0!important; padding:0!important; width:28px!important;
+ display:flex!important; flex-direction:column!important; align-items:center!important; gap:10px!important; overflow:visible!important;
+}
+html body.ng-v2 #lc-product .lc-tabs button:not(#_) {
+ width:28px!important; height:28px!important; padding:8px!important; flex:none; display:grid; place-items:center;
+ border:0!important; border-radius:50%!important; background:none!important; position:relative;
+}
+html body.ng-v2 #lc-product .lc-tabs button::before {content:none!important; display:none!important;}
+html body.ng-v2 #lc-product .lc-feature-dot {width:10px; height:10px; border:1px solid #ffffffb3; border-radius:50%; background:transparent; display:block;}
+html body.ng-v2 #lc-product .lc-tabs button[aria-selected="true"] .lc-feature-dot {background:var(--study-accent); border-color:var(--study-accent);}
+html body.ng-v2 #lc-product .lc-tabs button:focus-visible {outline:2px solid var(--study-accent); outline-offset:2px;}
+/* Screen progress: quiet dots, luminous active pill, slim open chevrons. */
+html body.ng-v2 #lc-product .lc-gallery-controls:not(#_) {display:flex; justify-content:center; align-items:center; gap:22px; margin-top:18px!important; height:44px!important;}
+html body.ng-v2 #lc-product .lc-gallery-controls>button:not(#_) {
+ border:0!important; background:transparent!important; border-radius:0!important; box-shadow:none!important;
+ width:36px!important; height:40px!important; padding:0!important; color:#c9fabb!important; font:300 32px/1 var(--ng-sans)!important;
+}
+html body.ng-v2 #lc-product .lc-gallery-controls>button:disabled {opacity:.25;}
+html body.ng-v2 #lc-product .lc-dots:not(#_) {display:flex; gap:5px!important; align-items:center;}
+html body.ng-v2 #lc-product .lc-dots button:not(#_) {
+ position:relative; width:14px!important; height:28px!important; padding:0!important; border:0!important; background:none!important; box-shadow:none!important;
+}
+html body.ng-v2 #lc-product .lc-dots button::after {content:""; display:block; width:4px; height:4px; border-radius:99px; background:#aaa9b4; margin:auto;}
+html body.ng-v2 #lc-product .lc-dots button[aria-pressed="true"]:not(#_) {width:27px!important;}
+html body.ng-v2 #lc-product .lc-dots button[aria-pressed="true"]::after {width:24px; height:4px; background:#caffbd; box-shadow:0 0 8px #95e87c99;}
+/* Expanded before/after viewer. */
+.ng-compare-modal {width:min(1100px,94vw); box-sizing:border-box; padding:52px 18px 16px; overflow:auto;}
+.ng-compare-modal img {width:auto; height:auto; max-width:100%; max-height:72svh; margin:auto; object-fit:contain;}
+.ng-compare-modal .ng-viewer-close {position:absolute; right:10px; top:6px;}
+.ng-compare-modal .ng-viewer-toolbar {display:flex; gap:24px; align-items:center; justify-content:center; margin-top:16px; font:500 14px/1.4 sans-serif;}
+.ng-compare-modal .ng-viewer-toolbar button {position:static; width:44px; height:44px; border:1px solid #ffffff70; border-radius:50%; color:white; font:24px/1 sans-serif; background:transparent; padding:0; cursor:pointer;}
+.ng-compare-modal button:focus-visible {outline:2px solid #fff; outline-offset:3px;}
+@media(max-width:900px) {
+ html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.lc-brief,.ht-brief,.sg-brief,.ad-brief):has(.ng-product-intro-copy) {grid-template-columns:1fr!important; grid-template-areas:"intro" "media" "meta"!important; padding-block:48px!important; margin-top:40px!important;}
+ html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-product-intro-copy>:is(.lc-kicker,.ht-kicker,.ht-eyebrow) {position:static; margin-bottom:16px!important;}
+ html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-brief-more,.ht-key-decisions,.lc-key-decisions) {margin-top:40px!important; padding-block:40px!important;}
+ html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.ng-ai-layout,.sc-next-steps) {margin-top:44px!important;}
+ html body.ng-v2 #lc-product .lc-tabs:not(#_) {flex-direction:row!important; width:auto!important; gap:4px!important; justify-content:center;}
+ html body.ng-v2 main .ht-heading-line {max-width:20vw;}
+ html body.ng-v2 main .ht-website-showcase {padding-block:40px; margin-top:40px;}
+}
+html body.ng-v2 #lc-product .lc-tabs button:not(#_) {min-width:28px!important; min-height:28px!important; max-height:28px!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-end {margin-top:64px!important;}
+
+/* Balanced section rhythm, capped independently of large viewport heights. */
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.lc-brief,.ht-brief,.sg-brief,.ad-brief):has(.ng-product-intro-copy) {
+ margin-top:88px!important; padding-block:96px!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-brief-more,.ht-key-decisions,.lc-key-decisions) {
+ margin-top:88px!important; padding-block:88px!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.ng-ai-layout,.sc-next-steps,.sg-credits,.sg-generator-extension,.ng-end) {margin-top:96px!important;}
+/* A fine divider belongs to every case-study footer. */
+html body.ng-v2.ng-v2 main .ng-end:not(#_) {border-top:1px solid #ffffff40!important; padding-top:48px!important;}
+/* Remove the old layer-covering effect: all write-up content stays in normal flow. */
+html body.ng-v2.spaceship-case main .sg-layer-stack>.sg-reading-world {
+ position:relative!important; top:auto!important; transform:none!important; translate:none!important; z-index:auto!important;
+}
+html body.ng-v2.spaceship-case main .sg-case-layer {
+ position:relative!important; top:auto!important; margin-top:0!important; transform:none!important; translate:none!important;
+ z-index:auto!important; isolation:auto!important; min-height:0!important; overflow:visible!important;
+}
+html body.ng-v2.spaceship-case main .sg-credits {box-sizing:border-box; width:100%; max-width:none; padding:48px var(--ng-line,8vw)!important;}
+html body.ng-v2.spaceship-case main .sg-credits-inner {max-width:var(--study-col,1200px); margin-left:0; margin-right:auto;}
+/* One original space image framed by the viewport, never repeated down the page. */
+html body.ng-v2.spaceship-case .sg-reading-world::before {content:none!important; display:none!important;}
+html body.ng-v2.spaceship-case .sg-showcase-sky {
+ position:fixed; inset:0; z-index:0; pointer-events:none;
+ background:linear-gradient(#02112655,#02112655),url('spaceship/space-original.jpeg') center / cover no-repeat;
+ clip-path:inset(var(--sky-top,100%) 0 var(--sky-bot,0px) 0);
+ -webkit-mask-image:linear-gradient(transparent var(--sky-top,100%),#000 calc(var(--sky-top,100%) + 100px),#000 calc(100% - var(--sky-bot,0px) - 100px),transparent calc(100% - var(--sky-bot,0px)));
+ mask-image:linear-gradient(transparent var(--sky-top,100%),#000 calc(var(--sky-top,100%) + 100px),#000 calc(100% - var(--sky-bot,0px) - 100px),transparent calc(100% - var(--sky-bot,0px)));
+}
+/* Shorter, symmetric Lumina scroll track with stable copy geometry. */
+@media(min-width:901px) {
+ html body.ng-v2.ng-v2.ng-v2.ng-v2 main #lc-product.lc-product.ng-lc-scroll {height:var(--lc-scroll-height)!important;}
+ html body.ng-v2 #lc-product.lc-product .ng-lc-copy {align-self:center!important;}
+ html body.ng-v2 #lc-product.lc-product .ng-lc-copy h3 {min-height:var(--lc-title-height,48px)!important;}
+ html body.ng-v2 #lc-product.lc-product .ng-lc-copy .lc-description {min-height:var(--lc-copy-height,100px)!important;}
+ html body.ng-v2 #lc-product.lc-product .lc-measure-copy h3,
+ html body.ng-v2 #lc-product.lc-product .lc-measure-copy .lc-description {min-height:0!important;}
+}
+@media(max-width:900px) {
+ html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.lc-brief,.ht-brief,.sg-brief,.ad-brief):has(.ng-product-intro-copy) {margin-top:64px!important; padding-block:64px!important;}
+ html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-brief-more,.ht-key-decisions,.lc-key-decisions) {margin-top:64px!important; padding-block:56px!important;}
+ html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.ng-ai-layout,.sc-next-steps,.sg-credits,.sg-generator-extension,.ng-end) {margin-top:72px!important;}
+ html body.ng-v2.ng-v2 main .ng-end:not(#_) {padding-top:36px!important;}
+}
+
+/* Final sections: give each topic its own breathing room at every viewport. */
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-key-decisions,.lc-key-decisions) {
+ margin-top:144px!important; padding-top:96px!important; padding-bottom:96px!important;
+}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.ng-ai-layout,.sc-next-steps,.sg-credits,.sg-generator-extension) {margin-top:168px!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-insight,.lc-insight,.sg-insight) {margin-top:144px!important;}
+/* The divider follows the two project links, inside the shared content edges. */
+html body.ng-v2.ng-v2 main .ng-end:not(#_) {border:0!important;padding-top:72px!important;gap:64px!important;}
+html body.ng-v2 .ng-project-navigation {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,6vw,88px);padding-bottom:56px;border-bottom:1px solid #ffffff40;}
+html body.ng-v2 .ng-project-navigation :is(.ng-end__previous,.ng-end__next) {display:grid;align-content:start;gap:18px;border:0!important;padding:0!important;color:inherit;text-decoration:none;min-width:0;}
+html body.ng-v2 .ng-project-navigation .ng-end__row {align-items:center;gap:16px;}
+html body.ng-v2 .ng-project-navigation .ng-end__row b {font-size:clamp(28px,3.3vw,48px);line-height:1.12;}
+html body.ng-v2 .ng-project-navigation .ng-end__row svg {width:28px;}
+html body.ng-v2 .ng-end__previous .ng-end__row svg {order:-1;}
+html body.ng-v2 .ng-project-navigation .ng-end__next {text-align:right;}
+html body.ng-v2 .ng-project-navigation .ng-end__next .ng-end__row {justify-content:flex-end;}
+html body.ng-v2 .ng-project-navigation small {font-size:13px;line-height:1.6;color:var(--study-soft);}
+html body.ng-v2 .ng-end__previous:hover b {color:var(--study-accent);}
+html body.ng-v2 .ng-end__previous:hover svg {transform:translateX(-8px);}
+html body.ng-v2 .ng-end__previous svg {transition:transform .35s;}
+html body.ng-v2 .ng-project-navigation a:focus-visible {outline:2px solid var(--study-accent);outline-offset:8px;}
+/* Longer overview rules, bounded by the same text column. */
+html body.ng-v2 main .ht-heading-line {flex:1 1 360px!important;width:auto!important;max-width:480px!important;min-width:100px;}
+html body.ng-v2 .cs-scrub {filter:none!important;}
+@media(min-width:901px){
+ html body.ng-v2 #lc-product .lc-fan {--screen-ratio:.4612676!important;}
+ html body.ng-v2 #lc-product .ng-lc-pin {height:100vh!important;min-height:100vh;}
+}
+/* Keep fan entrances and exits visible while leaving the physical frame alone. */
+html body.ng-v2 #lc-product .lc-screen-card {transition:transform .65s cubic-bezier(.22,1,.36,1),opacity .5s,filter .5s!important;}
+html body.ng-v2 #lc-product .lc-fan:is(.lc-entering,.lc-collapsing) .lc-screen-card:not([data-slot="0"]) {transform:translate(-50%,-50%) scale(.98)!important;opacity:0!important;filter:none!important;}
+html body.ng-v2 #lc-product .lc-fixed-phone {animation:none!important;transition:none!important;opacity:1!important;}
+@media(max-width:900px){
+ html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-key-decisions,.lc-key-decisions) {margin-top:104px!important;padding-block:72px!important;}
+ html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.ng-ai-layout,.sc-next-steps,.sg-credits,.sg-generator-extension) {margin-top:112px!important;}
+ html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-insight,.lc-insight,.sg-insight) {margin-top:104px!important;}
+ html body.ng-v2 main .ht-heading-line {min-width:36px;max-width:34vw!important;}
+ html body.ng-v2.ng-v2 main .ng-end:not(#_) {padding-top:48px!important;gap:48px!important;}
+ html body.ng-v2 .ng-project-navigation {gap:22px;padding-bottom:40px;}
+ html body.ng-v2 .ng-project-navigation .ng-end__row {gap:8px;}
+ html body.ng-v2 .ng-project-navigation .ng-end__row b {font-size:clamp(19px,4.5vw,28px);}
+ html body.ng-v2 .ng-project-navigation .ng-end__row svg {width:20px;}
+ html body.ng-v2 .ng-project-navigation small {font-size:11px;}
+}
+@media(prefers-reduced-motion:reduce){
+ html body.ng-v2 #lc-product .lc-screen-card {transition:none!important;}
+ html body.ng-v2 .cs-scrub {opacity:1!important;transform:none!important;}
+}
+html body.ng-v2.ng-v2 main .ng-end:not(#_) {align-content:start!important;}
+html body.ng-v2 .ng-project-navigation {align-self:start;align-items:start;}
+@media(max-width:900px){
+ html body.ng-v2 #lc-product.lc-product .ng-lc-pin {display:flex!important;flex-direction:column;flex:1;min-height:0;height:100%;}
+ html body.ng-v2 #lc-product.lc-product .lc-product-heading {flex:none;}
+ html body.ng-v2 #lc-product.lc-product .lc-panel:not([hidden]) {display:flex!important;flex-direction:column;flex:1;min-height:0;width:100%;}
+ html body.ng-v2 #lc-product.lc-product .ng-lc-copy {flex:none;margin:16px 0 8px!important;width:100%;}
+ html body.ng-v2 #lc-product.lc-product .ng-lc-copy .lc-kicker {margin-bottom:10px!important;}
+ html body.ng-v2 #lc-product.lc-product .ng-lc-copy .lc-description {min-height:var(--lc-copy-height,85px)!important;}
+ html body.ng-v2 #lc-product.lc-product .lc-fan {flex:1;min-height:0;height:auto!important;}
+ html body.ng-v2 #lc-product.lc-product .lc-gallery-controls {flex:none;}
+}
+html body.ng-v2 #lc-product.lc-product .lc-measure-copy .lc-description {min-height:0!important;}
+html body.ng-v2 #lc-product {overflow-anchor:none;}
+html body.ng-v2 #lc-product .lc-fan {--screen-ratio:.4612676!important;}
+html:has(body.lumina-case),html body.lumina-case {overflow-anchor:none!important;}
+
+/* ==========================================================================
+   October 24 · review round
+   ========================================================================== */
+
+/* Overview headings: the rule runs to the column edge and always uses the project colour */
+html body.ng-v2 main .ht-overview-heading:not(#_) {width:100%; max-width:var(--study-col,1240px); box-sizing:border-box;}
+html body.ng-v2 main .ht-heading-line:not(#_) {flex:1 1 auto!important; width:auto!important; max-width:none!important; min-width:48px; background:var(--ng-accent)!important; opacity:.75;}
+
+/* Room between the closing sections, scaled with the screen */
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-key-decisions,.lc-key-decisions) {margin-top:clamp(140px,18vh,260px)!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.ng-ai-layout,.sc-next-steps,.sg-credits,.ad-asset-credit,.sg-generator-extension) {margin-top:clamp(160px,22vh,300px)!important;}
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-end {margin-top:clamp(160px,22vh,300px)!important;}
+@media(max-width:900px) {
+  html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-key-decisions,.lc-key-decisions) {margin-top:clamp(96px,14vh,140px)!important;}
+  html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.ng-ai-layout,.sc-next-steps,.sg-credits,.ad-asset-credit,.sg-generator-extension,.ng-end) {margin-top:clamp(104px,15vh,150px)!important;}
+}
+
+/* Supporting copy rises clearly: longer travel and a light blur that clears (JS drives --rise) */
+html body.ng-v2 .cs-scrub:not(#_) {
+  opacity:calc(1 - var(--rise,1)); transform:translateY(calc(var(--rise,1) * 84px));
+  filter:blur(calc(var(--rise,1) * 6px))!important; will-change:transform,opacity,filter;
+}
+@media(max-width:900px) {html body.ng-v2 .cs-scrub:not(#_) {transform:translateY(calc(var(--rise,1) * 44px));}}
+@media(prefers-reduced-motion:reduce) {html body.ng-v2 .cs-scrub:not(#_) {opacity:1!important; transform:none!important; filter:none!important;}}
+
+/* Mockup videos sit in the same desktop frame as the screenshots */
+html body.ng-v2 .ng-mock-desk .ng-mock-video {display:block; width:100%!important; height:auto!important; aspect-ratio:16 / 9; object-fit:cover; border-radius:8px; background:#0b0e14;}
+html body.ng-v2 main .sg-brief .ng-mock-desk .ng-mock-video {aspect-ratio:16 / 9!important;}
+
+/* Contact block hugs the copyright footer instead of filling a whole screen */
+html body.ng-v2.ng-v2 main .ng-end:not(#_) {min-height:0!important; padding-bottom:clamp(56px,8vh,96px)!important;}
+
+/* Previous / next project: names on one line of the grid, tags on the next, both aligned across the two links */
+html body.ng-v2 .ng-project-navigation:not(#_) {grid-template-rows:auto auto auto; row-gap:0;}
+html body.ng-v2 .ng-project-navigation :is(.ng-end__previous,.ng-end__next):not(#_) {grid-row:1 / span 3; display:grid; grid-template-rows:subgrid; row-gap:0;}
+html body.ng-v2 .ng-project-navigation .ng-end__k {align-self:end; margin-bottom:18px;}
+html body.ng-v2 .ng-project-navigation .ng-end__row {align-self:start; align-items:center!important;}
+html body.ng-v2 .ng-project-navigation small {align-self:start; margin-top:14px;}
+
+/* Hero button in proportion to the screen */
+html body.ng-v2 .ng-hd .ng-try:not(#_) {font-size:clamp(13px,1.05vw,16px)!important; padding:.75em 1.5em!important;}
+@media(max-width:600px) {html body.ng-v2 .ng-hd .ng-try:not(#_) {font-size:13px!important; padding:.7em 1.25em!important;}}
+
+/* Phones: type scales with the screen */
+@media(max-width:600px) {
+  html body.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief,.ht-key-decisions,.lc-key-decisions) h2:not(#_),
+  html body.ng-v2 main :is(.ng-contribution-intro,.ng-ai-intro) h2:not(#_),
+  html body.ng-v2 main :is(.ht-overview-heading,.lc-product-heading) h2:not(#_) {font-size:clamp(28px,8.4vw,36px)!important;}
+  html body.ng-v2 main .ng-fact-product .ng-fact-takeaway:not(#_) {font-size:clamp(26px,7.6vw,32px)!important;}
+  html body.ng-v2 main :is(.ng-brief-more .ng-fact-takeaway,.ng-decision-takeaway,.ng-how-step h3,.ng-lc-copy h3):not(#_) {font-size:clamp(21px,6vw,25px)!important;}
+  html body.ng-v2 main :is(.ng-fact-detail p,.ng-decision-paragraph p,.ng-contribution-list li,.ng-contribution-intro>p,.ng-ai-detail p,.ng-how-step p,.ng-lc-copy .lc-description,.ng-context-copy):not(#_) {font-size:clamp(14px,4vw,16px)!important; line-height:1.65!important;}
+  html body.ng-v2 main :is(.ht-meta,.lc-project-meta) dd:not(#_) {font-size:14px!important;}
+  html body.ng-v2 main :is(.ng-how-num,.ng-decision-number):not(#_) {font-size:clamp(36px,11vw,46px)!important;}
+  html body.ng-v2 .ng-hd__name:not(#_) {font-size:clamp(38px,11.5vw,52px)!important;}
+}
+
+/* Stratasys mockup on phones: keep the phone's real proportions */
+@media(max-width:900px) {
+  html body.ng-v2 .ng-mockup:not(.ng-mockup-phones):not(.ng-mockup-desk) {padding:0 0 12% 0;}
+  html body.ng-v2 .ng-mockup:not(.ng-mockup-phones) .ng-mock-desk {width:80%; padding:5px; border-radius:10px;}
+  html body.ng-v2 .ng-mockup:not(.ng-mockup-phones) .ng-mock-desk img {border-radius:5px;}
+  html body.ng-v2 .ng-mockup:not(.ng-mockup-phones) .ng-mock-phone:not(#_) {width:25%; aspect-ratio:393 / 852; height:auto; padding:3px; border-radius:14px;}
+  html body.ng-v2 .ng-mockup:not(.ng-mockup-phones) .ng-mock-phone img:not(#_) {width:100%; height:100%; object-fit:cover; object-position:top; border-radius:11px;}
+}
+
+/* Stratasys "How it works" on phones: the incoming text never runs into the device */
+@media(max-width:900px) {
+  html body.ng-v2 .ng-how-pin:not(#_) {row-gap:28px; padding-top:84px;}
+  html body.ng-v2 .ng-how-text {min-height:var(--how-text-h,150px); align-items:start;}
+  html body.ng-v2 .ng-how-step.is-on {transform:translateY(calc(var(--y,0px) * .5));}
+  html body.ng-v2 .ng-how-stage:not(#_) {padding-top:8px;}
+  html body.ng-v2 .ng-how-phone:not(#_) {width:min(210px,calc(min(42svh,380px) * 9 / 20.5));}
+}
+
+/* Lumina on phones: feature dots stay in a column beside the phone, as on desktop */
+@media(max-width:900px) {
+  html body.ng-v2 #lc-product.lc-product {position:relative;}
+  html body.ng-v2 #lc-product.lc-product .lc-product-heading:not(#_) {position:absolute; right:max(12px,3vw); top:var(--lc-dots-top,50%); z-index:3; width:auto; margin:0; padding:0;}
+  html body.ng-v2 #lc-product .lc-tabs:not(#_):not(#_) {flex-direction:column!important; width:28px!important; gap:8px!important;}
+  html body.ng-v2 #lc-product.lc-product .lc-fan {margin-right:32px;}
+}
+html body.ng-v2.ng-v2 main .ng-end:not(#_):not(#_) {padding-bottom:clamp(28px,4vh,48px)!important;}
+html body.ng-v2 footer:not(#_) {padding-top:clamp(24px,3.5vh,40px)!important;}
+
+/* ==========================================================================
+   October 24 · second round
+   ========================================================================== */
+
+/* Fluid type: every role grows and shrinks with the screen */
+html body.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief,.ht-key-decisions,.lc-key-decisions) h2:not(#_),
+html body.ng-v2 main :is(.ng-contribution-intro,.ng-ai-intro) h2:not(#_),
+html body.ng-v2 main :is(.ht-overview-heading,.lc-product-heading) h2:not(#_) {font-size:clamp(28px,1.6vw + 18px,64px)!important;}
+html body.ng-v2 main .ng-fact-product .ng-fact-takeaway:not(#_) {font-size:clamp(26px,1.5vw + 16px,56px)!important;}
+html body.ng-v2 main :is(.ng-brief-more .ng-fact-takeaway,.ng-decision-takeaway,.ng-how-step h3,.ng-lc-copy h3):not(#_) {font-size:clamp(21px,.9vw + 14px,38px)!important;}
+html body.ng-v2 main :is(.ng-fact-detail p,.ng-decision-paragraph p,.ng-contribution-list li,.ng-contribution-intro>p,.ng-ai-detail p,.ng-how-step p,.ng-lc-copy .lc-description,.ng-context-copy):not(#_) {font-size:clamp(14px,.38vw + 11.5px,20px)!important;}
+html body.ng-v2 main :is(.ng-how-num,.ng-decision-number):not(#_) {font-size:clamp(36px,2.6vw + 18px,92px)!important;}
+html body.ng-v2 main :is(.ht-meta,.lc-project-meta) dd:not(#_) {font-size:clamp(14px,.3vw + 11.5px,19px)!important;}
+html body.ng-v2 main :is(.ng-fact-label,.ht-kicker,.ht-eyebrow,.lc-kicker,.ht-meta dt,.lc-project-meta dt):not(#_) {font-size:clamp(11px,.2vw + 9px,14px)!important;}
+
+/* Key decisions: heading, tabs and the whole decision fit in one screen; the decision itself never scrolls in pieces */
+@media(min-width:901px) {
+  html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-key-decisions,.lc-key-decisions) {padding-top:clamp(72px,9vh,104px)!important; padding-bottom:clamp(24px,4vh,48px)!important;}
+  html body.ng-v2 main :is(.ht-key-decisions,.lc-key-decisions) h2:not(#_) {margin-bottom:clamp(16px,2.5vh,32px)!important;}
+  html body.ng-v2.ng-v2.ng-v2.ng-v2 main .ng-decision-panel:not([hidden]) {padding:clamp(20px,3.5vh,40px) 0 0!important; align-items:center!important;}
+  html body.ng-v2 .ng-decision-number:not(#_) {margin-bottom:clamp(8px,1.4vh,20px)!important;}
+  html body.ng-v2 .ng-decision-tag:not(#_) {margin-bottom:clamp(10px,1.6vh,18px)!important;}
+  html body.ng-v2 .ng-decision-takeaway:not(#_) {margin-bottom:clamp(12px,2vh,26px)!important;}
+  html body.ng-v2 .ng-decision-paragraph:not(#_) {margin-bottom:clamp(10px,1.6vh,20px)!important;}
+  /* images are sized by the height that is left on screen */
+  html body.ng-v2 main .ng-compare-unified:not(#_) {width:min(100%,calc((100svh - 400px) * var(--compare-ratio)))!important;}
+  html body.ng-v2 main .ng-compare-pair img:not(#_) {max-height:calc(100svh - 420px)!important;}
+  html body.ng-v2 main .ng-decision-panel :is(.sc-decision-media,figure:not(.ng-compare)) img:not(#_) {max-height:calc(100svh - 400px); width:auto; max-width:100%; margin-inline:auto;}
+  html body.ng-v2 main .ng-compare .ng-compare-labels:not(#_) {margin-top:10px!important;}
+  html body.ng-v2 main .ng-compare-tools:not(#_) {margin-top:8px!important;}
+}
+
+/* Decision tabs on phones: no scrollbar; the cut-off tab already says "swipe" */
+html body.ng-v2 :is(.lc-decision-tabs,.ht-decision-tabs):not(#_) {scrollbar-width:none!important;}
+html body.ng-v2 :is(.lc-decision-tabs,.ht-decision-tabs)::-webkit-scrollbar {display:none;}
+
+/* More room between decisions, contribution and AI */
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.ng-ai-layout,.sc-next-steps,.sg-credits,.ad-asset-credit,.sg-generator-extension) {margin-top:clamp(200px,28vh,360px)!important;}
+@media(max-width:900px) {html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ng-contribution-layout,.ng-ai-layout,.sc-next-steps,.sg-credits,.ad-asset-credit,.sg-generator-extension) {margin-top:clamp(120px,17vh,170px)!important;}}
+
+/* Project links are quieter than "Have a project in mind?": lighter and smaller */
+html body.ng-v2 .ng-project-navigation .ng-end__row b:not(#_) {font-size:clamp(20px,1vw + 12px,34px)!important; font-weight:500!important; letter-spacing:-.02em!important; line-height:1.2!important;}
+html body.ng-v2 .ng-end h2:not(#_) {font-size:clamp(30px,2.2vw + 14px,64px)!important;}
+html body.ng-v2 .ng-project-navigation .ng-end__k:not(#_) {font-size:clamp(11px,.2vw + 9px,14px)!important;}
+html body.ng-v2 .ng-project-navigation small:not(#_) {font-size:clamp(12px,.25vw + 9.5px,15px)!important;}
+/* Phones: only the next project */
+@media(max-width:700px) {
+  html body.ng-v2 .ng-project-navigation:not(#_) {grid-template-columns:minmax(0,1fr)!important;}
+  html body.ng-v2 .ng-project-navigation .ng-end__previous:not(#_) {display:none!important;}
+  html body.ng-v2 .ng-project-navigation .ng-end__next:not(#_) {grid-column:1; text-align:left!important;}
+  html body.ng-v2 .ng-project-navigation .ng-end__next .ng-end__row:not(#_) {justify-content:flex-start!important;}
+}
+
+/* Overview heading on phones: the rule starts right after the words */
+@media(max-width:900px) {
+  html body.ng-v2 main .ht-overview-heading:not(#_) {gap:16px!important; align-items:center!important;}
+  html body.ng-v2 main .ht-overview-heading>div:not(#_) {flex:0 0 auto!important; width:auto!important;}
+  html body.ng-v2 main .ht-heading-line:not(#_):not(#_) {flex:1 1 0!important; min-width:24px; max-width:none!important;}
+}
+@media(min-width:901px) {
+  html body.ng-v2 main .ng-compare-unified:not(#_):not(#_) {width:min(100%,calc(min(100svh - 420px,660px) * var(--compare-ratio)))!important;}
+  html body.ng-v2 main .ng-compare-pair img:not(#_):not(#_) {max-height:min(calc(100svh - 440px),640px)!important;}
+}
+/* Lumina on phones: compact dot column, centred on the phone */
+@media(max-width:900px) {
+  html body.ng-v2 #lc-product .lc-tabs:not(#_):not(#_):not(#_) {gap:4px!important;}
+  html body.ng-v2 #lc-product .lc-tabs button:not(#_):not(#_) {width:22px!important; height:22px!important; min-height:22px!important; max-height:22px!important; min-width:22px!important; padding:6px!important;}
+}
+
+/* October 25 · review round */
+/* Version buttons show only for the side currently on view */
+html body.ng-v2 main .ng-compare-versions.is-off:not(#_) {visibility:hidden; pointer-events:none;}
+/* Decision copy starts level with the image, close to the tab bar */
+html body.ng-v2 main .ng-decision-panel:not(#_):not(#_) {align-items:start!important;}
+/* Simulation credits heading matches the 2D game */
+html body.ng-v2.ad-case main .ad-asset-credit h2:not(#_):not(#_) {font:700 24px/1.3 'Assistant',sans-serif!important; margin:0 0 14px!important; letter-spacing:normal!important;}
+@media(max-width:900px) {html body.ng-v2.ad-case main .ad-asset-credit h2:not(#_):not(#_) {font-size:22px!important;}}
+/* More air between the brief and the game showcases, so the next heading starts below the frame */
+html body.ng-v2 main .sg-overview .sg-team-heading:not(#_),
+html body.ng-v2 main .ad-overview-game .ad-gallery-intro:not(#_) {margin-top:clamp(200px,36vh,440px)!important;}
+@media(max-width:900px) {
+  html body.ng-v2 main .sg-overview .sg-team-heading:not(#_),
+  html body.ng-v2 main .ad-overview-game .ad-gallery-intro:not(#_) {margin-top:clamp(110px,20vh,180px)!important;}
+}
+@media(min-width:901px) {html body.ng-v2 main .sg-overview .sg-team-heading:not(#_):not(#_) {margin-top:clamp(260px,46vh,540px)!important;}}
+/* A decision can show a short clip in place of an image */
+html body.ng-v2 .ng-compare-stage video:not(#_) {display:block; position:absolute; inset:0; width:100%; height:100%; object-fit:contain; margin:0; background:transparent;}
+.ng-compare-modal video {display:block; width:auto; height:auto; max-width:100%; max-height:72svh; margin:auto; object-fit:contain;}
+.ng-compare-modal video[hidden], .ng-compare-modal img[hidden] {display:none;}
+/* Four decision tabs still fit on the narrowest phones */
+@media(max-width:380px) {html body.ng-v2 main :is(.ht-decision-tabs,.lc-decision-tabs):not(#_) {gap:10px!important;}}
+
+/* Bring the character cards closer to their heading without shifting the story below. */
+html body.ng-v2.spaceship-case #sg-overview .sg-greeting {position:relative; top:calc(-1 * clamp(28px,5svh,56px));}
+
+/* A quiet interaction hint directly beneath the two character cards. */
+html body.ng-v2.spaceship-case .sg-card-pair {position:relative;display:flex;justify-content:center;align-items:center;gap:inherit;width:100%;}
+html body.ng-v2.spaceship-case #sg-overview .sg-greeting .sg-card-hint:not(#_) {position:absolute;top:calc(100% + 120px);left:0;width:100%;margin:0!important;text-align:center!important;color:#bcc3cf!important;font:400 13px/1.5 'DM Sans',sans-serif!important;letter-spacing:.02em;}
+.sg-hint-tap {display:none;}
+@media(max-width:900px),(hover:none),(pointer:coarse) {.sg-hint-hover {display:none;}.sg-hint-tap {display:inline;}}
+@media(max-width:600px) {html body.ng-v2.spaceship-case #sg-overview .sg-greeting .sg-card-hint:not(#_) {top:calc(100% + 110px);font-size:12px!important;}}
+
+/* Project details: balance the visible gaps between content groups on desktop. */
+@media(min-width:901px) {
+ html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ht-meta,.lc-project-meta):not(#_) {display:flex!important;justify-content:space-between!important;align-items:flex-start!important;gap:clamp(24px,4vw,64px)!important;}
+ html body.ng-v2.ng-v2.ng-v2.ng-v2 main :is(.ht-brief,.lc-brief,.ad-brief,.sg-brief) :is(.ht-meta,.lc-project-meta):not(#_)>div {flex:0 1 auto;max-width:30%;min-width:0;}
+}

@@ -1,0 +1,36 @@
+/* Preserve the original hero and footer layouts. */
+body.ng-v2 .ng-lights,body.ng-v2 .ng-starfield{transition:opacity .65s ease}
+body.ng-v2 .ng-lights{opacity:.6}
+body.ng-v2 .ng-starfield{opacity:.65}
+body.ng-v2.ng-reading .ng-lights{opacity:.08}
+body.ng-v2.ng-reading .ng-starfield{opacity:0}
+body.ng-v2 main :is(.ht-brief-grid,.ht-contribution,.lc-contribution,.lc-brief-grid){color:#f7fafc}
+body.ng-v2 .lc-tabs{display:flex;gap:20px;justify-content:flex-start;min-width:0;max-width:100%;width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#a3abb7 transparent;scroll-padding-inline:10px}
+body.ng-v2 .lc-tabs button{flex:0 0 auto;min-height:44px;padding:10px 5px;font-size:15px;line-height:1.4;opacity:1;color:#e5eaf1!important}
+body.ng-v2 .lc-tabs button[aria-selected=true]{font-weight:700;color:var(--ng-accent)!important}
+body.ng-v2 .lc-tabs button:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+body.ng-v2 .lc-panel .lc-description{color:#e5eaf1!important}
+
+/* Colour and keyboard-focus corrections only; the original footer geometry stays intact. */
+html body.ng-v2 footer,html body.ng-v2 footer strong,html body.ng-v2 footer .footer-role,html body.ng-v2 footer nav a{color:#f7fafc!important}
+html body.ng-v2 footer>div:nth-child(2){color:#d6dfeb!important}
+html body.ng-v2 .ng-end__k,html body.ng-v2 .ng-end__next small{color:#d6dfeb}
+html body.ng-v2 .ng-end__row b,html body.ng-v2 .ng-end__ct h2,html body.ng-v2 .ng-end__links a{color:#f7fafc}
+html body.ng-v2 .ng-end__copy{color:#f7fafc;border-color:#d6dfeb}
+html body.ng-v2 .ng-end__copy:hover{color:#f7fafc;border-color:#f7fafc}
+html body.ng-v2 :is(.ng-end,footer) a:focus-visible,html body.ng-v2 :is(.ng-end,footer) button:focus-visible{outline:3px solid #f7fafc;outline-offset:5px}
+.ng-copy-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:900px){body.ng-v2 .lc-product-heading{grid-template-columns:minmax(0,1fr);gap:20px}}
+@media(max-width:800px){
+ body.ng-v2 .lc-panel .lc-description{height:76px;min-height:76px;margin:16px 0 0!important;width:100%!important;max-width:none;font-size:14px;line-height:1.6}
+ body.ng-v2 .lc-fan{--phone-h:clamp(320px,96vw,490px);--step:clamp(115px,32vw,190px);height:calc(var(--phone-h) + 32px);margin-top:0}
+ body.ng-v2 .lc-tabs button{font-size:14px;min-height:44px;padding:10px 4px}
+ body.ng-v2 .lc-product{min-height:0!important;padding-top:54px;padding-bottom:54px}
+}
+@media(max-width:360px){body.ng-v2 .lc-panel .lc-description{height:96px;min-height:96px}}
+.ng-feature-copy-mobile{display:none}
+@media(max-width:800px){.ng-feature-copy-full{display:none}.ng-feature-copy-mobile{display:inline}}
+@media(prefers-reduced-motion:reduce){body.ng-v2 .ng-lights,body.ng-v2 .ng-starfield{transition:none}}
+
+html body.ng-v2 .ng-end__k--acc{color:var(--ng-accent)}
+html body.ng-v2 .ng-end__next:hover .ng-end__row b,html body.ng-v2 .ng-end__next:focus-visible .ng-end__row b{color:var(--nx)}

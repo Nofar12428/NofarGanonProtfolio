@@ -1,0 +1,46 @@
+/* Independent language control. Existing English typography, colors and artwork stay intact. */
+html body .ng-language-switch {position:fixed;top:calc(env(safe-area-inset-top,0px) + 18px);left:clamp(18px,3.2vw,60px);right:auto;z-index:2147483001;display:flex;direction:ltr;align-items:center;gap:3px;height:44px;margin:0;padding:0;background:none;border:0;box-shadow:none;font:600 13px/1 'DM Sans',Arial,sans-serif;}
+html body .ng-language-switch a {display:grid;place-items:center;min-width:28px;min-height:44px;padding:0 3px;color:#989ca8!important;text-decoration:none!important;background:none!important;border:0!important;box-shadow:none!important;letter-spacing:.02em;}
+html body .ng-language-switch a[data-active] {color:#fff!important;}
+html body .ng-language-switch a:hover {color:#fff!important;}
+html body .ng-language-switch a:focus-visible {outline:2px solid var(--ng-accent,var(--rose,#ff537d));outline-offset:2px;border-radius:4px;}
+html[lang=he] body .ng-language-switch {left:auto;right:clamp(18px,3.2vw,60px);flex-direction:row-reverse;font-family:'Assistant',Arial,sans-serif;font-size:15px;}
+@media(max-width:800px) {
+ html body .ng-language-switch {top:calc(env(safe-area-inset-top,0px) + 12px);left:max(10px,env(safe-area-inset-left,0px));height:46px;gap:0;font-size:12px;}
+ html body .ng-language-switch a {min-width:27px;padding-inline:2px;}
+ html body.ng-landing nav.nav:not(#_):not(#_),html body.ng-v2 nav.ng-nav:not(#_):not(#_) {inset:calc(env(safe-area-inset-top,0px) + 12px) 10px auto 78px!important;left:78px!important;right:10px!important;width:auto!important;max-width:none!important;padding:0!important;transform:none!important;justify-content:center!important;}
+ html body.ng-landing nav.nav>ul:not(#_),html body.ng-v2 nav.ng-nav>ul:not(#_) {gap:2px!important;max-width:100%!important;}
+ html body.ng-landing nav.nav>ul a:not(#_),html body.ng-v2 nav.ng-nav>ul a:not(#_) {font-size:clamp(11px,3.1vw,13px)!important;padding:10px clamp(8px,2.2vw,13px)!important;}
+ html[lang=he] body .ng-language-switch {left:auto;right:max(10px,env(safe-area-inset-right,0px));font-size:14px;}
+ html[lang=he] body.ng-landing nav.nav:not(#_):not(#_),html[lang=he] body.ng-v2 nav.ng-nav:not(#_):not(#_) {inset:calc(env(safe-area-inset-top,0px) + 12px) 78px auto 10px!important;left:10px!important;right:78px!important;}
+}
+/* Hebrew typesetting keeps the existing visual layout and media orientation. */
+html[lang=he] body {direction:ltr;--ng-sans:'Assistant',Arial,sans-serif;--f-sans:'Assistant',Arial,sans-serif;--ng-serif:'Frank Ruhl Libre',Georgia,serif;--f-serif:'Frank Ruhl Libre',Georgia,serif;}
+html[lang=he] :is(h1,h2,h3,h4,p,dt,dd,blockquote,button,a,li,small,.ng-end__row,.ng-end__k,.ng-fact-label,.ht-kicker,.ht-eyebrow,.lc-kicker,.sg-step-kicker,.ad-step-kicker) {font-family:'Assistant',Arial,sans-serif;letter-spacing:normal;}
+html[lang=he] :is(h1,h2,h3,p,dt,dd,blockquote,.ng-fact-detail,.ng-decision-copy,.copy,.sg-story-copy,.sg-chat-bubble,.ng-contribution-layout,.ng-ai-layout,.sc-next-steps,.ad-asset-credit,.sg-credits) {direction:rtl;}
+html[lang=he] :is(.intro,.about .text,.slide .copy,.ng-hd__copy,.ng-brief-title,.ng-fact,.ng-decision-copy,.ng-contribution-layout,.ng-ai-layout,.sc-next-steps,.ad-asset-credit,.sg-credits,.sg-step-copy,.ad-step-copy,.ng-how-copy,.lc-desc) {text-align:right!important;}
+html[lang=he] :is(.ng-contribution-layout,.ng-ai-layout,.sc-next-steps) :is(p,h2,h3,li),html[lang=he] .ng-fact :is(p,h2,h3),html[lang=he] .ng-decision-copy :is(p,h3),html[lang=he] :is(.ht-meta,.lc-project-meta) :is(dt,dd) {text-align:right!important;}
+html[lang=he] .intro {justify-items:end;}
+html[lang=he] :is(.intro h1,.ht-overview-heading h2,.ng-end h2,.about h2,.sec-title h2) {font-family:'Assistant',Arial,sans-serif!important;letter-spacing:normal!important;}
+html[lang=he] :is(.intro em,.about em,.ht-overview-heading em,.ng-end em,.ht-key-decisions h2 em,.lc-key-decisions h2 em,.sec-title em) {font-family:'Frank Ruhl Libre',Georgia,serif!important;font-style:normal;}
+html[lang=he] :is(.ng-hero-line,.ng-hero-reader) {direction:rtl;unicode-bidi:plaintext;}
+html[lang=he] :is(.nav ul,.ng-nav ul) {direction:rtl;}
+html[lang=he] .hero-roles {text-wrap:balance;}
+html[lang=he] :is(.ng-compare-stage,.ng-how-stage,.lc-fan,.ad-choice-viewport,.sg-card-pair,.ng-end__links) {direction:ltr;}
+html[lang=he] .ht-overview-heading>div {text-align:right;}
+html[lang=he] .sg-card-hint {text-align:center!important;}
+html[lang=he] .sg-typed-row,html[lang=he] .sg-begin-mission {direction:rtl;}
+html[lang=he] :is(.ht-decision-tabs,.lc-decision-tabs,.sc-view-tabs) {direction:rtl;}
+html[lang=he] .ng-end__links a[href^="mailto:"],html[lang=he] a[href^="tel:"] {direction:ltr;unicode-bidi:isolate;}
+html[lang=he] .ng-end__previous {text-align:left!important;}
+html[lang=he] .ng-end__next {text-align:right!important;}
+/* The nav stays at the true viewport center; the language control has its own side slot. */
+@media(max-width:800px) {
+ html body.ng-landing nav.nav:not(#_):not(#_):not(#_),html body.ng-v2 nav.ng-nav:not(#_):not(#_):not(#_) {left:0!important;right:0!important;inset:calc(env(safe-area-inset-top,0px) + 12px) 0 auto 0!important;width:auto!important;padding:0!important;justify-content:center!important;}
+ html body.ng-landing nav.nav>ul:not(#_):not(#_),html body.ng-v2 nav.ng-nav>ul:not(#_):not(#_) {max-width:calc(100% - 136px)!important;gap:2px!important;padding:5px!important;}
+ html body.ng-landing nav.nav>ul a:not(#_):not(#_),html body.ng-v2 nav.ng-nav>ul a:not(#_):not(#_) {font-size:clamp(11px,3vw,13px)!important;padding:10px clamp(6px,1.8vw,10px)!important;}
+}
+html[lang=he] body.ng-v2 .ng-try {direction:rtl;}
+html[lang=he] .ng-cta-arrow {flex:none;direction:ltr;}
+html[lang=he] .ng-hd__name {direction:ltr!important;unicode-bidi:isolate;font-family:'DM Sans','Assistant',Arial,sans-serif!important;}
+html[lang=he] .ng-hd__name em {font-family:'Playfair Display',Georgia,serif!important;}

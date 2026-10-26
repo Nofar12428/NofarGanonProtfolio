@@ -1,0 +1,263 @@
+/* Targeted mobile layout fixes. Original desktop hero animations and footer stay intact. */
+body.ng-v2 .ng-hd .ng-try{width:max-content;max-width:100%;min-width:0;min-height:44px;justify-self:center;padding:10px 20px;font-size:14px;line-height:1.4}
+body.ng-v2 .ng-end__links{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-start;gap:20px;max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;padding:7px 3px;scrollbar-width:thin;scrollbar-color:#9eaabd transparent}
+body.ng-v2 .ng-end__links a,body.ng-v2 .ng-end__links button{flex:0 0 auto;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+body.ng-v2 .ng-end__links a{gap:8px}
+body.ng-v2 .ng-end__ct{min-width:0;max-width:100%}
+.sc-mobile-controls{display:none}
+@media(max-width:800px){
+ html body.ng-landing .nav,html body.ng-v2 .ng-nav{position:fixed!important;left:50%!important;right:auto!important;top:calc(env(safe-area-inset-top,0px) + 12px)!important;width:calc(100% - 24px)!important;max-width:none!important;transform:translateX(-50%)!important;padding:0!important;box-sizing:border-box;display:flex!important;justify-content:center!important;z-index:2500;opacity:1!important;visibility:visible!important}
+ html body.ng-landing .nav ul,html body.ng-v2 .ng-nav ul{display:flex;flex-wrap:nowrap;justify-content:center;gap:3px;width:max-content;max-width:100%;margin:0 auto!important;padding:5px;box-sizing:border-box}
+ html body.ng-landing .nav a,html body.ng-v2 .ng-nav a{padding:10px clamp(12px,3.5vw,16px);font-size:13px;line-height:1.2;white-space:nowrap}
+ body.ng-landing .hero{height:auto;min-height:100svh;align-items:center;padding-top:90px;padding-bottom:36px}
+ body.ng-landing .hero-grid{display:flex;flex-direction:column;justify-content:center;gap:26px;width:100%;min-width:0}
+ body.ng-landing .hero-grid>.deck{order:0;flex:none;width:clamp(155px,49vw,225px);margin:0 auto}
+ body.ng-landing .hero-grid>.intro{order:1;justify-items:center;text-align:center;width:100%;max-width:540px;gap:16px}
+ body.ng-landing .intro h1{white-space:normal;font-size:clamp(32px,8.8vw,48px);line-height:1.12;max-width:100%}
+ body.ng-landing .intro p.lede{font-size:16px;line-height:1.6;max-width:34ch}
+ body.ng-landing .intro .btns{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+ body.ng-landing .intro .btns a{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+ body.ng-v2 .ng-hd .ng-try{font-size:14px!important;padding:10px 18px!important;min-height:44px;width:max-content!important;max-width:100%;justify-self:center;box-shadow:0 0 16px color-mix(in srgb,var(--ng-accent) 25%,transparent)}
+ body.ng-v2 .ng-hd__in{min-width:0;max-width:100%}
+ body.ng-v2 .ng-end__links{gap:16px;font-size:14px;width:100%;max-width:100%;justify-content:flex-start;scroll-padding-inline:5px}
+ body.ng-v2 .ng-end__links svg{width:20px;height:20px;flex:none}
+ body.ng-v2 .ng-end__copy{font-size:13px;min-height:44px;padding:9px 13px}
+ body.ng-v2 .lc-fan{--phone-h:clamp(250px,70vw,400px);--step:clamp(88px,24vw,145px);height:calc(var(--phone-h) + 40px);margin-top:0}
+ body.ng-v2 .lc-fixed-phone{border-width:3px;border-radius:clamp(22px,5vw,28px)}
+ body.ad-case .ad-drink-choice{--stage-size:clamp(150px,48vw,260px);padding-top:90px;padding-bottom:28px;min-height:100svh}
+ body.ad-case .ad-choice-viewport{width:100%;height:clamp(300px,46svh,400px);min-height:300px;margin:0}
+ body.ad-case .ad-drink-choice .ad-choice-card strong{font-size:clamp(21px,5.8vw,28px);margin-top:18px}
+ body.ad-case .ad-drink-choice h3{font-size:clamp(29px,7.7vw,44px);max-width:88vw;margin-bottom:16px}
+ body.ad-case .ad-choice-hint{font-size:12px;line-height:1.5;max-width:88vw;margin-inline:auto}
+ #sc-overview .sc-screen-rail,#sc-overview .sc-desktop-grid{display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;align-items:flex-start;gap:18px;width:100%;max-width:100%;overflow-x:auto!important;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:12px;padding:8px 12px 18px;margin:0;scrollbar-width:thin;scrollbar-color:#a3abb7 transparent;overscroll-behavior-x:contain}
+ #sc-overview .sc-screen-rail>figure,#sc-overview .sc-desktop-grid>figure,#sc-overview .sc-desktop-grid>figure:first-child{flex:0 0 calc(100% - 38px)!important;max-width:none;width:auto;min-width:0;margin:0;scroll-snap-align:center;scroll-snap-stop:always}
+ #sc-overview .sc-phone{width:clamp(150px,48vw,220px);max-width:100%;margin-inline:auto;padding:4px}
+ #sc-overview .sc-screen-rail figcaption{max-width:240px;margin:14px auto 0;text-align:center}
+ #sc-overview .sc-screen-rail h3,#sc-overview .sc-desktop-grid h3{font-size:16px;line-height:1.4}
+ #sc-overview .sc-screen-rail p{font-size:13px;line-height:1.6}
+ #sc-overview .sc-desktop-frame{width:100%;max-width:100%;aspect-ratio:1.73}
+ #sc-overview .sc-enlarge{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding-block:8px}
+ #sc-overview .sc-mobile-controls{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:12px;min-height:44px;color:#f7fafc;font-family:var(--ng-sans)}
+ #sc-overview .sc-mobile-controls button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #b8c4d4;border-radius:50%;background:transparent;color:#f7fafc;font-size:20px;cursor:pointer}
+ #sc-overview .sc-mobile-controls button:disabled{color:#8b98aa;border-color:#596777;cursor:default}
+ #sc-overview .sc-mobile-controls button:focus-visible,#sc-overview .sc-screen-rail:focus-visible,#sc-overview .sc-desktop-grid:focus-visible{outline:2px solid #fff;outline-offset:3px}
+ #sc-overview .sc-mobile-counter{font-size:14px;min-width:48px;text-align:center;font-variant-numeric:tabular-nums}
+}
+@media(max-height:650px) and (max-width:800px){body.ng-landing .hero{padding-top:84px;padding-bottom:28px}body.ng-landing .hero-grid{gap:18px}body.ng-landing .hero-grid>.deck{width:min(40vw,180px)}body.ng-landing .intro{gap:12px}}
+@media(prefers-reduced-motion:reduce){#sc-overview .sc-screen-rail,#sc-overview .sc-desktop-grid{scroll-behavior:auto}}
+
+/* Review corrections: compact contact, centered screen browsing on every device. */
+body.ng-v2 .ng-end__links{flex-wrap:wrap;justify-content:center;overflow:visible;gap:12px 22px;width:100%;box-sizing:border-box}
+body.ng-v2 .ng-end__links a,body.ng-v2 .ng-end__links button{font-size:15px}
+body.ng-v2 .sg-greeting{margin-top:42px!important}
+#sc-overview .sc-screen-rail,#sc-overview .sc-desktop-grid{--slide-width:58%;--rail-inset:21%;display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;align-items:flex-start;gap:28px;width:100%;max-width:100%;box-sizing:border-box;overflow-x:auto!important;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding:0;padding:8px 0 12px!important;margin:0 auto!important;scrollbar-width:none;overscroll-behavior-x:contain}
+#sc-overview .sc-screen-rail::before,#sc-overview .sc-screen-rail::after,#sc-overview .sc-desktop-grid::before,#sc-overview .sc-desktop-grid::after{content:'';flex:0 0 max(0px,calc(var(--rail-inset) - 28px));pointer-events:none}
+#sc-overview .sc-screen-rail::-webkit-scrollbar,#sc-overview .sc-desktop-grid::-webkit-scrollbar{display:none;width:0;height:0}
+#sc-overview .sc-screen-rail>figure,#sc-overview .sc-desktop-grid>figure,#sc-overview .sc-desktop-grid>figure:first-child{flex:0 0 var(--slide-width)!important;max-width:none!important;min-width:0;width:auto!important;margin:0!important;scroll-snap-align:center;scroll-snap-stop:always;text-align:center}
+#sc-overview .sc-screen-rail .sc-phone{width:clamp(180px,20vw,270px);max-width:100%;margin-inline:auto}
+#sc-overview .sc-desktop-grid figcaption{max-width:100%;margin:18px auto 0;text-align:center}
+#sc-overview .sc-mobile-controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:10px;color:#f7fafc}
+#sc-overview .sc-mobile-controls button{width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;padding:7px!important;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid #a9b9c8;border-radius:50%;color:inherit;cursor:pointer}
+#sc-overview .sc-mobile-controls button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+#sc-overview .sc-mobile-controls button:disabled{opacity:.35;cursor:default}
+#sc-overview .sc-mobile-counter{font-size:13px;min-width:42px;text-align:center}
+@media(max-width:800px){
+ body.ng-v2 .ng-end__links{display:grid;grid-template-columns:max-content max-content;justify-content:center;gap:6px 16px;overflow:visible;padding:0}
+ body.ng-v2 .ng-end__links a,body.ng-v2 .ng-end__links button{font-size:clamp(11px,3vw,14px)!important;gap:5px}
+ body.ng-v2 .ng-end__links svg{width:16px;height:16px}
+ body.ng-v2 .ng-end__copy{padding:6px 9px;justify-self:center}
+ body.ng-v2 .sg-greeting{margin-top:48px!important}
+ #sc-overview .sc-screen-rail,#sc-overview .sc-desktop-grid{--slide-width:76%;--rail-inset:12%;gap:16px}
+ #sc-overview .sc-screen-rail::before,#sc-overview .sc-screen-rail::after,#sc-overview .sc-desktop-grid::before,#sc-overview .sc-desktop-grid::after{flex-basis:max(0px,calc(var(--rail-inset) - 16px))}
+ #sc-overview .sc-screen-rail .sc-phone{width:clamp(145px,46vw,220px)}
+}
+/* Final mobile review: no neighbouring slides, one contact row, desktop footer composition. */
+@media(max-width:800px){
+ html body.ng-v2.spaceship-case #sg-overview .sg-greeting{padding-top:90px!important;margin-top:0!important;box-sizing:content-box}
+ #sc-overview .sc-screen-rail,#sc-overview .sc-desktop-grid{--slide-width:100%;--rail-inset:0%;gap:0!important;padding-inline:0!important}
+ #sc-overview .sc-screen-rail::before,#sc-overview .sc-screen-rail::after,#sc-overview .sc-desktop-grid::before,#sc-overview .sc-desktop-grid::after{display:none!important}
+ html body.ng-v2 .ng-end__links,html body.ng-landing .contact .links{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;justify-content:center!important;align-items:center;gap:clamp(6px,2vw,14px)!important;width:100%;max-width:100%;min-width:0;overflow:visible!important;padding:0!important;box-sizing:border-box}
+ html body.ng-v2 .ng-end__links .ng-end__copy{display:none!important}
+ html body.ng-v2 .ng-end__links a,html body.ng-landing .contact .links>span,html body.ng-landing .contact .links>a{display:inline-flex!important;align-items:center;flex:0 1 auto;min-width:0;white-space:nowrap;font-size:clamp(9px,2.65vw,14px)!important;gap:4px!important;letter-spacing:-.02em}
+ html body.ng-v2 .ng-end__links svg,html body.ng-landing .contact .links svg{width:clamp(13px,3.4vw,18px)!important;height:clamp(13px,3.4vw,18px)!important;flex:none}
+ html body.ng-v2 footer{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;padding:25px 4vw!important}
+ html body.ng-v2 footer>div{width:auto!important;max-width:34%!important;min-width:0;font-size:clamp(8px,1.8vw,12px)!important;line-height:1.5!important}
+ html body.ng-v2 footer>div>strong{font-size:clamp(9px,2vw,14px)!important}
+ html body.ng-v2 footer .footer-role{font-size:clamp(8px,1.8vw,12px)!important}
+ html body.ng-v2 footer .portfolio-link-row{width:auto!important;margin:0!important;display:flex!important;flex-wrap:nowrap!important;gap:clamp(5px,1.3vw,12px)!important;align-items:center;justify-content:flex-end}
+ html body.ng-v2 footer .portfolio-link-row a{font-size:clamp(8px,1.8vw,12px)!important;line-height:1.5!important;white-space:nowrap}
+}
+
+/* Header anchored to the viewport, compact contact and a plain black footer. */
+html body.ng-v2 footer,html body.ng-landing footer.foot{background:#000!important;background-image:none!important;color:#f7fafc!important;position:relative;z-index:1}
+html body.ng-v2 footer>*{background:transparent!important}
+html body.ng-v2 footer{align-items:center!important}
+html body.ng-v2 .ng-end__ct{align-content:center!important;grid-template-rows:max-content max-content max-content;grid-auto-rows:max-content;row-gap:20px!important}
+html body.ng-v2 .ng-end__ct h2{margin:0!important}
+html body.ng-v2 .ng-end__ct .ng-end__links{margin:4px 0 0!important;align-self:start}
+@media(min-width:801px){
+ body.ng-landing .slide figure{width:90%;justify-self:center}
+}
+@media(max-width:800px){
+ html body.ng-landing nav.nav,html body.ng-v2 nav.ng-nav{position:fixed!important;inset:calc(env(safe-area-inset-top,0px) + 12px) 0 auto 0!important;left:0!important;right:0!important;width:auto!important;max-width:none!important;height:auto!important;transform:none!important;translate:none!important;margin:0!important;padding:0 12px!important;display:flex!important;justify-content:center!important;align-items:center!important;box-sizing:border-box!important;z-index:2147483000!important;opacity:1!important;visibility:visible!important;pointer-events:none}
+ html body.ng-landing nav.nav>ul,html body.ng-v2 nav.ng-nav>ul{flex:0 0 auto!important;width:max-content!important;max-width:100%!important;margin:0!important;transform:none!important;pointer-events:auto}
+ html body.ng-v2 .ng-end__ct{min-height:0!important;height:auto!important;align-content:start!important;grid-template-rows:max-content max-content max-content!important;row-gap:18px!important;padding-block:36px!important}
+ html body.ng-v2 .ng-end__ct h2{margin:0!important}
+ html body.ng-v2 .ng-end__ct .ng-end__links{margin-top:8px!important}
+ html body.ng-landing .contact .inner{align-content:center;gap:24px}
+ html body.ng-v2 footer>div{max-width:48%!important;font-size:clamp(10px,2.6vw,13px)!important}
+ html body.ng-v2 footer>div>strong{font-size:clamp(12px,3vw,15px)!important}
+ html body.ng-v2 footer .footer-role{font-size:clamp(10px,2.6vw,13px)!important}
+}
+/* Clip off-screen entrance animations at the document edge, not at a wider mobile viewport. */
+@media(max-width:800px){
+ html{overflow-x:clip!important}
+ html body.ng-landing,html body.ng-v2{overflow-x:clip!important;max-width:100%}
+ body.ng-landing #about{overflow-x:clip}
+}
+
+/* Keep labels within the drink stage and retain centered desktop screen rows. */
+body.ad-case .ad-choice-viewport{overflow:visible;clip-path:inset(-60px 0 -110px)}
+body.ad-case .ad-drink-choice .ad-choice-card strong{white-space:nowrap;overflow:visible;line-height:1.3;padding-bottom:6px}
+@media(min-width:801px){
+ #sc-overview .sc-screen-rail,#sc-overview .sc-desktop-grid{display:flex!important;flex-wrap:wrap!important;justify-content:center!important;gap:28px 18px!important;overflow:visible!important;padding:8px 0 12px!important;scroll-snap-type:none!important}
+ #sc-overview .sc-screen-rail::before,#sc-overview .sc-screen-rail::after,#sc-overview .sc-desktop-grid::before,#sc-overview .sc-desktop-grid::after{display:none!important}
+ #sc-overview .sc-screen-rail>figure,#sc-overview .sc-desktop-grid>figure{flex:0 0 calc((100% - 72px)/5)!important;width:calc((100% - 72px)/5)!important;max-width:none!important;margin:0!important}
+ #sc-overview .sc-phone{width:min(100%,220px)!important;margin-inline:auto}
+ #sc-overview .sc-mobile-controls{display:none!important}
+}
+
+/* Page-colored footers, with explicit readable text rather than inherited opacity. */
+html body.ng-v2 footer{background:var(--bg-base,#050d30)!important;color:#f5f5f3!important;border-color:#ffffff38!important}
+html body.ng-v2 footer :is(strong,span,a,div){color:#f5f5f3!important;opacity:1!important}
+html body.ng-landing footer.foot{background:var(--room,#14040b)!important;color:#fff1f4!important;opacity:1!important}
+/* The entire product viewer fits below the persistent header, including navigation. */
+html body #lc-product{box-sizing:border-box;height:calc(100svh - 80px)!important;min-height:0!important;padding:14px 5vw 12px!important;scroll-margin-top:80px;display:flex;flex-direction:column;overflow:visible}
+html body #lc-product .lc-product-heading{flex:none;grid-template-columns:minmax(150px,.8fr) minmax(0,2.6fr);gap:18px;align-items:center}
+html body #lc-product .lc-overview-title{font-size:clamp(25px,3.2vw,44px)!important;line-height:1!important;margin:0}
+html body #lc-product .lc-overview-title span{font-size:11px!important;margin-top:7px!important}
+html body #lc-product .lc-tabs{width:100%;display:flex;flex-wrap:wrap;overflow:visible;gap:3px 16px;padding:0 0 6px;align-content:center;justify-content:flex-end}
+html body #lc-product .lc-tabs button{font-size:clamp(11px,1.15vw,16px)!important;padding:7px 0!important;line-height:1.2}
+html body #lc-product .lc-panel:not([hidden]){display:flex;flex-direction:column;flex:1;min-height:0}
+html body #lc-product .lc-description{flex:none;width:100%!important;max-width:none;height:auto!important;min-height:0!important;margin:10px 0 4px!important;font-size:clamp(11px,1.2vw,15px)!important;line-height:1.4!important}
+html body #lc-product .lc-fan{flex:1;min-height:0;height:auto!important;margin:0!important;width:100%!important;overflow:visible;--phone-h:var(--fit-phone,300px)!important;--step:var(--fit-step,110px)!important}
+html body #lc-product .lc-fixed-phone{border-width:3px!important;border-radius:calc(var(--phone-h)*.045)!important}
+html body #lc-product .lc-gallery-controls{flex:none;height:30px!important;margin:6px 0 0!important;gap:12px!important}
+html body #lc-product .lc-gallery-controls[hidden]{display:flex!important;visibility:hidden}
+html body #lc-product .lc-gallery-controls>button{width:28px!important;height:28px!important;font-size:16px!important}
+html body #lc-product .lc-dots{gap:6px;flex-wrap:wrap;justify-content:center;max-width:65%}
+@media(max-width:800px){
+ html body #lc-product .lc-product-heading{grid-template-columns:90px minmax(0,1fr);gap:12px}
+ html body #lc-product .lc-overview-title{font-size:clamp(22px,5vw,32px)!important}
+ html body #lc-product .lc-overview-title span{font-size:9px!important}
+ html body #lc-product .lc-tabs{justify-content:flex-start;gap:3px 10px}
+ html body #lc-product .lc-tabs button{font-size:clamp(10px,2.5vw,13px)!important;padding:5px 0!important}
+}
+@media(max-height:500px){
+ html body #lc-product{padding-top:6px!important;padding-bottom:6px!important}
+ html body #lc-product .lc-overview-title{font-size:22px!important}
+ html body #lc-product .lc-description{font-size:10px!important;margin:4px 0!important}
+ html body #lc-product .lc-tabs button{font-size:10px!important;padding:3px 0!important}
+}
+
+html body.ng-v2 .ng-end{background:var(--bg-base,#050d30)!important}
+html body #lc-product .lc-product-heading>.lc-overview-title{grid-column:1!important;grid-row:1!important}
+html body #lc-product .lc-product-heading>.lc-tabs{grid-column:2!important;grid-row:1!important}
+html body.ng-v2.pal-spaceship footer{background:var(--bg-base,#050d30)!important}
+html body.ng-v2.pal-spaceship footer>*{background:transparent!important}
+
+@media(min-width:801px){
+ html body #sc-overview .sc-desktop-grid>figure:first-child,html body #sc-overview .sc-screen-rail>figure:first-child{flex:0 0 calc((100% - 72px)/5)!important;width:calc((100% - 72px)/5)!important;grid-column:auto!important;grid-row:auto!important}
+ html body #sc-overview .sc-desktop-frame{width:100%!important;max-width:100%!important;box-sizing:border-box}
+}
+/* Give the viewer breathing room while fitting its available height. */
+html body #lc-product{padding-top:clamp(18px,3vh,32px)!important;padding-bottom:16px!important}
+html body #lc-product .lc-tabs{width:max-content!important;max-width:100%!important;justify-self:end;justify-content:flex-start!important;gap:3px clamp(10px,1.5vw,24px)!important}
+html body #lc-product .lc-description{width:var(--lc-description-width,min(640px,65%))!important;max-width:660px!important;align-self:flex-end;margin:clamp(16px,2.4vh,28px) 0 clamp(16px,2.4vh,28px)!important;line-height:1.55!important}
+html body #lc-product .lc-fan{--step:var(--fit-step,110px)!important}
+html body .lc-key-decision .lc-before-after img{width:auto!important;max-width:100%!important;object-fit:contain!important;background:transparent!important;border-radius:0!important;display:block;margin-inline:auto}
+html body .lc-key-decision .lc-before-after figure{background:transparent!important}
+@media(max-width:800px){
+ html body #lc-product .lc-description{width:100%!important;max-width:none!important;margin:14px 0 18px!important}
+ html body #lc-product .lc-tabs{width:100%!important;gap:3px 10px!important}
+}
+@media(max-height:500px){
+ html body #lc-product{padding-block:8px!important}
+ html body #lc-product .lc-description{margin:8px 0!important}
+}
+/* The final sections share the hero's base, with ambient lights continuing behind them. */
+html body.ng-v2 .unified-projects,html body.ng-v2 .ng-end,html body.ng-v2 footer{background:transparent!important;background-image:none!important}
+html body.ng-v2.pal-spaceship footer,html body.ng-v2.pal-spaceship .ng-end,html body.ng-v2.pal-spaceship .unified-projects{background:transparent!important}
+html body.ng-v2.pal-spaceship footer>*{background:transparent!important}
+@media(min-width:801px){html body #lc-product .lc-description{align-self:flex-start;margin-left:var(--lc-copy-inset,0px)!important}}
+@media(max-width:800px){
+ html body #lc-product .lc-product-heading{grid-template-columns:1fr!important;gap:16px!important}
+ html body #lc-product .lc-product-heading>.lc-overview-title{grid-column:1!important;grid-row:1!important}
+ html body #lc-product .lc-product-heading>.lc-tabs{grid-column:1!important;grid-row:2!important}
+ html body #lc-product .lc-overview-title br{display:none}
+ html body #lc-product .lc-overview-title em{display:inline!important;margin-left:5px}
+ html body #lc-product .lc-tabs button{line-height:1.4!important}
+}
+/* Give the selection message and the positive response their own breathing room. */
+html body.ad-case .ad-choice-status{margin-top:54px!important}
+html body.ad-case .ad-driving-feedback{margin-top:46px!important}
+html body.ad-case .ad-driving-feedback strong{display:block;margin-bottom:10px}
+/* The character introduction occupies one screen, including its padding. */
+html body.ng-v2.spaceship-case #sg-overview .sg-greeting{box-sizing:border-box!important;min-height:calc(100svh - 80px);margin:0!important;padding-top:90px!important}
+@media(max-height:650px){
+ html body.ng-v2.spaceship-case #sg-overview .sg-greeting{padding-top:45px!important;padding-bottom:95px!important}
+ html body .sg-story-scene{padding:18px 0!important;gap:18px!important}
+ html body .sg-story-copy h3{font-size:23px!important;line-height:1.15;margin:12px 0!important}
+ html body .sg-story-copy p{font-size:13px!important;line-height:1.5!important}
+ html body .sg-crew-chat{gap:16px!important}
+ html body .sg-chat-avatar{width:44px;height:44px;flex-basis:44px;background-size:352px auto;background-position:-22px -4px}
+ html body .sg-chat-girl{background-position:-198px -4px}
+ html body .sg-chat-bubble{padding:10px 12px!important}
+ html body .sg-chat-bubble p{font-size:13px!important;line-height:1.4!important}
+}
+@media(max-height:540px) and (min-width:600px){html body.ng-v2.spaceship-case #sg-overview .sg-greeting{padding-top:35px!important;padding-bottom:65px!important}}
+html body.ng-v2.spaceship-case #sg-overview .sg-greeting{scroll-margin-top:80px}
+/* Keep feature navigation on one scrollable row on touch screens. */
+@media(max-width:800px){
+ html body #lc-product .lc-tabs{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;white-space:nowrap;justify-content:flex-start!important;width:100%!important;max-width:100%!important;min-width:0;scrollbar-width:thin;scrollbar-color:#8b8e91 transparent;gap:16px!important}
+ html body #lc-product .lc-tabs button{flex:0 0 auto;white-space:nowrap}
+ html body #lc-product .lc-tabs::-webkit-scrollbar{height:3px}
+ html body #lc-product .lc-tabs::-webkit-scrollbar-thumb{background:#8b8e91;border-radius:3px}
+ body.spaceship-concept .sg-layer-stack>.sg-reading-world{position:relative!important;top:auto!important;padding-bottom:35px!important}
+ body.spaceship-concept .sg-case-layer{margin-top:0!important;position:relative!important;background:#03172c!important}
+ html body.spaceship-concept .sg-case-layer>.sg-brief{translate:none!important;transform:none!important;position:relative}
+}
+html body.ng-v2.spaceship-case #sg-overview .sg-greeting{margin-left:auto!important;margin-right:auto!important}
+@media(min-width:761px){
+ html body .sg-greeter-boy .sg-hello{top:4%;right:calc(100% - 70px);left:auto}
+ html body .sg-greeter-girl .sg-hello{top:4%;left:calc(100% - 70px);right:auto}
+}
+html body.ad-case footer{border-top:0!important;box-shadow:none!important}
+html body.ad-case footer::before,html body.ad-case footer::after{display:none!important}
+
+/* Lift the crew within its full-screen introduction on mobile. */
+@media(max-width:800px){html body.ng-v2.spaceship-case #sg-overview .sg-greeting{padding-top:30px!important;padding-bottom:195px!important}}
+@media(max-width:800px) and (max-height:650px){html body.ng-v2.spaceship-case #sg-overview .sg-greeting{padding-top:15px!important;padding-bottom:125px!important}}
+@media(max-height:540px) and (min-width:600px) and (max-width:800px){html body.ng-v2.spaceship-case #sg-overview .sg-greeting{padding-top:15px!important;padding-bottom:85px!important}}
+/* Align enlargement actions across each row despite differing caption lengths. */
+html body #sc-overview .sc-screen-rail,html body #sc-overview .sc-desktop-grid{align-items:stretch!important}
+html body #sc-overview .sc-screen-rail>figure,html body #sc-overview .sc-desktop-grid>figure{display:flex;flex-direction:column;align-items:center}
+html body #sc-overview .sc-phone,html body #sc-overview .sc-desktop-frame{flex:0 0 auto;margin-top:0;margin-bottom:0}
+html body #sc-overview .sc-screen-rail figcaption,html body #sc-overview .sc-desktop-grid figcaption{display:flex;flex-direction:column;align-items:center;flex:1;width:100%}
+html body #sc-overview figcaption .sc-enlarge{margin-top:auto;align-self:center}
+html body #sc-overview figcaption h3:last-of-type{margin-bottom:18px}
+
+/* Approved contribution copy and compact source credit. */
+.ad-asset-credit{font-size:14px;line-height:1.65;margin-top:32px;max-width:70ch;color:inherit;opacity:.8}.ad-asset-credit a{color:inherit;text-underline-offset:3px}
+.sc-next-steps{margin-top:clamp(48px,7vw,88px)}
+
+/* Keep feature changes from moving or resizing the phone. */
+html body #lc-product .lc-description{height:var(--lc-copy-height,4.65em)!important;min-height:var(--lc-copy-height,4.65em)!important;flex:0 0 var(--lc-copy-height,4.65em)!important}
+
+.lc-ai-note{font-size:14px;line-height:1.65;color:#b4b8be;margin:-18px 0 32px;max-width:70ch}
+
+/* Credit title follows the game credit typography, using the simulation accent. */
+html body.ad-case .ht-section .ad-asset-credit h2{font-family:'Assistant',sans-serif!important;font-size:24px!important;font-weight:700!important;line-height:1.3!important;letter-spacing:normal!important;color:var(--ad-accent)!important;margin:0 0 14px!important}
+html body.ad-case .ad-asset-credit{opacity:1}html body.ad-case .ad-asset-credit p{font-size:14px;line-height:1.7}
+html body.ad-case .ht-contribution-grid h3,html body.ad-case .ad-claude .ad-ai-label{font-weight:500!important}
+@media(max-width:600px){html body.ad-case .ht-section .ad-asset-credit h2{font-size:22px!important}}

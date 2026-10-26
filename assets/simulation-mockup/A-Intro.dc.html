@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scenario intro — in the game world</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:wght@400;500;600;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1280px; height: 720px; position: relative; overflow: hidden; background: #0B0E14; font-family: 'Archivo', sans-serif; color: #F4F1EA">
+
+  <!-- ============ THE GAME WORLD (camera moves over it) ============ -->
+  <div role="img" aria-label="{{alt}}" style="position: absolute; inset: 0; transform: scale({{camK}}) translate({{camX}}, {{camY}}); transform-origin: {{camO}}">
+    <img src="{{bg}}" alt="" style="position: absolute; left: 0; top: 0; width: 1280px; height: 720px; object-fit: cover">
+
+    <!-- where you are now -->
+    <div style="position: absolute; left: {{hereX}}; top: {{hereY}}; opacity: {{hereOp}}; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; gap: 6px">
+      <span style="padding: 6px 10px; border-radius: 6px; background: rgba(8,10,14,0.85); border: 1px solid rgba(244,241,234,0.6); font-size: 11px; font-weight: 800; letter-spacing: 0.14em; white-space: nowrap">YOU ARE HERE · {{hereName}}</span>
+      <span aria-hidden="true" style="width: 2px; height: 26px; background: #F4F1EA"></span>
+      <span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: #F4F1EA; box-shadow: 0 0 0 {{herePulse}} rgba(244,241,234,0.25)"></span>
+    </div>
+
+    <!-- route preview: the lime route down the street to the destination -->
+    <svg aria-hidden="true" width="1280" height="720" viewBox="0 0 1280 720" style="position: absolute; inset: 0; opacity: {{routeOp}}">
+      <path d="M760 720 Q700 470 652 306" stroke="#C6FF4A" stroke-width="10" stroke-linecap="round" fill="none" stroke-dasharray="{{routeDash}}" opacity="0.9"></path>
+    </svg>
+    <div style="position: absolute; left: 652px; top: 300px; opacity: {{destOp}}; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; gap: 4px">
+      <span style="padding: 6px 10px; border-radius: 6px; background: #C6FF4A; color: #0B0E14; font-size: 11px; font-weight: 800; letter-spacing: 0.14em; white-space: nowrap">{{destName}} · {{distance}}</span>
+      <svg aria-hidden="true" width="26" height="34" viewBox="0 0 26 34"><path d="M13 33 C5 22 1 17 1 12 A12 12 0 0 1 25 12 C25 17 21 22 13 33 Z" fill="#C6FF4A"></path><circle cx="13" cy="12" r="4.5" fill="#0B0E14"></circle></svg>
+      <span aria-hidden="true" style="width: 60px; height: 14px; border-radius: 50%; border: 2px solid #C6FF4A; opacity: 0.8; transform: scale({{destPulse}})"></span>
+    </div>
+  </div>
+
+  <!-- story captions -->
+  <div style="position: absolute; inset: 0; opacity: {{storyUiOp}}">
+    <div aria-hidden="true" style="position: absolute; left: 0; top: 0; bottom: 0; width: 820px; background: linear-gradient(to right, rgba(8,10,14,0.88) 0%, rgba(8,10,14,0.6) 55%, rgba(8,10,14,0) 100%)"></div>
+    <div style="position: absolute; left: 64px; top: 48px; display: flex; align-items: center; gap: 10px; height: 34px; box-sizing: border-box; padding: 0 14px 0 12px; border-radius: 999px; border: 1px solid rgba(244,241,234,0.7); background: rgba(8,10,14,0.5); font-size: 13px; font-weight: 600; letter-spacing: 0.08em">
+      <span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #C6FF4A"></span>
+      {{chip}}
+    </div>
+    <div style="position: absolute; left: 72px; bottom: 84px; width: 620px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px">
+      <span style="padding: 6px 12px; border-radius: 4px; background: #C6FF4A; color: #0B0E14; font-size: 13px; font-weight: 800; letter-spacing: 0.14em; opacity: {{stampOp}}">{{stamp}}</span>
+      <h1 style="margin: 0; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 68px; line-height: 1.02; letter-spacing: 0.01em; text-shadow: 5px 5px 0 rgba(0,0,0,0.55); opacity: {{capOp}}"><span>{{headA}}</span><span style="opacity: 0">{{headB}}</span></h1>
+      <p style="margin: 0; max-width: 540px; font-size: 20px; line-height: 1.45; color: #E6E3DA; opacity: {{subOp}}; transform: translateY({{subY}})">{{sub}}</p>
+    </div>
+  </div>
+
+  <button onClick="{{skip}}" style="position: absolute; right: 64px; top: 44px; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid rgba(244,241,234,0.7); background: rgba(8,10,14,0.5); color: #F4F1EA; font-family: 'Archivo', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: 0.1em; cursor: pointer; opacity: {{skipOp}}">
+    SKIP
+    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l6 6-6 6"></path><path d="M13 6l6 6-6 6"></path></svg>
+  </button>
+
+  <!-- ============ MISSION CARD (over the game scene) ============ -->
+  <div style="position: absolute; inset: 0; opacity: {{cardOp}}; pointer-events: {{cardPe}}">
+    <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(8,10,14,0.6)"></div>
+
+    <div style="position: absolute; left: 64px; top: 48px; display: flex; align-items: center; gap: 10px; height: 36px; box-sizing: border-box; padding: 0 16px 0 14px; border-radius: 999px; border: 1px solid rgba(244,241,234,0.75); background: rgba(8,10,14,0.55); font-size: 14px; font-weight: 500; letter-spacing: 0.04em">
+      <span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #C6FF4A"></span>
+      DRIVING SIMULATION
+    </div>
+
+    <div style="position: absolute; left: 50%; top: 50%; width: 980px; height: 440px; display: flex; border-radius: 24px; overflow: hidden; background: #12161F; box-shadow: 0 0 0 1px rgba(244,241,234,0.16), 10px 12px 0 rgba(0,0,0,0.55); transform: translate(-50%, -50%) translateY({{cardY}})">
+      <div style="position: relative; width: 400px; height: 440px; flex: none; background: #0E1219">
+        <svg aria-hidden="true" width="400" height="440" viewBox="0 0 400 440" style="position: absolute; inset: 0">
+          <path d="M-10 90 L410 120 M-10 230 L410 200 M-10 350 L410 380 M90 -10 L120 450 M250 -10 L220 450 M340 -10 L360 450" stroke="#1C2330" stroke-width="16" fill="none"></path>
+          <path d="M-10 90 L410 120 M-10 230 L410 200 M-10 350 L410 380 M90 -10 L120 450 M250 -10 L220 450 M340 -10 L360 450" stroke="#262E3D" stroke-width="2" stroke-dasharray="8 10" fill="none"></path>
+          <path d="M110 330 L117 225 L235 211 L229 112" stroke="#C6FF4A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="{{cardRouteDash}}" fill="none"></path>
+          <circle cx="110" cy="332" r="12" fill="#F4F1EA"></circle>
+          <circle cx="110" cy="332" r="5" fill="#0E1219"></circle>
+          <circle cx="229" cy="112" r="26" fill="#C6FF4A" opacity="0.18"></circle>
+          <path d="M229 118 C219 104 213 96 213 88 A16 16 0 0 1 245 88 C245 96 239 104 229 118 Z" fill="#C6FF4A"></path>
+          <circle cx="229" cy="88" r="6" fill="#0E1219"></circle>
+        </svg>
+        <span style="position: absolute; left: 24px; bottom: 24px; padding: 8px 12px; border-radius: 8px; background: rgba(8,10,14,0.85); font-size: 13px; font-weight: 800; letter-spacing: 0.1em">{{destName}}</span>
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 44px 40px 48px">
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <span style="align-self: flex-start; padding: 6px 12px; border-radius: 4px; background: #C6FF4A; color: #0B0E14; font-size: 13px; font-weight: 800; letter-spacing: 0.16em">YOUR MISSION</span>
+          <h2 style="margin: 0; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 68px; line-height: 1; letter-spacing: 0.015em">{{missionTitle}}<span style="color: #C6FF4A">.</span></h2>
+          <p style="margin: 0; font-size: 18px; line-height: 1.45; color: #C9CDD6">{{missionText}}</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+          <div style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; background: #0B0E14; box-shadow: inset 0 0 0 1px #262D3A">
+            <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.16em; color: #9AA3B2">DISTANCE</span>
+            <span style="font-family: 'Anton', sans-serif; font-size: 28px; line-height: 1.1">{{distance}}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; background: #0B0E14; box-shadow: inset 0 0 0 1px #262D3A">
+            <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.16em; color: #9AA3B2">ALCOHOL LEVEL</span>
+            <span style="font-family: 'Anton', sans-serif; font-size: 28px; line-height: 1.1; color: {{zoneColor}}">{{levelText}}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; background: #0B0E14; box-shadow: inset 0 0 0 1px #262D3A">
+            <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.16em; color: #9AA3B2">TIME</span>
+            <span style="font-family: 'Anton', sans-serif; font-size: 28px; line-height: 1.1">{{timeUpper}}</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px">
+          <span style="font-size: 14px; line-height: 1.4; color: #9AA3B2">Stop inside the green zone to finish.</span>
+          <button onClick="{{start}}" onMouseEnter="{{hoverGo}}" onMouseLeave="{{unhoverGo}}" onFocus="{{hoverGo}}" onBlur="{{unhoverGo}}" style="display: flex; align-items: center; gap: 14px; height: 64px; padding: 0 26px 0 32px; border: 0; border-radius: 18px; background: #C6FF4A; color: #0B0E14; font-family: 'Archivo', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: 0.04em; cursor: pointer; white-space: nowrap; outline: none; transition: transform 120ms ease, box-shadow 120ms ease; transform: {{goT}}; box-shadow: {{goS}}">
+            <span>START</span>
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"time":{"editor":"enum","options":["night","sunset","morning"],"default":"night"},"level":{"editor":"float","default":0.8,"min":0,"max":2,"step":0.1},"loop":{"editor":"boolean","default":true},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { now: 0, hovGo: false };
+  }
+  componentDidMount() {
+    this.t0 = performance.now();
+    const tick = (now) => {
+      const el = now - this.t0;
+      if (el - this.state.now > 30) this.setState({ now: el });
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); }
+  renderVals() {
+    // story A -> story B -> route preview (fly down the street) -> mission card over the scene
+    const T_B = 4300, T_ROUTE = 8600, T_CARD = 11200, CARD_HOLD = 5500;
+    const total = T_CARD + CARD_HOLD;
+    const loop = this.props.loop ?? true;
+    const t = loop ? this.state.now % total : Math.min(this.state.now, T_CARD + 900);
+    const s = t / 1000;
+    const clamp = (v) => Math.max(0, Math.min(1, v));
+    const ease = (v) => { v = clamp(v); return v * v * (3 - 2 * v); };
+    const mix = (a, b, k) => a + (b - a) * k;
+    const f = (v, d) => v.toFixed(d === undefined ? 3 : d);
+    const time = this.props.time || 'night';
+    const D = {
+      night: {
+        bg: './assets/e3cccc54f8e8f7eec9db0c18ef3054b3.jpg', here: 'THE PARTY', hx: 1030, hy: 150,
+        alt: 'The game street at night. The camera starts at a lit building where the party is, then flies down the street to your home.',
+        a: { stamp: 'SATURDAY · 23:40', head: 'ONE MORE TOAST.', sub: 'The party is just getting started.' },
+        b: { stamp: '01:30', head: '“THE TAXI MIGHT TAKE A WHILE. I’M FINE, I’LL DRIVE HOME.”', sub: '“It’s only a few minutes away.”' },
+        title: 'GET HOME', text: 'Drive from the party back to your place.', dest: 'HOME', dist: '1.5 KM'
+      },
+      sunset: {
+        bg: './assets/6923392ced0b7ce0b592752793bb93e8.jpg', here: 'DANA’S PLACE', hx: 1060, hy: 175,
+        alt: 'The game street in the evening. The camera starts at Dana’s building, then flies down the street to Noa’s place.',
+        a: { stamp: 'FRIDAY · 18:10', head: 'BARBECUE AT DANA’S.', sub: 'Steaks on the grill, drinks going around.' },
+        b: { stamp: '19:30', head: '“I’LL DRIVE YOU HOME, NOA.”', sub: 'It’s on your way. She’ll be in the passenger seat.' },
+        title: 'DRIVE NOA HOME', text: 'Noa is in the passenger seat. Get her home safely.', dest: 'NOA’S PLACE', dist: '900 M'
+      },
+      morning: {
+        bg: './assets/bc9db980e6bd88d1d04ebc5c25296f87.jpg', here: 'YOUR PLACE', hx: 1090, hy: 160,
+        alt: 'The game street in the morning. The camera starts at your building, then flies down the street to the office.',
+        a: { stamp: 'SUNDAY · 07:40', head: 'THE MORNING AFTER.', sub: 'You went to bed at 3. Your head is pounding.' },
+        b: { stamp: '07:55', head: '“I SLEPT IT OFF. I’M FINE.”', sub: 'Last night is still in your blood. Work starts at 08:30.' },
+        title: 'GET TO WORK', text: 'Be at the office by 08:30. Last night is still in your blood.', dest: 'THE OFFICE', dist: '1.2 KM'
+      }
+    };
+    const d = D[time] || D.night;
+    const timeLabel = time === 'sunset' ? 'EVENING' : time.toUpperCase();
+
+    // camera: start close on the building you are at, drift, then fly down the street
+    const kOpen = ease(t / 1600);
+    const kRoute = ease((t - T_ROUTE) / 2200);
+    const camK = mix(mix(1.9, 1.35, kOpen) + 0.06 * clamp(t / T_ROUTE), 1.0, kRoute) + 0.0;
+    const flyK = ease((t - T_ROUTE - 900) / 1500);
+    const ox = mix(d.hx / 12.8, 51, kRoute), oy = mix(d.hy / 7.2 + 8, 44, kRoute);
+    const camKFinal = camK * (1 + 0.55 * flyK * (t < T_CARD ? 1 : 1));
+
+    const phaseB = t >= T_B;
+    const local = phaseB ? t - T_B : t;
+    const cap = phaseB ? d.b : d.a;
+    const start = phaseB ? 250 : 900;
+    const nChars = Math.max(0, Math.floor((local - start) / 38));
+    const headA = cap.head.slice(0, Math.min(cap.head.length, nChars));
+    const subIn = ease((local - start - cap.head.length * 38 - 100) / 450);
+    const capOut = phaseB ? 1 : 1 - ease((t - (T_B - 300)) / 250);
+    const storyOut = 1 - ease((t - T_ROUTE) / 500);
+    const cardIn = ease((t - T_CARD) / 550);
+    const route = ease((t - T_ROUTE - 500) / 1600);
+    const level = this.props.level ?? 0.8;
+    const zones = [[0, '#F4F1EA'], [0.3, '#B8952E'], [0.6, '#E08A1E'], [0.9, '#EE5A2C'], [1.2, '#FF4D4D']];
+    let zc = zones[0][1];
+    zones.forEach((z) => { if (level >= z[0]) zc = z[1]; });
+    return {
+      bg: d.bg, alt: d.alt,
+      camK: f(camKFinal, 4), camX: '0px', camY: '0px', camO: f(ox, 2) + '% ' + f(oy, 2) + '%',
+      hereX: d.hx + 'px', hereY: d.hy + 'px', hereName: d.here,
+      hereOp: f(ease((t - 600) / 500) * (1 - ease((t - T_ROUTE) / 600))),
+      herePulse: f(6 + 6 * Math.abs(Math.sin(s * 2.4)), 1) + 'px',
+      routeOp: f(ease((t - T_ROUTE - 300) / 400)), routeDash: f(520 * route, 1) + ' 700',
+      destOp: f(ease((t - T_ROUTE - 1500) / 500)), destPulse: f(0.8 + 0.5 * Math.abs(Math.sin(s * 2.4)), 3),
+      chip: phaseB || t < T_ROUTE ? 'SCENARIO · ' + timeLabel : 'ROUTE PREVIEW',
+      storyUiOp: f(storyOut * (1 - cardIn)),
+      skipOp: f(1 - cardIn),
+      stamp: cap.stamp, stampOp: f(ease((local - (phaseB ? 0 : 600)) / 300)),
+      headA: headA, headB: cap.head.slice(headA.length), capOp: f(capOut),
+      sub: cap.sub, subOp: f(subIn * capOut), subY: f((1 - subIn) * 12, 1) + 'px',
+      cardOp: f(cardIn), cardPe: cardIn > 0.5 ? 'auto' : 'none',
+      cardY: f((1 - cardIn) * 30, 1) + 'px',
+      dipOp: 0, timeUpper: timeLabel,
+      cardRouteDash: f(560 * ease((t - T_CARD - 300) / 1100), 1) + ' 600',
+      missionTitle: d.title, missionText: d.text, destName: d.dest, distance: d.dist,
+      levelText: level.toFixed(1), zoneColor: zc,
+      goT: this.state.hovGo ? 'translate(4px, 5px)' : 'translate(0px, 0px)',
+      goS: this.state.hovGo ? 'inset 0 3px 0 rgba(0,0,0,0.28)' : '4px 5px 0 rgba(0,0,0,0.65)',
+      hoverGo: () => this.setState({ hovGo: true }),
+      unhoverGo: () => this.setState({ hovGo: false }),
+      skip: () => { this.t0 = performance.now() - T_ROUTE; this.setState({ now: T_ROUTE }); },
+      start: () => { if (this.props.onStart) this.props.onStart(); else { this.t0 = performance.now(); this.setState({ now: 0, hovGo: false }); } }
+    };
+  }
+}
+</script>
+</body>
+</html>

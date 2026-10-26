@@ -1,0 +1,7 @@
+(()=>{const page=location.pathname.split('/').pop()||'index.html';const allowed=["index.html", "index.html", "lumina-case-study.html", "hashtag-case-study.html", "stratasys-case-study.html", "spaceship-case-study.html", "alcohol-case-study.html", "index-he.html", "index-he.html", "lumina-case-study-he.html", "hashtag-case-study-he.html", "stratasys-case-study-he.html", "spaceship-case-study-he.html", "alcohol-case-study-he.html"];if(!allowed.includes(page))return;if(self===top){location.replace('portfolio.html?page='+encodeURIComponent(page+location.hash));return;}const report=()=>{const color=getComputedStyle(document.body).getPropertyValue('--ng-accent').trim()||'#ff537d';parent.postMessage({ngPage:page+location.hash,title:document.title,accent:color},'*');parent.postMessage({ngMusic:'state'},'*')};addEventListener('DOMContentLoaded',report,{once:true});addEventListener('hashchange',report)})();
+// Report audible video playback without changing the user's music preference.
+(()=>{if(self===top)return;let last=false;
+function report(){const active=[...document.querySelectorAll('video')].some(v=>!v.paused&&!v.ended&&!v.muted&&v.volume>0);if(active!==last){last=active;parent.postMessage({ngVideoAudio:active},'*');}}
+['play','playing','pause','ended','volumechange','emptied'].forEach(type=>document.addEventListener(type,report,true));
+addEventListener('message',e=>{if(e.source===parent&&e.data?.ngVideoAudioRequest){last=null;report();}});addEventListener('pagehide',()=>parent.postMessage({ngVideoAudio:false},'*'));
+})();

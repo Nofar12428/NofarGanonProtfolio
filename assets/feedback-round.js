@@ -7,7 +7,7 @@
  const sec=document.getElementById('lc-product'),pin=sec?.querySelector('.ng-lc-pin');
  if(pin){
   let queued=false;
-  const place=()=>{queued=false;const fan=sec.querySelector('.lc-panel:not([hidden]) .lc-fan');if(!fan)return;const phone=fan.querySelector('.lc-screen-card[data-slot="0"]')||fan.querySelector('.lc-screen-card')||fan;const a=phone.getBoundingClientRect(),b=pin.getBoundingClientRect();const x=document.documentElement.lang==='he'?a.left-b.left-44:Math.min(b.width-28,a.right-b.left+16);pin.style.setProperty('--review-dots-x',Math.max(0,x)+'px');pin.style.setProperty('--review-dots-y',(a.top-b.top+a.height/2)+'px');};
+  const place=()=>{queued=false;const fan=sec.querySelector('.lc-panel:not([hidden]) .lc-fan');if(!fan)return;const phone=fan.querySelector('.lc-screen-card[data-slot="0"]')||fan.querySelector('.lc-screen-card')||fan;const a=phone.getBoundingClientRect(),b=pin.getBoundingClientRect();const gap=Math.max(26,Math.min(48,innerWidth*.035));const x=document.documentElement.lang==='he'?a.left-b.left-gap-28:Math.min(b.width-28,a.right-b.left+gap);pin.style.setProperty('--review-dots-x',Math.max(0,x)+'px');pin.style.setProperty('--review-dots-y',(a.top-b.top+a.height/2)+'px');};
   const q=()=>{if(!queued){queued=true;requestAnimationFrame(place);}};
   new ResizeObserver(q).observe(pin);new MutationObserver(q).observe(sec,{subtree:true,attributes:true,attributeFilter:['hidden']});addEventListener('resize',q);addEventListener('load',q);document.fonts?.ready.then(q);q();
  }

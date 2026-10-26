@@ -92,3 +92,11 @@ html:not([lang=he]) body.ng-v2 .ng-hd__name em:not(#_):not(#_):not(#_):not(#_):n
 /* English project names retain their original typography within Hebrew pages. */
 html[lang=he] body .ng-hd__name:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html[lang=he] body .ng-hd__name *:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) {font-family:'DM Sans',Arial,sans-serif!important;font-style:normal!important;font-weight:800!important;letter-spacing:-.045em!important;direction:ltr;}
 html[lang=he] body .ng-hd__name em:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html[lang=he] body .ng-hd__name em *:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) {font-family:'Playfair Display',Georgia,serif!important;font-style:italic!important;font-weight:500!important;letter-spacing:-.02em!important;}
+
+/* Size the navigation by its dots, so its center matches the phone center. */
+html body.ng-v2 #lc-product .lc-product-heading:not(#_):not(#_):not(#_):not(#_):not(#_) {display:block!important;height:max-content!important;min-height:0!important;align-self:start!important;justify-self:start!important;margin:0!important;padding:0!important;}
+html body.ng-v2 #lc-product .lc-tabs:not(#_):not(#_):not(#_):not(#_):not(#_) {margin:0!important;padding:0!important;border:0!important;}
+@media(max-width:700px) {
+ html body.ng-v2 .ng-project-navigation .ng-end__next:not(#_):not(#_):not(#_) {text-align:right!important;}
+ html body.ng-v2 .ng-project-navigation .ng-end__next .ng-end__row:not(#_):not(#_):not(#_) {justify-content:flex-end!important;}
+}

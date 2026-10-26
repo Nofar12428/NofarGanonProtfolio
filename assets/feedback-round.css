@@ -103,3 +103,9 @@ html body.ng-v2 #lc-product .lc-tabs:not(#_):not(#_):not(#_):not(#_):not(#_) {ma
 
 /* Absolute grid children must use the pin padding box, not a padded grid area. */
 html body.ng-v2 #lc-product .lc-product-heading:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) {grid-area:auto!important;}
+
+/* Mobile next-project alignment follows the page language. */
+@media(max-width:700px) {
+ html:not([lang=he]) body.ng-v2 .ng-project-navigation .ng-end__next:not(#_):not(#_):not(#_):not(#_) {text-align:left!important;}
+ html:not([lang=he]) body.ng-v2 .ng-project-navigation .ng-end__next .ng-end__row:not(#_):not(#_):not(#_):not(#_) {justify-content:flex-start!important;}
+}

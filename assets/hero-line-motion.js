@@ -12,6 +12,7 @@
   }
   target.style.width='';if(isHeading)target.textContent=source;else target.innerHTML=source;
   target.style.width='100%';
+  if(document.documentElement.lang==='he'){target.classList.add('ng-hero-he-flow');return 1;}
   const walker=document.createTreeWalker(target,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
   let index=0;nodes.forEach(node=>{const frag=document.createDocumentFragment();node.textContent.split(/(\s+)/).forEach(word=>{if(!word)return;if(/^\s+$/.test(word))frag.append(document.createTextNode(word));else{const span=document.createElement('span');span.className='ng-hero-flow-word';span.textContent=word;span.style.setProperty('--line-delay',Math.min(index++*.035,.7)+'s');frag.append(span);}});node.replaceWith(frag);});return 1;
  }

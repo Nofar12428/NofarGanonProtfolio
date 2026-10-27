@@ -20,7 +20,7 @@
   }
   previous.disabled=selected!==null||front===0;next.disabled=selected!==null||front===cards.length-1;
   reset.hidden=true;status.replaceChildren();if(selected!==null){const text=document.createElement('span');text.innerHTML='<strong>Your drink is being prepared.</strong><span>Coming right up</span>';const arrow=document.createElement('span');arrow.className='ad-preparing-arrow';arrow.setAttribute('aria-hidden','true');arrow.innerHTML='<svg viewBox="0 0 40 52" width="30" height="40" focusable="false"><path d="M8 20L20 32L32 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';status.append(text,arrow);}
-  document.dispatchEvent(new CustomEvent('ad-drink-change',{detail:{index:selected===null?front:selected,selected:selected!==null}}));hint.textContent=selected===null?'Drag to explore · Tap the center drink to choose':' ';root.classList.toggle('has-prepared-drink',selected!==null);
+  document.dispatchEvent(new CustomEvent('ad-drink-change',{detail:{index:selected===null?front:selected,selected:selected!==null}}));hint.textContent=selected===null?(document.documentElement.lang==='he'?'החליקו כדי לדפדף · לחצו על המשקה שבמרכז לבחירה':'Drag to explore · Tap the center drink to choose'):' ';root.classList.toggle('has-prepared-drink',selected!==null);
  }
  function move(delta){if(selected!==null)return;front=clamp(front+delta,0,cards.length-1);render();}
  cards.forEach((card,i)=>card.addEventListener('click',()=>{if(selected!==null||Date.now()<suppressClickUntil)return;if(i!==front){front=i;render();return;}selected=i;render();}));

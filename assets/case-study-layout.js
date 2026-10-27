@@ -171,7 +171,7 @@ document.querySelectorAll('.ng-decision-panel img[loading="lazy"]').forEach(func
 /* Each feature has a full dwell interval, including the first and last. */
 (function(){
  const sec=document.querySelector('.lc-product'),pin=sec?.querySelector('.ng-lc-pin');if(!pin)return;
- const tabs=[...sec.querySelectorAll('.lc-tabs [role=tab]')],wide=matchMedia('(min-width:901px)'),reduced=matchMedia('(prefers-reduced-motion:reduce)');
+ const tabs=[...sec.querySelectorAll('.lc-tabs [role=tab]')],wide=matchMedia('(min-width:0px)'),reduced=matchMedia('(prefers-reduced-motion:reduce)');
  let queued=false,jumping=false,timer;
  function step(){return Math.max(340,Math.min(520,innerHeight*.55));}
  function update(){queued=false;if(!wide.matches||jumping)return;const index=Math.max(0,Math.min(tabs.length-1,Math.floor(-sec.getBoundingClientRect().top/step())));sec._lcSelectFeature?.(index,false,true);}

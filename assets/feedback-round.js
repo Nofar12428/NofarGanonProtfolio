@@ -40,3 +40,11 @@
  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver'in window)){targets.forEach(e=>e.classList.add('is-visible'));return;}
  const io=new IntersectionObserver(entries=>entries.forEach(e=>{e.target.classList.toggle('is-visible',e.isIntersecting);}),{threshold:0,rootMargin:'0px 0px -12% 0px'});targets.forEach(e=>io.observe(e));
 })();
+
+(()=>{
+ const he=document.documentElement.lang==='he';
+ const arrow='<svg class="ng-ui-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18L18 6M6 6h12v12"/></svg>';
+ function replace(root){root.querySelectorAll('a,button').forEach(e=>{if(e.querySelector('.ng-ui-arrow'))return;const walk=document.createTreeWalker(e,NodeFilter.SHOW_TEXT),nodes=[];while(walk.nextNode())if(walk.currentNode.nodeValue.includes('↗'))nodes.push(walk.currentNode);nodes.forEach(n=>{const parts=n.nodeValue.split('↗'),frag=document.createDocumentFragment();parts.forEach((s,i)=>{if(i){const span=document.createElement('span');span.innerHTML=arrow;frag.append(span.firstChild);}frag.append(s);});n.replaceWith(frag);});});}
+ replace(document.body);new MutationObserver(()=>replace(document.body)).observe(document.body,{childList:true,subtree:true});
+ const footer=document.querySelector('footer');if(footer&&!document.querySelector('.ng-back-top')){const b=document.createElement('button');b.type='button';b.className='ng-back-top';b.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>'+(he?'חזרה למעלה':'Back to top')+'</span>';b.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'}));footer.append(b);}
+})();

@@ -109,3 +109,28 @@ html body.ng-v2 #lc-product .lc-product-heading:not(#_):not(#_):not(#_):not(#_):
  html:not([lang=he]) body.ng-v2 .ng-project-navigation .ng-end__next:not(#_):not(#_):not(#_):not(#_) {text-align:left!important;}
  html:not([lang=he]) body.ng-v2 .ng-project-navigation .ng-end__next .ng-end__row:not(#_):not(#_):not(#_):not(#_) {justify-content:flex-start!important;}
 }
+
+/* Mobile review: maintain natural text flow and device proportions. */
+body.ng-landing #introText .ng-hero-flow-word {display:inline-block;white-space:nowrap;animation:ng-hero-line-reveal 11s cubic-bezier(.2,.7,.1,1) var(--line-delay,0s) infinite both;}
+html body.ng-landing #introText p.lede:not(#_):not(#_):not(#_) {width:100%!important;max-width:100%!important;display:block!important;text-wrap:balance;overflow:visible;}
+html body.ng-landing #introText p.hero-roles:not(#_):not(#_) {white-space:normal!important;text-wrap:balance;}
+html body.ng-v2 .ng-hd__name {text-wrap:balance;word-break:normal;overflow-wrap:normal;}
+html body.ng-v2 .ht-laptop-screen img:not(#_):not(#_):not(#_) {display:block!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:3840 / 1520;object-fit:contain!important;transform:none!important;opacity:1!important;visibility:visible!important;}
+html body.ng-v2 .ht-laptop-screen:not(#_):not(#_) {height:auto!important;overflow:hidden;}
+.ng-back-top {display:flex;align-items:center;justify-content:center;gap:9px;margin:32px auto 0;padding:10px 18px;border:1px solid currentColor;border-radius:999px;background:transparent;color:var(--study-accent,var(--rose,#ff537d));font:inherit;font-size:13px;cursor:pointer;}
+.ng-back-top svg {width:17px;height:17px;flex:none;}
+.ng-back-top:hover {background:#ffffff0c;}
+.ng-back-top:focus-visible {outline:2px solid currentColor;outline-offset:5px;}
+.ng-ui-arrow {width:1em;height:1em;display:inline-block;vertical-align:-.12em;flex:none;}
+@media(max-width:900px) {
+ html body.ng-v2.ng-v2.ng-v2.ng-v2 main #lc-product.lc-product.ng-lc-scroll {height:var(--lc-scroll-height)!important;min-height:0!important;display:block!important;padding-block:0!important;overflow:visible!important;}
+ html body.ng-v2 #lc-product.lc-product.ng-lc-scroll .ng-lc-pin:not(#_):not(#_):not(#_):not(#_) {position:sticky!important;top:0!important;height:100svh!important;min-height:0!important;box-sizing:border-box;padding:84px 0 28px!important;overflow:hidden!important;}
+ html body.ng-v2 .ng-how[data-view=desktop] .ng-how-desk:not(#_):not(#_) {width:calc(100% - 88px)!important;margin-inline:auto!important;}
+ html body.ad-case .ad-pour-layout:not(#_):not(#_) {width:88vw!important;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)!important;gap:16px!important;margin-inline:auto!important;}
+ html body.ad-case .ad-pour-copy:not(#_):not(#_) {min-width:0;width:100%;}
+ html body.ad-case .ad-pour-copy h3:not(#_):not(#_):not(#_) {font-size:clamp(26px,7.2vw,43px)!important;line-height:1.1!important;overflow-wrap:normal!important;word-break:normal!important;text-wrap:balance;}
+ html body.ad-case .ad-pour-copy h3 em:not(#_):not(#_):not(#_) {font-size:inherit!important;}
+ html body.ng-landing #introText p.lede:not(#_):not(#_):not(#_) {font-size:clamp(23px,6.2vw,32px)!important;line-height:1.25!important;}
+}
+@media(prefers-reduced-motion:reduce){body.ng-landing #introText .ng-hero-flow-word {animation:none;transform:none;opacity:1;}}
+html body.ng-v2 .ng-how .ng-how-dots:not(#_):not(#_):not(#_):not(#_) {grid-area:auto!important;margin:0!important;padding:0!important;align-self:start!important;justify-self:start!important;}

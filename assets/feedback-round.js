@@ -48,3 +48,5 @@
  replace(document.body);new MutationObserver(()=>replace(document.body)).observe(document.body,{childList:true,subtree:true});
  const contact=document.querySelector('.ng-end__ct')||document.querySelector('#contact .inner')||document.querySelector('#contact');if(contact&&!document.querySelector('.ng-back-top')){const b=document.createElement('button');b.type='button';b.className='ng-back-top';b.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg><span>'+(he?'חזרה למעלה':'Back to top')+'</span>';b.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'}));contact.prepend(b);}
 })();
+
+(()=>{document.querySelectorAll("a.ng-try").forEach(a=>{a.target="_blank";a.rel="noopener noreferrer";});})();

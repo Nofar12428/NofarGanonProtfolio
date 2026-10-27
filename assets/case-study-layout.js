@@ -174,11 +174,12 @@ document.querySelectorAll('.ng-decision-panel img[loading="lazy"]').forEach(func
  const tabs=[...sec.querySelectorAll('.lc-tabs [role=tab]')],wide=matchMedia('(min-width:0px)'),reduced=matchMedia('(prefers-reduced-motion:reduce)');
  let queued=false,jumping=false,timer;
  function step(){return Math.max(340,Math.min(520,innerHeight*.55));}
- function update(){queued=false;if(!wide.matches||jumping)return;const index=Math.max(0,Math.min(tabs.length-1,Math.floor(-sec.getBoundingClientRect().top/step())));sec._lcSelectFeature?.(index,false,true);}
+ function firstDwell(){return Math.max(step(),innerHeight*.95);}
+ function update(){queued=false;if(!wide.matches||jumping)return;const index=Math.max(0,Math.min(tabs.length-1,(-sec.getBoundingClientRect().top<firstDwell()?0:1+Math.floor((-sec.getBoundingClientRect().top-firstDwell())/step()))));sec._lcSelectFeature?.(index,false,true);}
  function queue(){if(!queued){queued=true;requestAnimationFrame(update);}}
- function setup(){sec.classList.toggle('ng-lc-scroll',wide.matches);sec.style.setProperty('--lc-scroll-height',(innerHeight+tabs.length*step())+'px');queue();}
+ function setup(){sec.classList.toggle('ng-lc-scroll',wide.matches);sec.style.setProperty('--lc-scroll-height',(innerHeight+firstDwell()+(tabs.length-1)*step())+'px');queue();}
  function release(){clearTimeout(timer);jumping=false;queue();}
- sec.addEventListener('lc-feature-request',e=>{if(!wide.matches)return;const top=sec.getBoundingClientRect().top+scrollY+(e.detail.index+.5)*step();jumping=true;clearTimeout(timer);scrollTo({top,behavior:reduced.matches?'instant':'smooth'});timer=setTimeout(release,800);});
+ sec.addEventListener('lc-feature-request',e=>{if(!wide.matches)return;const top=sec.getBoundingClientRect().top+scrollY+(e.detail.index===0?firstDwell()*.5:firstDwell()+(e.detail.index-.5)*step());jumping=true;clearTimeout(timer);scrollTo({top,behavior:reduced.matches?'instant':'smooth'});timer=setTimeout(release,800);});
  addEventListener('scroll',queue,{passive:true});addEventListener('scrollend',release);addEventListener('wheel',()=>{if(jumping)release();},{passive:true});addEventListener('touchstart',()=>{if(jumping)release();},{passive:true});
  addEventListener('resize',setup);wide.addEventListener('change',setup);setup();
 })();

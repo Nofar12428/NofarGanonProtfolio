@@ -41,7 +41,7 @@ body.ad-case .ad-overview{padding-bottom:0!important}
 .ad-showcase-backdrop::before{inset:0;animation:none!important;transform:none!important;filter:none!important;will-change:auto;background-size:cover}
 
 /* r188: actual continuous city footage, softly blurred behind the showcase. */
-.ad-showcase-backdrop{background:#10151e url("simulation/city-background-r188.jpg") center/cover no-repeat}
+.ad-showcase-backdrop{background:#10151e url("simulation/city-background.jpg") center/cover no-repeat}
 .ad-showcase-backdrop::before{content:none!important}
 .ad-showcase-backdrop .ad-backdrop-video{position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);max-width:none;object-fit:cover;filter:blur(4px);pointer-events:none}
 .ad-showcase-backdrop::after{z-index:1;background:linear-gradient(180deg,#10151e 0%,rgba(16,21,30,.62) 20%,rgba(16,21,30,.68) 100%)}

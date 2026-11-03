@@ -268,3 +268,10 @@ html body.btl-case.ng-v2 main :is(.btl-survey>.ng-contribution-layout,.btl-surve
 html:not([dir=rtl]) body.btl-case.ng-v2 main .btl-quote:nth-of-type(even):not(#_):not(#_),
 html[dir=rtl] body.btl-case.ng-v2 main .btl-quote:nth-of-type(odd):not(#_):not(#_){left:0;position:static}
 }
+
+/* Four facts read in two consecutive pairs, following each language's reading direction. */
+html body.btl-case.ng-v2 main .btl-brief-more:not(#_):not(#_){grid-template-areas:"need challenge" "audience scope"!important}
+html body.btl-case.ng-v2 main .btl-brief-more .btl-fact-scope:not(#_):not(#_){grid-area:scope!important;grid-column:auto!important}
+@media(max-width:900px){
+html body.btl-case.ng-v2 main .btl-brief-more:not(#_):not(#_){grid-template-areas:"need" "challenge" "audience" "scope"!important}
+}

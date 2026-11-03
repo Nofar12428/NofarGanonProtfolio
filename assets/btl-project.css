@@ -1,0 +1,270 @@
+/* Between the Lines — palette and the sections only this case study has */
+body.pal-btl{--bg-tint:#26313a;--bg-base:#0a0d10;--bg-l1:#a9d3e8;--bg-l2:#6f9fc0;--ng-accent:#a9d3e8;--study-accent:#a9d3e8;--unified-accent:#a9d3e8}
+html body.ng-v2.pal-btl .ht-decision-tabs [aria-selected=true]{color:var(--ng-accent)!important}
+.pal-btl .ng-end__next{--nx:#8db5ff}
+
+/* About: two phones side by side */
+html body.ng-v2.pal-btl main .btl-mockup:not(#_){display:flex;justify-content:center;align-items:flex-end;gap:clamp(16px,2.4vw,36px)}
+html body.ng-v2.pal-btl main .btl-mockup .ng-mock-phone:not(#_){position:relative;inset:auto;transform:none;margin:0;width:clamp(150px,15vw,230px)}
+html body.ng-v2.pal-btl main .btl-mockup .btl-mock-second:not(#_){margin-bottom:clamp(24px,4vw,60px)}
+
+/* Kickers inside the extra sections */
+html body.ng-v2 main .btl-section .ng-contribution-intro .ht-kicker{display:block;margin:0 0 14px;color:var(--study-accent);font:600 12px/1.4 var(--ng-sans);letter-spacing:.14em;text-transform:uppercase}
+
+/* Market review: the apps we looked at */
+html body.ng-v2 main .btl-chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:clamp(32px,4vw,52px) 0 0;padding:0;max-width:var(--study-col,1200px)}
+html body.ng-v2 main .btl-chips li{padding:7px 14px;border:1px solid color-mix(in srgb,var(--study-accent) 45%,transparent);border-radius:999px;color:var(--study-soft,#ffffffb3);font:500 13px/1.3 var(--ng-sans)}
+
+/* Design iterations */
+html body.ng-v2 main .btl-stages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,48px);max-width:820px;margin:clamp(48px,6vw,88px) auto 0;padding:0}
+html body.ng-v2 main .btl-stages div{margin:0;text-align:center}
+html body.ng-v2 main .btl-stages img{display:block;width:100%;height:auto;border-radius:clamp(14px,1.6vw,26px);box-shadow:0 18px 50px #0007}
+html body.ng-v2 main .btl-stages figcaption{margin-top:14px;color:var(--study-accent);font:600 12px/1.4 var(--ng-sans);letter-spacing:.14em;text-transform:uppercase}
+
+/* Decision without a before/after pair */
+html body.ng-v2 main .btl-decision-figure{margin:0}
+html body.ng-v2 main .btl-decision-figure img{display:block;width:100%;height:auto;border-radius:14px}
+
+/* Evaluation: the big numbers */
+html body.ng-v2 main .btl-eval>*:not(#_){box-sizing:border-box;width:100%;max-width:var(--study-col,1200px);margin-left:0;margin-right:auto;align-self:flex-start}
+html body.ng-v2 main .btl-eval>.ng-contribution-intro p{max-width:46ch}
+html body.ng-v2 main .btl-eval>.ng-contribution-intro .ht-kicker{display:block;margin:0 0 14px;color:var(--study-accent);font:600 12px/1.4 var(--ng-sans);letter-spacing:.14em;text-transform:uppercase}
+html body.ng-v2 main .btl-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,48px);margin-top:clamp(40px,5vw,72px)!important;padding:0}
+html body.ng-v2 main .btl-stats div{display:flex;flex-direction:column-reverse;gap:10px;margin:0;padding-top:18px;border-top:1px solid #ffffff22}
+html body.ng-v2 main .btl-stats dd{margin:0;color:var(--study-accent);font:italic 500 clamp(52px,5.6vw,92px)/1 var(--ng-serif,Georgia,serif);letter-spacing:-.02em}
+html body.ng-v2 main .btl-stats dt{color:var(--study-soft,#ffffffb3);font:500 clamp(14px,1vw + 5px,17px)/1.45 var(--ng-sans)}
+html body.ng-v2 main .btl-stats .is-low dd{color:var(--ng-cream,#f4f1ea)}
+html body.ng-v2 main .btl-eval-changes .ng-contribution-intro h3{margin:0;color:#fff;font:600 clamp(22px,1.4vw + 12px,30px)/1.25 var(--ng-sans);max-width:20ch}
+
+@media(max-width:900px){
+  html body.ng-v2 main .btl-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html body.ng-v2 main .btl-stages{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  html body.ng-v2.pal-btl main .btl-mockup .ng-mock-phone:not(#_){width:clamp(120px,36vw,180px)}
+}
+.acc-lines{--ng-go:#a9d3e8}
+
+/* ---------- November 2 · second round ---------- */
+/* Opening line drawing, pinned while it draws */
+html body.ng-v2 main .btl-draw:not(#_){position:relative;height:230vh;width:100%;max-width:none;margin:0;padding:0!important;align-self:stretch}
+html body.ng-v2 main .btl-draw-pin{position:sticky;top:0;height:100svh;display:grid;place-items:center;align-content:center;gap:clamp(20px,3vh,40px);padding-inline:var(--ng-line,8vw);box-sizing:border-box;width:100%}
+html body.ng-v2 main .btl-draw-art{position:relative;width:min(100%,1080px)}
+html body.ng-v2 main .btl-draw-svg{display:block;width:100%;height:auto;overflow:visible}
+html body.ng-v2 main .btl-ln{stroke:var(--ng-cream,#f4f1ea);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+html body.ng-v2 main .btl-ln--beam{stroke:var(--study-accent);stroke-width:2}
+html body.ng-v2 main .btl-pencil{position:absolute;left:0;top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--study-accent);box-shadow:0 0 0 6px color-mix(in srgb,var(--study-accent) 25%,transparent),0 0 24px var(--study-accent);transform:translate(var(--px,0),var(--py,0));opacity:0;transition:opacity .25s}
+html body.ng-v2 main .btl-pencil.is-on{opacity:1}
+html body.ng-v2 main .btl-draw-copy{text-align:center;opacity:clamp(0,calc((var(--btl-draw,0) - .82) * 6),1);transform:translateY(calc((1 - clamp(0,calc((var(--btl-draw,0) - .82) * 6),1)) * 24px))}
+html body.ng-v2 main .btl-draw-copy .ht-kicker{display:block;margin:0 0 12px;color:var(--study-accent);font:600 12px/1.4 var(--ng-sans)!important;letter-spacing:.14em;text-transform:uppercase}
+html body.ng-v2 main .btl-draw-copy p{margin:0;color:#fff;font:600 clamp(26px,2.4vw + 10px,48px)/1.15 var(--ng-sans)!important;letter-spacing:-.02em}
+html body.ng-v2 main .btl-draw-copy p em{color:var(--study-accent);font:italic 500 1em/1 var(--ng-serif,Georgia,serif)!important}
+
+/* Need, challenge and audience: the need leads, the other two follow side by side */
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .btl-brief-more:not(#_){grid-template-areas:"need need" "challenge audience"!important;row-gap:clamp(64px,9vh,110px)!important}
+html body.ng-v2 main .btl-brief-more .btl-fact-need:not(#_){grid-area:need}
+html body.ng-v2 main .btl-brief-more .btl-fact-need .ng-fact-takeaway:not(#_){max-width:26ch!important}
+@media(max-width:900px){html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .btl-brief-more:not(#_){grid-template-areas:"need" "challenge" "audience"!important;row-gap:56px!important}}
+
+/* Market review: one moving line of apps */
+html body.ng-v2 main .btl-survey .btl-chips{display:none}
+html body.ng-v2 main .btl-marquee{display:flex;direction:ltr;width:100vw;max-width:none;margin:clamp(40px,5vw,72px) calc(50% - 50vw) 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+html body.ng-v2 main .btl-marquee-track{display:flex;flex:none;gap:14px;margin:0;padding:0 7px;list-style:none;animation:btl-marquee 48s linear infinite}
+html body.ng-v2 main .btl-marquee:hover .btl-marquee-track{animation-play-state:paused}
+html body.ng-v2 main .btl-marquee li{display:flex;align-items:baseline;gap:10px;flex:none;padding:12px 20px;border:1px solid color-mix(in srgb,var(--study-accent) 40%,transparent);border-radius:999px;white-space:nowrap}
+html body.ng-v2 main .btl-marquee b{color:#fff;font:600 15px/1.2 var(--ng-sans)!important}
+html body.ng-v2 main .btl-marquee span{color:var(--study-accent);font:500 13px/1.2 var(--ng-sans)!important}
+@keyframes btl-marquee{to{transform:translateX(-100%)}}
+@media(prefers-reduced-motion:reduce){html body.ng-v2 main .btl-marquee-track{animation:none}html body.ng-v2 main .btl-marquee{flex-wrap:wrap;-webkit-mask-image:none;mask-image:none}}
+
+/* What we crossed out */
+html body.ng-v2 main .btl-cross{display:block!important}
+html body.ng-v2 main .btl-cross-intro,html body.ng-v2 main .btl-cross-list{max-width:var(--study-col,1200px)}
+html body.ng-v2 main .btl-cross-intro .ht-kicker{display:block;margin:0 0 14px;color:var(--study-accent);font:600 12px/1.4 var(--ng-sans)!important;letter-spacing:.14em;text-transform:uppercase}
+html body.ng-v2 main .btl-cross-intro h2{margin:0 0 18px;color:#fff;font:600 clamp(36px,4.2vw,58px)/1.12 var(--ng-sans)!important;letter-spacing:-.035em}
+html body.ng-v2 main .btl-cross-intro h2 em{color:var(--study-accent);font:italic 500 1em/1.12 var(--ng-serif,Georgia,serif)!important}
+html body.ng-v2 main .btl-cross-intro p{margin:0;color:var(--study-soft);font:400 17px/1.8 var(--ng-sans)!important;max-width:44ch}
+html body.ng-v2 main .btl-cross-list{list-style:none;margin:clamp(40px,5vw,72px) 0 0;padding:0;counter-reset:none}
+html body.ng-v2 main .btl-cross-row{display:grid;grid-template-columns:56px minmax(0,1fr) minmax(0,1.25fr);gap:clamp(16px,3vw,48px);align-items:start;padding:clamp(22px,3vw,34px) 0;border-top:1px solid #ffffff1c}
+html body.ng-v2 main .btl-cross-row:last-child{border-bottom:1px solid #ffffff1c}
+html body.ng-v2 main .btl-cross-num{color:var(--study-accent);font:italic 500 26px/1 var(--ng-serif,Georgia,serif)!important}
+html body.ng-v2 main .btl-cross-row small{display:block;margin:0 0 8px;color:var(--study-soft);font:600 11px/1.4 var(--ng-sans)!important;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+html body.ng-v2 main .btl-cross-was s{position:relative;display:inline;text-decoration:none;color:var(--study-soft);font:500 clamp(18px,.8vw + 12px,24px)/1.35 var(--ng-sans)!important;transition:color .6s ease .5s}
+html body.ng-v2 main .btl-cross-was s::after{content:"";position:absolute;inset-inline:-4px;top:55%;height:2px;background:var(--study-accent);border-radius:2px;transform:scaleX(0);transform-origin:left center;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+html[dir=rtl] body.ng-v2 main .btl-cross-was s::after{transform-origin:right center}
+html body.ng-v2 main .btl-cross-row.is-crossed .btl-cross-was s{color:color-mix(in srgb,var(--study-soft) 55%,transparent)}
+html body.ng-v2 main .btl-cross-row.is-crossed .btl-cross-was s::after{transform:scaleX(1)}
+html body.ng-v2 main .btl-cross-now strong{display:block;color:#fff;font:600 clamp(18px,.8vw + 12px,24px)/1.35 var(--ng-sans)!important}
+html body.ng-v2 main .btl-cross-now p{margin:8px 0 0;color:var(--study-soft);font:400 16px/1.7 var(--ng-sans)!important;max-width:46ch}
+@media(max-width:700px){html body.ng-v2 main .btl-cross-row{grid-template-columns:36px minmax(0,1fr);row-gap:14px}html body.ng-v2 main .btl-cross-now{grid-column:2}}
+
+/* Evaluation numbers stay on one row */
+html body.ng-v2 main .btl-stats:not(#_){grid-template-columns:repeat(4,minmax(0,1fr))!important}
+@media(max-width:900px){
+ html body.ng-v2 main .btl-stats:not(#_){gap:12px}
+ html body.ng-v2 main .btl-stats dd:not(#_){font-size:clamp(26px,8vw,52px)}
+ html body.ng-v2 main .btl-stats dt:not(#_){font-size:12px}
+}
+
+/* Visitors' words, alternating sides, lit word by word with the scroll */
+html body.ng-v2 main .btl-quotes{display:flex;flex-direction:column;gap:clamp(56px,9vh,110px);margin-top:clamp(96px,14vh,170px)}
+html body.ng-v2 main .btl-quotes>.ht-kicker{color:var(--study-accent);font:600 12px/1.4 var(--ng-sans)!important;letter-spacing:.14em;text-transform:uppercase;margin-bottom:-24px}
+html body.ng-v2 main .btl-quote{margin:0;max-width:min(62%,700px)}
+html body.ng-v2 main .btl-quote:nth-of-type(even){align-self:flex-end;text-align:end}
+html body.ng-v2 main .btl-quote blockquote{margin:0}
+html body.ng-v2 main .btl-quote blockquote p{margin:0;color:#fff;font:500 clamp(24px,1.7vw + 12px,42px)/1.25 var(--ng-sans)!important;letter-spacing:-.02em}
+html body.ng-v2 main .btl-quote blockquote p::before{content:"“";color:var(--study-accent);font-family:var(--ng-serif,Georgia,serif)}
+html body.ng-v2 main .btl-quote blockquote p::after{content:"”";color:var(--study-accent);font-family:var(--ng-serif,Georgia,serif)}
+html body.ng-v2 main .btl-quote figcaption{margin-top:14px;color:var(--study-accent);font:500 13px/1.4 var(--ng-sans)!important;letter-spacing:.06em}
+@media(max-width:900px){html body.ng-v2 main .btl-quote{max-width:88%}}
+html body.ng-v2 main .btl-eval-changes{margin-top:clamp(96px,14vh,170px)!important}
+
+html body.ng-v2 main :is(.btl-quote blockquote p,.btl-draw-copy p,.btl-cross-now p,.btl-cross-intro p):not(#_){max-width:none}
+html body.ng-v2 main .btl-quote blockquote p:not(#_){color:#fff!important}
+
+/* Hebrew: the rows and quotes follow the reading direction */
+html[dir=rtl] body.ng-v2 main :is(.btl-cross,.btl-quotes,.btl-cross-row):not(#_){direction:rtl;text-align:right!important}
+html[dir=rtl] body.ng-v2 main .btl-quote:nth-of-type(even):not(#_){text-align:left!important}
+html[dir=rtl] body.ng-v2 main .btl-quote:nth-of-type(even) blockquote p:not(#_){text-align:left!important}
+html[dir=rtl] body.ng-v2 main .btl-quote blockquote p::before,html[dir=rtl] body.ng-v2 main .btl-quote blockquote p::after{content:'"'}
+/* About: one desktop screen with the walkthrough video */
+html body.ng-v2 main .btl-mockup-desk .ng-mock-desk:not(#_){width:100%;max-width:820px;margin-inline:auto}
+html body.ng-v2 main .btl-mockup-desk .ng-mock-desk video:not(#_){display:block;width:100%;height:auto;aspect-ratio:16 / 10;border-radius:8px;background:#f4f2ee}
+/* The strike stays light so the dropped option is still easy to read */
+html body.ng-v2 main .btl-cross-was s:not(#_)::after{height:1.5px;top:58%;opacity:.7;transition:transform .9s cubic-bezier(.65,0,.35,1) .35s}
+html body.ng-v2 main .btl-cross-row.is-crossed .btl-cross-was s:not(#_){color:var(--study-soft)}
+/* Hebrew hero reads בין הקווים */
+/* Evaluation intro and quotes follow the reading side in Hebrew */
+html[dir=rtl] body.ng-v2 main .btl-eval>.ng-contribution-intro:not(#_),html[dir=rtl] body.ng-v2 main .btl-eval>.ng-contribution-intro p:not(#_){text-align:right!important;margin-inline:0 auto}
+html[dir=rtl] body.ng-v2 main .btl-quote:nth-of-type(even):not(#_),html[dir=rtl] body.ng-v2 main .btl-quote:nth-of-type(even) blockquote p:not(#_),html[dir=rtl] body.ng-v2 main .btl-quote:not(#_) figcaption{text-align:right!important}
+/* Numbers and their labels are centred together */
+html body.ng-v2 main .btl-stats div:not(#_){align-items:center;text-align:center}
+html body.ng-v2 main .btl-stats dt:not(#_),html body.ng-v2 main .btl-stats dd:not(#_){text-align:center!important}
+/* The navigation line runs across the page, with its point in blue */
+html body.ng-v2 main .btl-eval-changes:not(#_){display:block!important}
+html body.ng-v2 main .btl-eval-changes>.ng-contribution-intro:not(#_){max-width:none!important;margin:0 0 clamp(32px,4vw,56px)!important}
+html body.ng-v2 main .btl-eval-changes .ng-contribution-intro h3:not(#_){max-width:none!important}
+html body.ng-v2 main .btl-eval-changes .ng-contribution-intro h3 em:not(#_){font-style:normal;color:var(--study-accent)}
+html[dir=rtl] body.ng-v2 main .btl-eval>.ng-contribution-intro p:not(#_){margin-left:auto!important;margin-right:0!important}
+html body.ng-v2 main .btl-stats div:not(#_){justify-content:flex-end}
+/* English: the quotes on the right still read from their left edge */
+html:not([dir=rtl]) body.ng-v2 main .btl-quote:nth-of-type(even):not(#_),html:not([dir=rtl]) body.ng-v2 main .btl-quote:nth-of-type(even) blockquote p:not(#_){text-align:left!important}
+/* How it works: the rights note under the first two steps */
+html body.ng-v2 main .ng-how-step p.btl-how-note:not(#_){margin-top:14px!important;font-size:14px!important;line-height:1.6!important;opacity:.85}
+html body.ng-v2 main .ng-how-step p.btl-how-note strong:not(#_){font-weight:700;color:var(--study-ink,currentColor)}
+/* How it works: an iPhone with its status bar and home indicator; every part scales with the phone's width */
+html body.btl-case.ng-v2 main .ng-how-phone:not(#_){container-type:inline-size;position:relative;display:flex;flex-direction:column;aspect-ratio:250/555;padding:calc(var(--btl-pw,250px) * .04);border-radius:calc(var(--btl-pw,250px) * .168);background:linear-gradient(160deg,#4a4e57,#1c1e23 45%,#2c2f36);box-shadow:0 0 0 1.5px rgba(255,255,255,.32),inset 0 0 0 2px rgba(255,255,255,.1),0 26px 60px rgba(0,0,0,.5)}
+html body.btl-case.ng-v2 main .ng-how-phone .btl-phone-bar:not(#_){flex:0 0 12cqw;display:flex;align-items:center;justify-content:space-between;padding:0 8cqw 0 8.8cqw;background:#f9f7f5;border-radius:12.8cqw 12.8cqw 0 0;color:#000;font:600 4.4cqw/1 var(--ng-sans);direction:ltr}
+html body.btl-case.ng-v2 main .ng-how-phone .btl-phone-island:not(#_){width:24.8cqw;height:7.2cqw;border-radius:4cqw;background:#000}
+html body.btl-case.ng-v2 main .ng-how-phone .btl-phone-icons:not(#_){display:flex;align-items:flex-end;gap:.8cqw;height:4cqw}
+html body.btl-case.ng-v2 main .ng-how-phone .btl-phone-icons i:not(#_){width:1.2cqw;background:#000;border-radius:.4cqw}
+html body.btl-case.ng-v2 main .ng-how-phone .btl-phone-icons i:nth-child(1):not(#_){height:2cqw}
+html body.btl-case.ng-v2 main .ng-how-phone .btl-phone-icons i:nth-child(2):not(#_){height:2.8cqw}
+html body.btl-case.ng-v2 main .ng-how-phone .btl-phone-icons i:nth-child(3):not(#_){height:3.6cqw}
+html body.btl-case.ng-v2 main .ng-how-phone .btl-phone-icons b:not(#_){width:6.8cqw;height:3.6cqw;margin-left:1.6cqw;border-radius:1.2cqw;background:#000;box-shadow:0 0 0 .4cqw #f9f7f5,0 0 0 .8cqw #000}
+html body.btl-case.ng-v2 main .ng-how-phone .ng-how-media:not(#_){flex:1 1 auto;min-height:0;width:100%;height:auto;object-fit:cover;object-position:center top;background:#f3f2ee;border-radius:0 0 12.8cqw 12.8cqw}
+html body.btl-case.ng-v2 main .ng-how-phone .btl-phone-home:not(#_){position:absolute;left:50%;bottom:5.6cqw;width:33.6cqw;height:1.6cqw;margin-left:-16.8cqw;border-radius:1.2cqw;background:#fff;mix-blend-mode:difference;opacity:.9;pointer-events:none}
+/* Key decisions: real screens, at phone size */
+html body.ng-v2 main .btl-decision-figure figcaption:not(#_){margin-top:12px;color:var(--study-soft);font:400 14px/1.5 var(--ng-sans);text-align:center}
+html body.ng-v2 main .btl-decision-figure img:not(#_){border-radius:14px}
+html body.ng-v2 main .ng-decision-panel .btl-decision-phone img:not(#_):not(#_){width:auto;max-width:100%;max-height:none;height:min(max(var(--btl-fig-h,540px),560px),calc(100svh - 140px));margin:0 auto;border-radius:0;box-shadow:none}
+html body.ng-v2 main .btl-decision-panel .ng-compare-stage img:not(#_),html body.ng-v2 main #btl-panel-0 .ng-compare-stage img:not(#_){object-fit:cover;object-position:top}
+
+/* Key decisions: the before/after reaches the end of the explanation, and the line runs edge to edge */
+html body.btl-case.ng-v2 main .ht-key-panel .ng-compare-unified:not(#_):not(#_):not(#_){width:min(100%,calc(var(--btl-fig-h,540px) * var(--compare-ratio)))!important}
+html body.btl-case.ng-v2 main .ht-key-panel .ng-compare-stage:not(#_){overflow:visible}
+html body.btl-case.ng-v2 main .ht-key-panel .ng-compare-after:not(#_){display:block}
+html body.btl-case.ng-v2 main .ht-key-panel .ng-compare-divider:not(#_){left:var(--split)}
+/* Market review: equal space between the three findings, whatever the length of each line */
+@media (min-width:901px){
+html body.ng-v2 main .btl-survey .ng-contribution-list:not(#_):not(#_){display:flex!important;justify-content:space-between;gap:48px}
+html body.ng-v2 main .btl-survey .ng-contribution-list li:not(#_):not(#_){flex:0 1 auto;max-width:30%;width:auto}
+html body.ng-v2 main .btl-survey .ng-contribution-list li:not(#_):not(#_):not(#_){width:var(--btl-snug,auto)}
+}
+/* Evaluation: a number turns to the project blue under the pointer */
+html body.ng-v2 main .btl-stats dd:not(#_):not(#_){transition:color .3s ease}
+html body.ng-v2 main .btl-stats div:hover dd:not(#_):not(#_),html body.ng-v2 main .btl-stats div:focus-within dd:not(#_):not(#_){color:var(--study-accent)!important}
+/* About: the scope of the app, with its footnote */
+html body.ng-v2 main .btl-fact-scope .btl-about-scope:not(#_){margin:18px 0 0!important;color:var(--study-soft);font:400 18px/1.6 var(--ng-sans)}
+html body.ng-v2 main .btl-fact-scope .btl-about-note:not(#_){margin:10px 0 0!important;max-width:44ch;color:var(--study-soft);opacity:.8;font:400 14px/1.6 var(--ng-sans)}
+/* Evaluation: keep the last words of a label together */
+html body.ng-v2 main .btl-stats .btl-nb:not(#_){display:block;white-space:nowrap}
+html body.ng-v2 main .btl-brief-more .btl-fact-scope:not(#_){grid-column:1/-1}
+html body.ng-v2 main .btl-fact-scope .btl-about-scope:not(#_){margin-top:0!important}
+/* Evaluation, phones: the quotes become a sideways carousel, one quote at a time */
+html body.ng-v2 main .btl-quotes-track{display:contents}
+html body.ng-v2 main .btl-quotes-dots{display:none}
+@media (max-width:900px){
+html body.ng-v2 main .btl-quotes .btl-quotes-track:not(#_){display:flex;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -16px;padding:0 16px 4px;scroll-padding:0 16px}
+html body.ng-v2 main .btl-quotes .btl-quotes-track::-webkit-scrollbar{display:none}
+html body.ng-v2 main .btl-quotes .btl-quote:not(#_):not(#_){flex:0 0 86%;max-width:none;align-self:stretch;scroll-snap-align:start;padding:22px 20px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(255,255,255,.03)}
+html:not([dir=rtl]) body.ng-v2 main .btl-quotes .btl-quote:not(#_):not(#_),html:not([dir=rtl]) body.ng-v2 main .btl-quotes .btl-quote:not(#_):not(#_) blockquote p,html:not([dir=rtl]) body.ng-v2 main .btl-quotes .btl-quote:not(#_):not(#_) figcaption{text-align:left!important}
+html[dir=rtl] body.ng-v2 main .btl-quotes .btl-quote:not(#_):not(#_),html[dir=rtl] body.ng-v2 main .btl-quotes .btl-quote:not(#_):not(#_) blockquote p,html[dir=rtl] body.ng-v2 main .btl-quotes .btl-quote:not(#_):not(#_) figcaption{text-align:right!important}
+html body.ng-v2 main .btl-quotes .btl-quote blockquote p:not(#_):not(#_){font-size:22px!important}
+html body.ng-v2 main .btl-quotes .btl-quotes-dots:not(#_){display:flex;justify-content:center;gap:10px;margin-top:4px}
+html body.ng-v2 main .btl-quotes-dots button:not(#_){width:9px;height:9px;padding:0;border:1.5px solid rgba(255,255,255,.6);border-radius:50%;background:transparent;cursor:pointer;transition:background .25s,transform .25s}
+html body.ng-v2 main .btl-quotes-dots button[aria-current="true"]:not(#_){background:var(--study-accent);border-color:var(--study-accent);transform:scale(1.2)}
+}
+/* Contact: the LinkedIn icon takes the project blue under the pointer */
+html body.ng-v2 a[href*="linkedin.com"]:not(#_) svg{transition:color .25s ease,stroke .25s ease}
+html body.ng-v2 a[href*="linkedin.com"]:is(:hover,:focus-visible):not(#_),html body.ng-v2 a[href*="linkedin.com"]:is(:hover,:focus-visible):not(#_) svg{color:var(--study-accent)!important;stroke:var(--study-accent)!important}
+/* Phones: more air before "What we crossed out", and the crossed-out options wrap inside the screen */
+@media (max-width:900px){
+html body.ng-v2 main .btl-cross:not(#_):not(#_){margin-top:clamp(96px,22vw,140px)!important}
+html body.ng-v2 main .btl-cross-was s:not(#_):not(#_){white-space:normal;display:inline}
+html body.ng-v2 main .btl-cross-row :is(.btl-cross-was,.btl-cross-now):not(#_){min-width:0}
+}
+/* Phones: more air between the sections */
+@media (max-width:900px){
+html body.btl-case.ng-v2 main :is(.btl-brief-more,.btl-survey,.ng-how,.ht-key-decisions,.btl-eval,.btl-closing):not(#_):not(#_){margin-top:140px!important}
+html body.btl-case.ng-v2 .ng-end:not(#_):not(#_){margin-top:160px!important}
+}
+@media (max-width:900px){
+html body.btl-case.ng-v2 main .btl-survey:not(#_):not(#_):not(#_){margin-top:20px!important}
+html body.btl-case.ng-v2 main .btl-closing:not(#_):not(#_):not(#_){margin-top:60px!important}
+}
+/* Phones: the "In their words" label sits close to its cards */
+@media (max-width:900px){
+html body.ng-v2 main .btl-quotes:not(#_):not(#_){gap:18px}
+html body.ng-v2 main .btl-quotes>.ht-kicker:not(#_):not(#_){margin-bottom:0}
+}
+/* Phones: the four results as a 2 × 2 grid, with room for the numbers and their labels */
+@media (max-width:900px){
+html body.ng-v2 main .btl-stats:not(#_):not(#_){grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:36px 20px}
+html body.ng-v2 main .btl-stats div:not(#_):not(#_){gap:8px;padding-top:20px;justify-content:flex-start}
+html body.ng-v2 main .btl-stats dd:not(#_):not(#_){font-size:clamp(44px,13vw,60px)}
+html body.ng-v2 main .btl-stats dt:not(#_):not(#_){font-size:14px;line-height:1.4;max-width:16ch}
+html body.ng-v2 main .btl-stats .btl-nb:not(#_):not(#_){display:inline;white-space:normal}
+}
+/* Hebrew: the results read from the right, like the rest of the page */
+html[dir=rtl] body.ng-v2 main .btl-stats:not(#_):not(#_){direction:rtl}
+/* QA: keep all three hero tags visible on narrow phones. */
+@media(max-width:400px){
+html body.btl-case.ng-v2 .ng-hd__tags:not(#_):not(#_){flex-wrap:wrap!important;justify-content:center;gap:8px!important;max-width:100%;width:100%;padding-inline:8px;box-sizing:border-box}
+html body.btl-case.ng-v2 .ng-hd__tags li:not(#_):not(#_){flex:0 0 auto;max-width:100%;font-size:10px!important;padding:6px 10px!important}
+}
+/* A full-width marquee must not add the scrollbar width to the document. */
+html body.btl-case.ng-v2 .btl-marquee:not(#_):not(#_){width:100%;max-width:100%;margin-inline:0;overflow:hidden}
+/* Fit the whole phone below the longest caption on shorter mobile screens. */
+@media(max-width:900px){
+html body.btl-case.ng-v2 main .ng-how-phone:not(#_):not(#_){width:min(210px,calc(min(42svh,380px) * 9 / 20.5),var(--btl-fit-width,210px))}
+}
+@media(max-width:900px) and (max-height:740px){
+html body.btl-case.ng-v2 main .ng-how-pin:not(#_):not(#_){padding-top:76px;row-gap:14px}
+}
+
+/* Review: Hebrew title keeps one typeface and weight, with colour as the emphasis. */
+html[lang=he] body.btl-case.ng-v2 .ng-hd__name em,
+html[lang=he] body.btl-case.ng-v2 .ng-hd__name em .w{font-family:inherit!important;font-weight:inherit!important;font-style:normal!important;letter-spacing:inherit!important}
+/* Desktop quotes alternate at the content edges; right-hand quotes stay at the right edge. */
+@media(min-width:901px){
+html:not([dir=rtl]) body.btl-case.ng-v2 main .btl-quote:nth-of-type(even):not(#_):not(#_),
+html[dir=rtl] body.btl-case.ng-v2 main .btl-quote:nth-of-type(odd):not(#_):not(#_){width:min(42%,600px)!important;max-width:min(42%,600px)!important;margin-left:auto!important;margin-right:0!important;align-self:flex-end!important;position:relative;left:clamp(20px,3vw,60px)}
+}
+/* Shared case-study grid: custom sections use the same content origin as the brief, gallery and decisions. */
+@media(min-width:901px){
+html body.btl-case.ng-v2 main .btl-section:not(#_):not(#_){padding-left:var(--ng-line,8vw)!important;padding-right:var(--ng-line,8vw)!important}
+}
+html body.btl-case.ng-v2 main :is(.btl-survey>.ng-contribution-layout,.btl-survey>.btl-marquee,.btl-cross>.btl-cross-intro,.btl-cross>.btl-cross-list,.btl-eval>*,.btl-closing>.ng-contribution-layout):not(#_):not(#_){box-sizing:border-box;width:100%!important;max-width:var(--study-col,1200px)!important;margin-left:0!important;margin-right:auto!important}
+@media(min-width:901px){
+html:not([dir=rtl]) body.btl-case.ng-v2 main .btl-quote:nth-of-type(even):not(#_):not(#_),
+html[dir=rtl] body.btl-case.ng-v2 main .btl-quote:nth-of-type(odd):not(#_):not(#_){left:0;position:static}
+}

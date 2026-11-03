@@ -18,7 +18,7 @@
  });
  // The bold takeaway fills word by word with the scroll, in the document's reading order.
  const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
- const headings=[...document.querySelectorAll('.ng-brief-more :is(.ng-fact-challenge,.ng-fact-audience) .ng-fact-takeaway')];
+ const headings=[...document.querySelectorAll('.ng-brief-more :is(.ng-fact-challenge,.ng-fact-audience,.btl-fact-need) .ng-fact-takeaway, .btl-quote blockquote p')];
  headings.forEach(h=>{
   h.classList.remove('ng-review-reveal','cs-scrub');h.classList.add('ng-word-reveal');
   const walker=document.createTreeWalker(h,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
@@ -26,6 +26,7 @@
  });
  let wordQueued=false;
  function lightWords(){wordQueued=false;const vh=innerHeight;headings.forEach(h=>{
+  if(h.closest('.btl-quotes.is-carousel'))return;
   const words=[...h.querySelectorAll('.ng-reveal-word')],rect=h.getBoundingClientRect();
   const progress=reduced?1:Math.max(0,Math.min(1,(vh*.88-rect.top)/(vh*.34)));
   words.forEach((word,i)=>{const lit=Math.max(0,Math.min(1,progress*(words.length+2)-i));word.style.setProperty('--word-light',(0.2+0.8*lit).toFixed(3));});
@@ -34,7 +35,7 @@
  addEventListener('scroll',queueWords,{passive:true});addEventListener('resize',queueWords);document.fonts?.ready.then(queueWords);lightWords();
  // Let the main thought arrive first and its supporting explanation follow gently.
  const targets=[];
- document.querySelectorAll('.ng-brief-more :is(.ng-fact-challenge,.ng-fact-audience)').forEach(article=>{
+ document.querySelectorAll('.ng-brief-more :is(.ng-fact-challenge,.ng-fact-audience,.btl-fact-need)').forEach(article=>{
   article.querySelectorAll('.ng-fact-label,.ng-fact-detail').forEach((e,i)=>{e.classList.remove('cs-scrub');e.classList.add('ng-review-reveal');e.style.transitionDelay=(i*110)+'ms';targets.push(e);});
  });
  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver'in window)){targets.forEach(e=>e.classList.add('is-visible'));return;}

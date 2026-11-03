@@ -1,6 +1,9 @@
 /* Language links remain independent of the existing header and project artwork. */
 (()=>{
- const he=document.documentElement.lang==='he',base=(location.pathname.split('/').pop()||'index.html').replace('-he.html','.html');
+ const he=document.documentElement.lang==='he';
+ /* The page's own English link names it, so switching keeps you on the same page wherever it is served from. */
+ const own=document.querySelector('.ng-language-switch [data-language="en"]'),ownHref=own&&own.getAttribute('href');
+ const base=(ownHref&&/^[\w-]+\.html$/.test(ownHref)?ownHref:(location.pathname.split('/').pop()||'index.html')).replace('-he.html','.html');
  const switcher=document.querySelector('.ng-language-switch');
  if(switcher){
   switcher.setAttribute('aria-label',he?'שפת האתר':'Website language');
@@ -20,7 +23,7 @@
   if(el.closest?.('.ng-language-switch'))return;
   for(const key of ['aria-label','title','alt']){const value=el.getAttribute(key);if(!value)continue;let next=translate(value);if(next===value){for(const prefix of ['Select ','Show '])if(value.startsWith(prefix))next=(prefix==='Select '?'בחירת ':'הצגת ')+translate(value.slice(prefix.length));}if(next!==value)el.setAttribute(key,next);}
   if(el.tagName==='A'){
-   const href=el.getAttribute('href');if(href&&!/^(?:[a-z]+:|\/|#)/i.test(href)&&/^(?:index|home|lumina-case-study|hashtag-case-study|stratasys-case-study|spaceship-case-study|alcohol-case-study)\.html(?:[?#]|$)/.test(href))el.setAttribute('href',href.replace('.html','-he.html'));
+   const href=el.getAttribute('href');if(href&&!/^(?:[a-z]+:|\/|#)/i.test(href)&&/^(?:index|home|lumina-case-study|hashtag-case-study|stratasys-case-study|spaceship-case-study|alcohol-case-study|between-the-lines-case-study)\.html(?:[?#]|$)/.test(href))el.setAttribute('href',href.replace('.html','-he.html'));
   }
  }
  function arrowLink(el){

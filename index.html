@@ -22,7 +22,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--room);color:var(--cream);font-family:var(--f-sans);overflow-x:hidden}
+body{margin:0;background:var(--room);color:var(--cream);font-family:var(--f-sans);overflow-x:clip}
 a{color:inherit;text-decoration:none}
 a:focus-visible,button:focus-visible{outline:2px solid var(--honey);outline-offset:3px}
 .pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -429,14 +429,65 @@ function show(i, dir){
 }
 /* scrolling through the section moves from project to project; a dot scrolls to its project */
 const workSec = document.getElementById('work');
-const span = () => workSec.offsetHeight - innerHeight;
-function goTo(i){ scrollTo({ top: workSec.offsetTop + span() * (i + .5) / slides.length, behavior: RM ? 'auto' : 'smooth' }); }
+// Keep one project on screen per deliberate scroll gesture.
+const workTop = () => workSec.getBoundingClientRect().top + scrollY;
+const span = () => Math.max(1, workSec.offsetHeight - innerHeight);
+workSec.style.height = `calc(100svh + ${slides.length} * 70svh)`;
+let projectBusyUntil = 0, projectWheelAt = 0;
+const projectTarget = i => workTop() + span() * (i + .5) / slides.length;
+function goTo(i){
+  i = Math.max(0, Math.min(slides.length - 1, i));
+  projectBusyUntil = performance.now() + (RM ? 180 : 850);
+  show(i, i > current ? 1 : -1);
+  scrollTo({top: projectTarget(i), behavior: RM ? 'auto' : 'smooth'});
+}
 function fromScroll(){
-  const p = Math.min(1, Math.max(0, (scrollY - workSec.offsetTop) / span()));
+  if (performance.now() < projectBusyUntil) return;
+  const p = Math.min(1, Math.max(0, (scrollY - workTop()) / span()));
   const i = Math.min(slides.length - 1, Math.floor(p * slides.length));
   if (i !== current) show(i, i > current ? 1 : -1);
 }
-addEventListener('scroll', fromScroll, { passive: true });
+function stepProject(direction, event){
+  const top = workSec.getBoundingClientRect().top;
+  if (top > 2 || top < -span() - 2) return false;
+  const now = performance.now();
+  const next = current + direction;
+  if (now < projectBusyUntil) { if (event.cancelable) event.preventDefault(); return true; }
+  if (next < 0 || next >= slides.length) return false;
+  if (event.cancelable) event.preventDefault();
+  goTo(next);
+  return true;
+}
+addEventListener('wheel', event => {
+  if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) return;
+  const now = performance.now(), momentum = now - projectWheelAt < 160;
+  projectWheelAt = now;
+  if (momentum && now < projectBusyUntil + 180) {
+    const top = workSec.getBoundingClientRect().top;
+    if (top <= 2 && top >= -span() - 2 && event.cancelable) event.preventDefault();
+    return;
+  }
+  stepProject(Math.sign(event.deltaY), event);
+}, {passive:false});
+let projectTouchY = null, projectTouchStepped = false;
+addEventListener('touchstart', event => {
+  projectTouchY = event.touches.length === 1 ? event.touches[0].clientY : null;
+  projectTouchStepped = false;
+}, {passive:true});
+addEventListener('touchmove', event => {
+  if (projectTouchY === null || event.touches.length !== 1) return;
+  const delta = projectTouchY - event.touches[0].clientY;
+  if (Math.abs(delta) < 18) return;
+  if (projectTouchStepped) { if(event.cancelable) event.preventDefault(); return; }
+  projectTouchStepped = stepProject(Math.sign(delta), event);
+}, {passive:false});
+addEventListener('touchend', () => { projectTouchY = null; projectTouchStepped = false; }, {passive:true});
+addEventListener('keydown', event => {
+  if (event.target.closest('input,textarea,select,[contenteditable="true"]')) return;
+  if (['ArrowDown','PageDown','ArrowUp','PageUp'].includes(event.key)) stepProject(['ArrowDown','PageDown'].includes(event.key) ? 1 : -1, event);
+});
+addEventListener('scroll', fromScroll, {passive:true});
+addEventListener('resize', fromScroll, {passive:true});
 show(0);
 /* the first time the projects come into view, the first card's copy slides out too */
 const showIO = new IntersectionObserver(es => { if (es[0].isIntersecting) { showIO.disconnect(); reveal(slides[current], 250); } }, { threshold: .45 });

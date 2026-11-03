@@ -23,7 +23,7 @@
   if(el.closest?.('.ng-language-switch'))return;
   for(const key of ['aria-label','title','alt']){const value=el.getAttribute(key);if(!value)continue;let next=translate(value);if(next===value){for(const prefix of ['Select ','Show '])if(value.startsWith(prefix))next=(prefix==='Select '?'בחירת ':'הצגת ')+translate(value.slice(prefix.length));}if(next!==value)el.setAttribute(key,next);}
   if(el.tagName==='A'){
-   const href=el.getAttribute('href');if(href&&!/^(?:[a-z]+:|\/|#)/i.test(href)&&/^(?:index|home|lumina-case-study|hashtag-case-study|stratasys-case-study|spaceship-case-study|alcohol-case-study|between-the-lines-case-study)\.html(?:[?#]|$)/.test(href))el.setAttribute('href',href.replace('.html','-he.html'));
+   const href=el.getAttribute('href');if(href&&!/^(?:[a-z]+:|\/|#)/i.test(href)&&/^(?:index|home|lumina-case-study|hashtag-case-study|stratasys-case-study|spaceship-case-study|alcohol-case-study)\.html(?:[?#]|$)/.test(href))el.setAttribute('href',href.replace('.html','-he.html'));
   }
  }
  function arrowLink(el){

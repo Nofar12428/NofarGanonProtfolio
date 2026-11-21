@@ -1,0 +1,8 @@
+(()=>{
+ const he=document.documentElement.lang==='he',suffix=he?'-he':'';
+ const projects=[['between-the-lines',he?'בין הקווים':'Between the Lines',he?'אפיון ועיצוב UX/UI · פיתוח Web':'UX/UI Design · Web Development','#a9d3e8'],['lumina','Lumina Cast','UX/UI Design · Prototyping','#9bfb72'],['spaceship','Journey to the Spaceship','Game Design · UX/UI Design · Unity / C#','#f7d35a'],['alcohol','Alcohol Driving Simulation','Game Design · UX/UI Design · Unity / C#','#c6ff4a'],['hashtag','Hashtag#','UX/UI Design · Web Design · Prototyping','#e883b7'],['stratasys','Stratasys Feedback Copilot','Product Definition · UX/UI Design · AI Prototyping','#7cd8f0']];
+ const slug=(location.pathname.match(/\/([a-z-]+)-case-study/)||[])[1],index=projects.findIndex(p=>p[0]===slug),nav=document.querySelector('.ng-project-navigation');
+ if(index>=0&&nav){[['previous',projects[(index-1+projects.length)%projects.length]],['next',projects[(index+1)%projects.length]]].forEach(([direction,p])=>{const a=nav.querySelector('.ng-end__'+direction);if(!a)return;a.href=p[0]+'-case-study'+suffix+'.html';a.style.setProperty('--nx',p[3]);a.querySelector('b').textContent=p[1];const small=a.querySelector('small');if(small)small.textContent=p[2];const label=a.querySelector('.ng-end__k');if(label)label.textContent=direction==='next'?(he?'הפרויקט הבא':'Next project'):(he?'הפרויקט הקודם':'Previous project');});}
+ // A restrained blue belongs to the museum project, including its landing-card treatment.
+ document.querySelectorAll('.slide[data-project="between-the-lines"]').forEach(e=>{e.style.setProperty('--project-accent','#a9d3e8');const img=e.querySelector('figure img');if(img){img.style.objectFit='cover';img.style.background='#f4f2ee';}});
+})();

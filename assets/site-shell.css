@@ -1,0 +1,372 @@
+/* Shared shell for every case study: the landing page's nav pill, an "Up next" turntable to pick the next project,
+   a zoom-into-the-record / eye-opening transition, and text reveals. Painted in each project's accent (--unified-accent). */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..800&family=Playfair+Display:ital,wght@0,800;1,500&display=swap");
+
+:root{
+  --ng-ink:#0B0E14;
+  --ng-cream:#F7FAFC;
+  --ng-soft:rgba(247,250,252,.72);
+  --ng-sans:"DM Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ng-serif:"Playfair Display",Georgia,"Times New Roman",serif;
+}
+body{--ng-accent:var(--unified-accent,#FF537D)}
+
+/* ---------- nav pill ---------- */
+.ng-nav{position:fixed;z-index:1000;top:env(safe-area-inset-top,0px);left:0;right:0;padding:18px max(16px,env(safe-area-inset-right,0px)) 18px max(16px,env(safe-area-inset-left,0px));display:flex;justify-content:center;pointer-events:none;font-family:var(--ng-sans)}
+.ng-nav ul{pointer-events:auto;display:flex;gap:4px;list-style:none;margin:0;padding:5px;border-radius:999px;background:rgba(11,14,20,.78);border:1px solid rgba(255,255,255,.14);box-shadow:0 12px 40px rgba(0,0,0,.18);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2)}
+.ng-nav a{display:block;font-size:14px;font-weight:600;line-height:1;padding:10px 18px;border-radius:999px;color:var(--ng-soft);text-decoration:none;transition:background .25s,color .25s}
+.ng-nav a:hover{background:rgba(255,255,255,.1);color:var(--ng-cream)}
+.ng-nav a.on{background:var(--ng-accent);color:var(--ng-ink)}
+.ng-nav a:focus-visible{outline:2px solid var(--ng-accent);outline-offset:3px}
+
+/* ---------- up next: a turntable with the cued record + a crate of the others ---------- */
+.ng-next{position:relative;overflow:hidden;background:var(--ng-ink);color:var(--ng-cream);font-family:var(--ng-sans);
+  padding:clamp(64px,9vw,120px) max(16px,env(safe-area-inset-right,0px)) clamp(64px,9vw,120px) max(16px,env(safe-area-inset-left,0px))}
+.ng-next::before{content:"";position:absolute;width:60vmax;height:60vmax;left:-20vmax;top:-30vmax;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--ng-accent) 22%,transparent),transparent 65%);filter:blur(50px);pointer-events:none}
+.ng-next__inner{position:relative;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.ng-next__head{grid-column:1 / -1;display:grid;gap:10px}
+.ng-next__eyebrow{margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ng-accent)}
+.ng-next__title{margin:0;font-weight:700;font-size:clamp(32px,4.4vw,60px);line-height:1;letter-spacing:-.035em}
+
+.ng-deck{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:center}
+.ng-plinth{position:relative;aspect-ratio:1.12;border-radius:20px;background:linear-gradient(150deg,#1c2028 0%,#0f1217 60%,#171a21 100%);
+  border:1px solid color-mix(in srgb,var(--ng-accent) 55%,transparent);box-shadow:0 0 30px color-mix(in srgb,var(--ng-accent) 25%,transparent),0 30px 60px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12)}
+.ng-platter{position:absolute;left:6%;top:7%;width:72%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#15181e 0 58%,#0b0d11 59%);box-shadow:inset 0 0 0 3px color-mix(in srgb,var(--ng-accent) 35%,transparent)}
+.ng-onplatter{position:absolute;left:8.5%;top:9.8%;width:67%;aspect-ratio:1;padding:0;border:0;border-radius:50%;background:none;cursor:pointer}
+.ng-disc{position:absolute;inset:0;border-radius:50%;display:block;background:repeating-radial-gradient(circle,#101216 0 1.5px,#1C1F25 2px 3px),#14171C;box-shadow:0 14px 30px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);animation:ng-spin 6s linear infinite}
+.ng-disc img{position:absolute;inset:20%;width:60%;height:60%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--ng-accent)}
+.ng-disc::after{content:"";position:absolute;left:50%;top:50%;width:5%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:linear-gradient(135deg,#E9E4E6,#8C8689)}
+.ng-disc::before{content:"";position:absolute;inset:0;z-index:1;border-radius:50%;background:conic-gradient(from 210deg,transparent 0 8%,rgba(255,255,255,.12) 12%,transparent 18% 50%,rgba(255,255,255,.08) 62%,transparent 68%);pointer-events:none}
+.ng-onplatter .ng-disc{transition:transform .5s cubic-bezier(.2,1.2,.4,1)}
+.ng-onplatter.is-swapping .ng-disc{animation:ng-drop .55s cubic-bezier(.2,1.1,.3,1)}
+@keyframes ng-drop{from{transform:translateY(-60%) scale(.7);opacity:0}}
+.ng-arm{position:absolute;right:5%;top:5%;width:20%;aspect-ratio:.36;transform-origin:62% 12%;transform:rotate(-24deg);transition:transform .9s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 8px 8px rgba(0,0,0,.5))}
+.ng-arm svg{width:100%;height:100%;overflow:visible}
+.ng-deck.is-loading .ng-arm,.ng-onplatter:hover ~ .ng-arm{transform:rotate(2deg)}
+.ng-deck.is-loading .ng-disc{animation-duration:.7s}
+.ng-deck.is-loading .ng-plinth{box-shadow:0 0 50px color-mix(in srgb,var(--ng-accent) 45%,transparent),0 30px 60px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12)}
+
+.ng-cue{display:grid;gap:8px;justify-items:start;min-width:0}
+.ng-cue__label{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ng-soft)}
+.ng-cue__name{font-size:clamp(22px,2.2vw,32px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.ng-cue__type{font-size:14px;color:var(--ng-soft)}
+.ng-play{margin-top:10px;display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:12px 22px 12px 16px;border-radius:999px;color:var(--ng-ink);background:var(--ng-accent);text-decoration:none;transition:transform .25s,box-shadow .25s}
+.ng-play::before{content:"";border-left:10px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent}
+.ng-play:hover{transform:translateY(-2px);box-shadow:0 0 26px color-mix(in srgb,var(--ng-accent) 55%,transparent)}
+
+.ng-crate{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 16px}
+.ng-crec{display:grid;justify-items:center;gap:10px;text-align:center;color:var(--ng-soft);text-decoration:none;transition:color .25s}
+.ng-crec .ng-disc{position:relative;width:100%;max-width:120px;aspect-ratio:1;animation-play-state:paused;transition:transform .35s cubic-bezier(.2,1.2,.4,1),box-shadow .35s}
+.ng-crec:hover,.ng-crec:focus-visible{color:var(--ng-cream)}
+.ng-crec:hover .ng-disc,.ng-crec:focus-visible .ng-disc{transform:translateY(-8px);animation-play-state:running;box-shadow:0 14px 30px rgba(0,0,0,.55),0 0 26px color-mix(in srgb,var(--ng-accent) 45%,transparent)}
+.ng-crec__name{font-size:13px;font-weight:600;line-height:1.25}
+.ng-crec__no{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--ng-accent)}
+.ng-crec.is-current{pointer-events:none;opacity:.45}
+.ng-crec.is-cued .ng-disc img{box-shadow:0 0 0 3px var(--ng-accent),0 0 14px var(--ng-accent)}
+.ng-crec:focus-visible{outline:none}
+.ng-crec:focus-visible .ng-crec__name{text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- zoom into the record, then the eye opens on the next page ---------- */
+.ng-zoom{position:fixed;inset:0;z-index:2147483646;pointer-events:all;background:transparent}
+.ng-zoom__img{position:fixed;object-fit:cover;border-radius:50%}
+.ng-zoom__lid{position:fixed;left:-5vw;right:-5vw;height:52vh;background:var(--ng-ink);transition:transform .55s cubic-bezier(.7,0,.3,1)}
+.ng-zoom__lid.top{top:0;border-radius:0 0 50% 50% / 0 0 30% 30%;transform:translateY(-102%);box-shadow:0 2px 0 var(--ng-accent),0 10px 30px color-mix(in srgb,var(--ng-accent) 50%,transparent)}
+.ng-zoom__lid.bot{bottom:0;border-radius:50% 50% 0 0 / 30% 30% 0 0;transform:translateY(102%);box-shadow:0 -2px 0 var(--ng-accent),0 -10px 30px color-mix(in srgb,var(--ng-accent) 50%,transparent)}
+.ng-zoom.is-shut .ng-zoom__lid{transform:none}
+.ng-zoom.is-open .ng-zoom__img{opacity:0}
+.ng-zoom.is-open .ng-zoom__lid.top{transform:translateY(-102%)}
+.ng-zoom.is-open .ng-zoom__lid.bot{transform:translateY(102%)}
+.ng-zoom__img.is-full{inset:0;width:100%;height:100%;border-radius:0}
+
+@media (max-width:900px){
+  .ng-next__inner,.ng-deck{grid-template-columns:minmax(0,1fr)}
+  .ng-crate{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){.ng-disc{animation:none}.ng-zoom{display:none}}
+
+/* empty anchor kept for page scripts that measure where the project list starts */
+html body main div.unified-projects.ng-marker{position:absolute!important;visibility:hidden!important;display:block!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;overflow:hidden!important}
+
+/* ---------- text reveals ---------- */
+.ng-rise{opacity:0;transform:translateY(28px);filter:blur(5px);transition:opacity .8s ease,transform 1s cubic-bezier(.2,.9,.2,1),filter .8s ease}
+.ng-rise.ng-in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){.ng-rise{opacity:1;transform:none;filter:none;transition:none}}
+@keyframes ng-spin{to{transform:rotate(360deg)}}
+@media (max-width:760px){.ng-nav a{padding:9px 14px}}
+.ng-zoom__img{transition:opacity .25s}
+.ng-arm{color:var(--ng-accent)}
+.ng-next__inner{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.ng-deck{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.ng-plinth{width:100%;max-width:520px}
+@media (max-width:900px){.ng-next__inner,.ng-deck{grid-template-columns:minmax(0,1fr)}}
+
+.ng-zoom__img.is-cover{object-fit:cover}.ng-zoom__img.is-contain{object-fit:contain}
+.ng-zoom{background:transparent}
+
+/* ---------- one continuous background (Stratasys, Lumina, Hashtag): the landing page's glow in the project's colour ---------- */
+body.ng-flow{background:radial-gradient(70vmax 60vmax at 0% 0%,color-mix(in srgb,var(--ng-accent) 20%,transparent),transparent 70%) fixed,
+  radial-gradient(60vmax 50vmax at 100% 60%,color-mix(in srgb,var(--ng-accent) 12%,transparent),transparent 70%) fixed,var(--ng-ink)!important;color:var(--ng-cream)}
+body.ng-flow main > :not(:first-child),body.ng-flow main > :not(:first-child) > section,body.ng-flow footer,body.ng-flow .ng-next{background:transparent!important}
+/* light sections now sit on the dark ground: their text follows */
+body.ng-flow :is(.sc-overview,.lc-product,.ht-overview){color:var(--ng-cream)!important}
+body.ng-flow :is(.sc-overview,.lc-product,.ht-overview) :is(h1,h2,h3,h4,h5,p,li,small,strong,em,span,figcaption,dt,dd):not([class*="btn"]):not([class*="button"]){color:inherit}
+body.ng-flow :is(.sc-overview,.lc-product,.ht-overview) :is(p,li,figcaption,small,dd){color:var(--ng-soft)}
+body.ng-flow :is(.sc-overview,.lc-product,.ht-overview) a:not([class*="btn"]):not([class*="button"]){color:var(--ng-accent)}
+/* a section that needs emphasis gets the glowing frame */
+body.ng-flow :is(.sc-key-decisions,.lc-key-decisions,.ht-key-decisions){margin-inline:max(16px,3vw)!important;border-radius:28px;
+  border:1px solid color-mix(in srgb,var(--ng-accent) 60%,transparent);box-shadow:0 0 40px color-mix(in srgb,var(--ng-accent) 22%,transparent),inset 0 1px 0 rgba(255,255,255,.08);
+  background:color-mix(in srgb,var(--ng-ink) 70%,transparent)!important}
+body.ng-flow .ng-next::before{display:none}
+
+/* arrival cover (set by site-shell-early.js before first paint) and the departure frame */
+html.ng-arriving{scroll-behavior:auto!important}
+html.ng-arriving::after{content:"";position:fixed;inset:0;z-index:2147483645;background:var(--ng-ink)}
+.ng-zoom__frame{position:fixed;overflow:hidden;background:var(--ng-ink)}
+.ng-zoom__frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none}
+.ng-zoom__frame img.is-hi{opacity:0;transition:opacity .3s ease}
+.ng-zoom__frame img.is-hi.is-on{opacity:1}
+.ng-zoom__img{max-width:none}
+.ng-zoom__img,.ng-zoom__img.is-cover,.ng-zoom__img.is-contain{border-radius:0}
+
+/* ===== project colours, used by transitions that already point at the next project ===== */
+.acc-stratasys{--ng-go:#58c9e8}.acc-lumina{--ng-go:#9bfb72}.acc-hashtag{--ng-go:#e883b7}.acc-alcohol{--ng-go:#c6ff4a}.acc-spaceship{--ng-go:#f3cf45}
+/* the intro frame's ground; the departure wash paints exactly the same thing so the hand-off is seamless */
+.ng-intro,.ng-wash{background:radial-gradient(60vmax 50vmax at 15% 20%,color-mix(in srgb,var(--ng-go,var(--ng-accent)) 30%,transparent),transparent 70%),
+  radial-gradient(55vmax 45vmax at 90% 85%,color-mix(in srgb,var(--ng-go,var(--ng-accent)) 22%,transparent),transparent 70%),var(--ng-ink)}
+
+/* ===== leaving from the turntable: the record comes to the centre, little tiles orbit it, the colour washes out from it ===== */
+.ng-depart{position:fixed;inset:0;z-index:2147483646;pointer-events:all}
+.ng-depart__dim{position:absolute;inset:0;opacity:0;background:radial-gradient(70vmax 60vmax at 0% 0%,color-mix(in srgb,var(--ng-accent) 20%,transparent),transparent 70%),radial-gradient(60vmax 50vmax at 100% 60%,color-mix(in srgb,var(--ng-accent) 12%,transparent),transparent 70%),var(--ng-ink)}
+.ng-depart__rec{position:fixed;border-radius:50%;overflow:visible}
+.ng-depart__rec .ng-disc{position:absolute;inset:0;animation-duration:2.4s}
+.ng-depart__rec .ng-disc img{position:absolute;inset:20%;width:60%;height:60%;border-radius:50%;object-fit:cover}
+.ng-depart__orbit{position:absolute;inset:-34%;animation:ng-spin 5s linear infinite}
+.ng-depart__sat{position:absolute;width:15%;aspect-ratio:1;border-radius:26%;background:var(--ng-go);box-shadow:0 0 24px color-mix(in srgb,var(--ng-go) 60%,transparent);scale:0;transition:scale .5s cubic-bezier(.2,1.5,.4,1)}
+.ng-depart__sat:nth-child(1){left:42.5%;top:0}
+.ng-depart__sat:nth-child(2){right:0;top:42.5%;width:12%;background:color-mix(in srgb,var(--ng-go) 60%,#fff);transition-delay:.08s}
+.ng-depart__sat:nth-child(3){left:42.5%;bottom:0;width:11%;background:color-mix(in srgb,var(--ng-go) 70%,#000);transition-delay:.16s}
+.ng-depart__sat:nth-child(4){left:0;top:44%;width:9%;background:var(--ng-cream);transition-delay:.24s}
+.ng-depart.is-orbit .ng-depart__sat{scale:1}
+.ng-wash{position:fixed;inset:0;clip-path:circle(0 at 50% 50%)}
+
+
+/* ===== one text line for the whole page: every section starts where the page's own sections do ===== */
+body{--ng-line:8vw}
+@media (max-width:900px){body{--ng-line:6vw}}
+body.ng-flow :is(.sc-overview,.lc-product,.ht-overview){padding-left:var(--ng-line)!important;padding-right:var(--ng-line)!important}
+body.ng-flow :is(.sc-key-decisions,.lc-key-decisions,.ht-key-decisions){padding-left:calc(var(--ng-line) - max(16px,3vw))!important;padding-right:calc(var(--ng-line) - max(16px,3vw))!important}
+.ng-next{padding-left:var(--ng-line)!important;padding-right:var(--ng-line)!important}
+.ng-next__inner{max-width:none;margin:0}
+/* the hero's sentence now introduces the prototype link */
+
+/* ===== the short description and the main action sit under the overview title on every page ===== */
+.ng-lede{max-width:46ch;margin:18px 0 0;font-family:var(--ng-sans);font-size:clamp(16px,1.3vw,19px);font-weight:400;line-height:1.6;color:var(--ng-soft)!important;text-transform:none;letter-spacing:0}
+.ng-try{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:12px 22px;border-radius:999px;border:1px solid var(--ng-accent);font-family:var(--ng-sans);font-size:15px;font-weight:600;
+  text-decoration:none;color:var(--ng-cream)!important;background:color-mix(in srgb,var(--ng-accent) 12%,transparent);box-shadow:0 0 22px color-mix(in srgb,var(--ng-accent) 30%,transparent);transition:background .25s,color .25s}
+.ng-try:hover,.ng-try:focus-visible{background:var(--ng-accent);color:var(--ng-ink)!important}
+.ng-cta{display:grid;justify-items:start}
+
+/* ===== the project opener: the first screen of every case study, on the same background as the rest of the page.
+   The name is typed (its last word in the serif, in the project's colour), the short description and the main action
+   sit beneath it, and half of the project's record turns at the right edge, giving off glowing notes.
+   The original hero stays in the markup for screen readers. ===== */
+html:root body.ng-opening:not(#ng) main > :first-child{position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;margin:0!important;overflow:hidden!important;clip-path:inset(50%)}
+.ng-open{--d:min(96svh,74vw);position:relative;min-height:100svh;box-sizing:border-box;display:grid;align-items:center;
+  padding:110px var(--ng-line,8vw) 80px;overflow:hidden;background:transparent;color:var(--ng-cream);font-family:var(--ng-sans)}
+.ng-open__copy{position:relative;z-index:2;display:grid;justify-items:start;gap:22px;align-content:center;max-width:min(52vw,640px);min-width:0}
+.ng-open__name{margin:0;min-height:1em;font-size:clamp(44px,6.4vw,104px);font-weight:700;line-height:1;letter-spacing:-.045em;text-wrap:balance}
+.ng-open__name .ng-em{font-family:var(--ng-serif);font-style:italic;font-weight:500;letter-spacing:-.02em;color:var(--ng-accent)}
+.ng-open__line{margin:0;max-width:34ch;font-size:clamp(18px,1.6vw,24px);font-weight:400;line-height:1.55;color:var(--ng-cream)}
+.ng-open .ng-try{margin-top:6px}
+.ng-open .ng-caret{display:inline-block;width:3px;height:.9em;margin-left:4px;vertical-align:-.1em;background:var(--ng-accent)}
+/* half a record: its centre sits on the right edge of the screen */
+.ng-open__deck{position:absolute;z-index:1;top:50%;right:calc(var(--d) / -2);width:var(--d);aspect-ratio:1;translate:0 -50%}
+.ng-vinyl{display:block;width:100%;height:100%;overflow:visible}
+.ng-vinyl__disc{fill:#0c0e12}
+.ng-vinyl__grooves circle{fill:none;stroke:rgba(255,255,255,.05);stroke-width:1}
+.ng-vinyl__rim{fill:none;stroke:var(--ng-accent);stroke-opacity:.5;stroke-width:3;filter:drop-shadow(0 0 18px var(--ng-accent))}
+.ng-vinyl__hole{fill:var(--ng-ink)}
+.ng-vinyl__sheen{fill:rgba(255,255,255,.05)}
+.ng-vinyl__spin{transform-box:view-box;transform-origin:500px 500px;animation:ng-spin 14s linear infinite}
+.ng-open__notes{position:absolute;inset:0;z-index:3;pointer-events:none}
+.ng-note{position:absolute;left:0;top:0;font-family:var(--ng-serif);font-size:clamp(26px,2.6vw,46px);line-height:1;color:var(--ng-accent);
+  text-shadow:0 0 10px var(--ng-accent),0 0 26px color-mix(in srgb,var(--ng-accent) 70%,transparent)}
+/* pages that paint their own sections (the simulation, the game) get the opener in their own ground colour */
+body.ng-opening:not(.ng-flow):not(.ng-stars) .ng-open{background:radial-gradient(60vmax 50vmax at 10% 15%,color-mix(in srgb,var(--ng-accent) 16%,transparent),transparent 70%),var(--ng-page,var(--ng-ink))}
+body.spaceship-case{--ng-page:#031a33}
+@media (max-width:800px){
+  /* on a phone the half record rises from the bottom edge instead */
+  .ng-open{--d:120vw;align-items:start;padding-top:120px;min-height:100svh}
+  .ng-open__copy{max-width:none}
+  .ng-open__deck{top:auto;right:auto;left:50%;bottom:calc(var(--d) / -2);translate:-50% 0}
+}
+@media (prefers-reduced-motion:reduce){.ng-vinyl__spin{animation:none}.ng-open__notes{display:none}}
+/* Lumina's overview heading is a two-column grid: title and the new description stack on the left, the tabs stay on the right */
+.lc-product-heading > .lc-overview-title{grid-column:1;grid-row:1}
+.lc-product-heading > .ng-cta{grid-column:1;grid-row:2}
+.lc-product-heading > .lc-tabs{grid-column:2;grid-row:1 / span 2}
+@media (max-width:900px){.lc-product-heading > :is(.lc-overview-title,.ng-cta,.lc-tabs){grid-column:1 / -1;grid-row:auto}}
+
+/* a long name breaks before its last word: "Alcohol Driving / Simulation", "Journey to the / Spaceship" */
+.ng-open__name.is-long .ng-em{display:block}
+
+/* the "read the full project" bar sits on the page's own background */
+body.ng-flow :is(details,.lc-details,.ht-details) > summary{background:transparent!important}
+
+/* Lumina · key decisions: before / after keep only their titles, centred under each image */
+.lc-key-decision figcaption{font-size:0!important;text-align:center}
+.lc-key-decision figcaption strong{display:block;margin:0;font-size:14px;text-align:center}
+
+/* ===== the game: sky blue melting into yellow instead of black, with glowing stars rising through the page.
+   The game showcase keeps its own starry sky; the write-up returns to the shared dark ground. ===== */
+body.spaceship-case.ng-stars{background:radial-gradient(70vmax 60vmax at 8% 12%,rgba(95,211,255,.42),transparent 70%) fixed,
+  radial-gradient(60vmax 55vmax at 92% 82%,rgba(243,207,69,.34),transparent 70%) fixed,
+  radial-gradient(50vmax 40vmax at 60% 40%,rgba(120,190,255,.16),transparent 70%) fixed,linear-gradient(160deg,#123b6e,#0b2550) fixed!important}
+body.ng-stars .ng-open{background:transparent}
+.ng-starfield{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.ng-starfield i{position:absolute;left:0;bottom:0;width:4px;height:4px;border-radius:50%;background:#fff6c9;box-shadow:0 0 8px #f3cf45,0 0 16px rgba(243,207,69,.6)}
+.ng-starfield i.c{background:#dff6ff;box-shadow:0 0 8px #5fd3ff,0 0 16px rgba(95,211,255,.6)}
+.ng-starfield i.s{width:2px;height:2px}
+body.spaceship-case .sg-case-layer,body.spaceship-case .sg-case-layer > *,body.spaceship-case .sg-credits{background:transparent!important}
+body.spaceship-case .sg-case-layer,body.spaceship-case .sg-credits,body.spaceship-case .ng-next{background:radial-gradient(70vmax 60vmax at 0% 0%,color-mix(in srgb,var(--ng-accent) 16%,transparent),transparent 70%),
+  radial-gradient(60vmax 50vmax at 100% 60%,color-mix(in srgb,#5fd3ff 10%,transparent),transparent 70%),var(--ng-ink)!important}
+@media (prefers-reduced-motion:reduce){.ng-starfield{display:none}}
+
+/* the simulation: its scenes sit straight on the shared ground instead of boxes of their own colour */
+body.ad-case.ng-flow :is(.ad-pour-section,.ad-game-showcase,.ad-showcase-backdrop,.ht-full-content){background-color:transparent!important}
+
+/* =====================================================================================================
+   CASE STUDIES v2 (body.ng-v2): the project's own background under the whole page — the landing page's recipe
+   (one colour family, a tinted ground, two soft drifting lights, rising dots) — a words-only hero in motion,
+   one button style, and an ending of "next project" + contact.
+   The simulation's and the game's play sections keep their original backgrounds.
+   ===================================================================================================== */
+body.pal-stratasys{--bg-tint:#0e3a4a;--bg-base:#04131a;--bg-l1:#2fc4e6;--bg-l2:#3a7fe6;--ng-accent:#7cd8f0}
+body.pal-lumina{--bg-tint:#1b3d12;--bg-base:#050c06;--bg-l1:#7ee85a;--bg-l2:#c8f05a;--ng-accent:#9bfb72}
+body.pal-hashtag{--bg-tint:#3d0f2e;--bg-base:#12050f;--bg-l1:#e0569f;--bg-l2:#b874e6;--ng-accent:#e883b7}
+body.pal-alcohol{--bg-tint:#26350a;--bg-base:#090d04;--bg-l1:#b4ec34;--bg-l2:#e3cf3a;--ng-accent:#c6ff4a}
+body.pal-spaceship{--bg-tint:#173d9a;--bg-base:#050d30;--bg-l1:#2f62e6;--bg-l2:#1b3cb5;--ng-accent:#8db5ff}
+html body.ng-v2,html body.ng-v2.ng-flow{background:radial-gradient(120% 90% at 50% 0%,var(--bg-tint) 0%,var(--bg-base) 62%) fixed!important;color:var(--ng-cream)}
+.ng-lights,.ng-starfield{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.ng-lights i{position:absolute;border-radius:50%;filter:blur(90px)}
+.ng-lights i.a{width:78vmax;height:78vmax;left:-30vmax;top:-36vmax;background:radial-gradient(circle,var(--bg-l1),transparent 62%);opacity:.5;animation:ng-drift 18s ease-in-out infinite alternate}
+.ng-lights i.b{width:64vmax;height:64vmax;right:-30vmax;top:20vh;background:radial-gradient(circle,var(--bg-l2),transparent 62%);opacity:.3;animation:ng-drift 22s ease-in-out infinite alternate-reverse}
+@keyframes ng-drift{to{translate:6vmax 4vmax}}
+.ng-starfield i{position:absolute;left:0;bottom:0;width:3px;height:3px;border-radius:50%;background:var(--bg-l1);box-shadow:0 0 8px var(--bg-l1)}
+.ng-starfield i.c{background:var(--bg-l2);box-shadow:0 0 8px var(--bg-l2)}
+.ng-starfield i.s{width:2px;height:2px}
+@media (prefers-reduced-motion:reduce){.ng-lights i{animation:none}.ng-starfield{display:none}}
+/* every section sits on that ground… */
+body.ng-v2 main > :not(:first-child),body.ng-v2 main > :not(:first-child) > section,body.ng-v2 :is(.ht-details,.ht-details > summary,.lc-details,.lc-details > summary,.ht-full-content),body.ng-v2 footer{background-color:transparent!important}
+body.ng-v2 :is(.sg-case-layer,.sg-case-layer > *,.sg-credits){background:transparent!important}
+/* …except where the simulation and the game are actually played: their own worlds stay */
+body.ng-v2.ad-case .ad-overview{background:#10151e!important}
+body.ng-v2.ad-case :is(.ad-pour-section,.ad-game-showcase){background-color:#10151e!important}
+body.ng-v2.ad-case .ad-showcase-backdrop{background-color:#10151e!important}
+/* soft edges where a played world meets the page's ground */
+body.ng-v2.ad-case .ad-overview,body.ng-v2.spaceship-case .sg-reading-world{-webkit-mask-image:linear-gradient(transparent,#000 90px,#000 calc(100% - 90px),transparent);mask-image:linear-gradient(transparent,#000 90px,#000 calc(100% - 90px),transparent)}
+
+/* ---- hero: words only, in motion ---- */
+.ng-hd{position:relative;min-height:100svh;box-sizing:border-box;display:grid;place-items:center;padding:110px var(--ng-line,8vw) 80px;text-align:center;color:var(--ng-cream);font-family:var(--ng-sans);perspective:1200px}
+.ng-hd__in{display:grid;justify-items:center;gap:22px;max-width:1100px}
+.ng-hd__name{margin:0;font-size:clamp(44px,7vw,112px);font-weight:800;line-height:1;letter-spacing:-.045em;text-wrap:balance}
+.ng-hd__name .w{display:inline-block}
+.ng-hd__name em{font-family:var(--ng-serif);font-style:italic;font-weight:500;letter-spacing:-.02em;color:var(--ng-accent)}
+.ng-hd__name.is-long em{display:block}
+.ng-hd__d{margin:0;max-width:42ch;font-size:clamp(17px,1.6vw,23px);line-height:1.55;color:var(--ng-cream)}
+.ng-hd__tags{display:flex;flex-wrap:nowrap;justify-content:center;gap:8px;margin:0;padding:0;list-style:none;max-width:100%}
+.ng-hd__tags li{flex:none;white-space:nowrap;font-size:14px;padding:7px 14px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ng-accent) 45%,transparent);color:var(--ng-soft)}
+@media (max-width:520px){.ng-hd__tags li{font-size:12px;padding:6px 10px}}
+/* one button style, everywhere: solid, in the project's colour */
+body.ng-v2 .ng-try{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:13px 26px;border:0;border-radius:999px;font-family:var(--ng-sans);font-size:15px;font-weight:700;text-decoration:none;
+  color:#0d0a10!important;background:var(--ng-accent)!important;box-shadow:0 0 26px color-mix(in srgb,var(--ng-accent) 40%,transparent);transition:transform .25s,box-shadow .25s}
+body.ng-v2 .ng-try:hover,body.ng-v2 .ng-try:focus-visible{transform:translateY(-2px);box-shadow:0 0 36px color-mix(in srgb,var(--ng-accent) 60%,transparent)}
+body.ng-v2 .ng-nav a.on{background:var(--ng-accent);color:#0d0a10}
+
+/* ---- the ending: next project, then contact ---- */
+.ng-end{display:grid;gap:clamp(56px,9vh,110px);padding:clamp(80px,12vh,140px) var(--ng-line,8vw) clamp(60px,9vh,100px);font-family:var(--ng-sans);color:var(--ng-cream)}
+.ng-end__k{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ng-soft)}
+.ng-end__k--acc{color:var(--ng-accent)}
+.ng-end__next{display:grid;gap:14px;padding-top:28px;border-top:1px solid rgba(255,255,255,.14);color:inherit;text-decoration:none}
+.ng-end__row{display:flex;align-items:center;gap:clamp(16px,2.4vw,32px)}
+.ng-end__row b{font-size:clamp(36px,5.6vw,88px);font-weight:800;letter-spacing:-.045em;line-height:1;transition:color .35s}
+.ng-end__row svg{width:clamp(30px,4vw,60px);height:auto;flex:none;transition:transform .45s cubic-bezier(.22,1,.36,1),color .35s}
+.ng-end__next small{font-size:15px;color:var(--ng-soft)}
+.pal-stratasys .ng-end__next{--nx:#9bfb72}.pal-lumina .ng-end__next{--nx:#e883b7}.pal-hashtag .ng-end__next{--nx:#c6ff4a}.pal-alcohol .ng-end__next{--nx:#8db5ff}.pal-spaceship .ng-end__next{--nx:#58c9e8}
+.ng-end__next:hover b,.ng-end__next:focus-visible b{color:var(--nx)}
+.ng-end__next:hover svg,.ng-end__next:focus-visible svg{transform:translateX(18px);color:var(--nx)}
+.ng-end__ct{display:grid;justify-items:center;text-align:center;gap:16px;padding-top:40px;border-top:1px solid rgba(255,255,255,.14)}
+.ng-end__ct h2{margin:0;font-size:clamp(30px,3.8vw,56px);font-weight:800;letter-spacing:-.04em;line-height:1.05}
+.ng-end__links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 28px;font-size:17px}
+.ng-end__links a{display:inline-flex;align-items:center;gap:9px;color:var(--ng-cream);text-decoration:none}
+.ng-end__links a:hover{text-decoration:underline;text-underline-offset:5px}
+.ng-end__links svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6}
+.ng-end__copy{font:700 13px/1 var(--ng-sans);padding:9px 16px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ng-accent) 60%,transparent);background:transparent;color:var(--ng-cream);cursor:pointer}
+.ng-end__copy:hover{background:color-mix(in srgb,var(--ng-accent) 18%,transparent)}
+html.ng-gliding{scroll-behavior:auto!important}
+
+/* ===== v2 refinements ===== */
+/* the project ground runs through the simulation's scenes too; only the game showcase keeps its own world */
+body.ng-v2.ad-case .ad-overview,body.ng-v2.ad-case :is(.ad-pour-section,.ad-beer-journey,.ad-drink-choice,.ad-driving-question){background:transparent!important}
+body.ng-v2.ad-case .ad-overview{-webkit-mask-image:none;mask-image:none}
+body.ng-v2.ad-case .ad-game-showcase{background-color:#10151e!important;-webkit-mask-image:linear-gradient(transparent,#000 90px,#000 calc(100% - 90px),transparent);mask-image:linear-gradient(transparent,#000 90px,#000 calc(100% - 90px),transparent)}
+/* the game: the team, the mission and the write-up on the project ground; the starry sky only behind the game itself */
+body.ng-v2.spaceship-case .sg-reading-world{background:transparent!important;-webkit-mask-image:none;mask-image:none}
+body.ng-v2.spaceship-case :is(.sg-layer-stack,.sg-case-layer,.sg-case-layer > *,.sg-credits,.sg-scroll-section){background:transparent!important}
+/* no frame around the key decisions and contribution */
+body.ng-v2 :is(.sc-key-decisions,.lc-key-decisions,.ht-key-decisions){margin-inline:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important}
+/* every section gets a screen of its own */
+body.ng-v2 main :is(.ht-overview,.ht-section,.lc-product,.lc-section,.ad-drink-choice,.ad-driving-question,.ng-end){min-height:100svh;box-sizing:border-box}
+body.ng-v2 main :is(.ht-section,.lc-section,.ht-overview:not(.ad-overview):not(.sg-overview),.lc-product){display:flex;flex-direction:column;justify-content:center}
+/* all running text in white; the light pages inside "read the full project" keep their own colours */
+body.ng-v2 main :is(p,li,dd,figcaption,.sc-step-caption):not(.case-layout *):not(.ng-hd__tags li):not(.ng-end *):not(.sg-chat-bubble *):not(:is(.ng-project-facts,.ng-context-note,.ng-decision-copy,.ht-contribution,.lc-contribution,.ad-claude,.ht-meta,.lc-project-meta,.ng-project-context) *):not(.ad-note,.lc-ai-note,.ng-project-context){color:var(--ng-cream)!important}
+body.ng-v2 .ht-overview-heading p,body.ng-v2 .lc-overview-title span{color:var(--ng-cream)!important}
+/* Stratasys: the device switch and the "open full screen" links read clearly */
+body.ng-v2 .sc-view-tabs button{color:var(--ng-cream)!important;opacity:.75}
+body.ng-v2 .sc-view-tabs button[aria-selected=true]{color:var(--ng-accent)!important;opacity:1}
+body.ng-v2 .sc-enlarge{color:var(--ng-cream)!important;border-bottom-color:rgba(255,255,255,.55)!important}
+/* Lumina: the tabs in the project's green, the inactive ones in white */
+body.ng-v2 .lc-tabs{border-bottom-color:var(--ng-accent)!important}
+body.ng-v2 .lc-tabs button{color:var(--ng-cream)!important;opacity:.75}
+body.ng-v2 .lc-tabs button[aria-selected=true],body.ng-v2 .lc-tabs button:hover{color:var(--ng-accent)!important;opacity:1}
+body.ng-v2 .lc-tabs button:focus-visible{outline-color:var(--ng-accent)!important}
+body.ng-v2.lumina-case{--lc-purple:var(--ng-accent)}
+/* the simulation's "A SIP." keeps its accent */
+body.ng-v2.ad-case .ad-pour-copy h3 em{color:var(--ng-accent)!important}
+/* "read the full project" sits on the page's ground, without a band of its own */
+body.ng-v2 main details,body.ng-v2 main details > summary{background:transparent!important}
+/* "My contribution" gets a screen of its own */
+body.ng-v2 :is(.ht-contribution,.lc-contribution){min-height:100svh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;margin-top:0!important;padding-top:0!important}
+/* no dividing lines between sections */
+body.ng-v2 :is(.ht-contribution,.lc-contribution,.ht-details,.lc-details,details,details > summary,.ht-section,.lc-section,.ht-overview,.lc-product){border-top:0!important;border-bottom:0!important}
+body.ng-v2 :is(.ng-end__next,.ng-end__ct){border-top:0;padding-top:0}
+/* the game showcase: the original sky (same image, same fixed framing) and its falling-stars canvas, only across the
+   showcase's own stretch of the page, with soft edges — so it scrolls in and out like the simulation's showcase */
+body.ng-v2.spaceship-case .sg-reading-world::before{content:"";position:absolute;left:0;right:0;top:var(--sky-y,0px);bottom:auto;inset-inline:0;height:var(--sky-h,0px);z-index:-1;pointer-events:none;
+  background:linear-gradient(#02112666,#02112666),url('spaceship/space-original.jpeg') center/cover fixed;
+  -webkit-mask-image:linear-gradient(transparent,#000 160px,#000 calc(100% - 160px),transparent);mask-image:linear-gradient(transparent,#000 160px,#000 calc(100% - 160px),transparent)}
+body.ng-v2.spaceship-case .sg-sky-canvas{opacity:1;clip-path:inset(var(--sky-top,100%) 0 var(--sky-bot,0px) 0);
+  -webkit-mask-image:linear-gradient(transparent var(--sky-top,100%),#000 calc(var(--sky-top,100%) + 160px),#000 calc(100% - var(--sky-bot,0px) - 160px),transparent calc(100% - var(--sky-bot,0px)));
+  mask-image:linear-gradient(transparent var(--sky-top,100%),#000 calc(var(--sky-top,100%) + 160px),#000 calc(100% - var(--sky-bot,0px) - 160px),transparent calc(100% - var(--sky-bot,0px)))}
+/* the speech bubbles keep their dark text */
+body.ng-v2 .sg-chat-bubble p{color:#0b1830!important}
+html body.ng-v2 main details.ht-details,html body.ng-v2 main details.ht-details > summary,html body.ng-v2 main details.lc-details,html body.ng-v2 main details.lc-details > summary{background:transparent!important}
+html body.ng-v2 main details[id],html body.ng-v2 main details[id] > summary,html body.ng-v2 #ad-full,html body.ng-v2 #ad-full > summary,html body.ng-v2 #sg-full,html body.ng-v2 #sg-full > summary{background:transparent!important}
+html body.ng-v2.spaceship-concept main details#sg-full.ht-details,html body.ng-v2.spaceship-concept main details#sg-full.ht-details > summary{background:transparent!important;border-top:0!important}
+/* the game: "Meet the team" in the same heading style as "Game overview", close to the team cards */
+body.ng-v2.spaceship-case .sg-team-heading{margin:0 0 clamp(20px,4vh,40px)!important;padding-top:clamp(40px,8vh,90px)}
+body.ng-v2.spaceship-case .sg-case-layer{box-shadow:none!important}
+html.ng-arriving::after{content:none!important;display:none!important}
+
+/* v2 · legend only while "Read the full project" is open */
+html body.ng-v2:has(details:not([open]) .case-content) .unified-toc{display:none!important}
+
+/* v2 · one footer for every case study: page background, no top line */
+html body.ng-v2.ng-v2.ng-v2 footer,html body.ng-v2.ng-v2.ng-v2 footer>*{background:transparent!important;border-top:0!important;box-shadow:none!important}
+
+/* v2 · contrast (WCAG AA over the drifting lights) */
+html body.ng-v2 :is(.sc-scroll,.ht-scroll,.lc-scroll,.ad-scroll,.sg-scroll){display:none!important}
+html body.ng-v2 :is(.ht-decision-tabs,.lc-decision-tabs) [aria-selected=false]{color:rgba(255,255,255,.9)!important}
+html body.ng-v2.pal-stratasys .ht-decision-tabs [aria-selected=true]{color:var(--ng-accent)!important}
+html body.ng-v2 :is(.lc-kicker,.ht-meta dt){color:var(--ng-accent)!important}
+html body.ng-v2 .ng-end .ng-end__k{color:rgba(255,255,255,.88)!important;opacity:1!important}

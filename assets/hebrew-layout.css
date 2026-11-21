@@ -1,0 +1,42 @@
+/* Hebrew reading order: reverse the layout containers, never the media pixels. */
+html[lang=he] body :is(.hero-grid,.about .wrap,.tools-sec .pin,.slide):not(#_) {direction:rtl;}
+html[lang=he] body :is(.deck,.wall-stage,.slide figure) {direction:ltr;}
+html[lang=he] body.ng-v2 main :is(.lc-brief,.ht-brief,.sg-brief,.ad-brief,.ng-brief-more,.ng-contribution-layout,.ng-contribution-list,.ng-ai-layout,.sc-next-steps,.sg-credits,.sg-generator-extension,.ng-decision-panel,.ng-how-pin,.sg-story-scene,.sg-showcase-step-inner,.ad-showcase-step-inner):not(#_) {direction:rtl;}
+html[lang=he] body.ng-v2 main :is(.ng-intro-media,.ng-compare,.ng-compare-stage,.ng-how-stage,.sg-step-media,.ad-showcase-media):not(#_) {direction:ltr;}
+html[lang=he] body.ng-v2 main :is(.ht-meta,.lc-project-meta):not(#_) {direction:rtl;}
+html[lang=he] body.ng-v2 main :is(.ht-overview-heading,.ng-lc-pin,.lc-panel):not(#_) {direction:rtl;}
+html[lang=he] body.ng-v2 main :is(.lc-fan,.lc-gallery-controls,.ng-how-device):not(#_) {direction:ltr;}
+/* Keep the first item at the right edge of its column, including capped text widths. */
+html[lang=he] body.ng-v2 main :is(.ng-fact,.ng-product-intro-copy,.ng-lc-copy,.ng-how-steps,.ng-decision-copy,.ng-contribution-intro,.ng-ai-intro,.sg-step-copy,.ad-showcase-copy,.sg-story-copy):not(#_) {text-align:right!important;}
+html[lang=he] body.ng-v2 main :is(.ng-fact,.ng-product-intro-copy,.ng-lc-copy,.ng-how-steps,.ng-decision-copy) :is(h2,h3,p):not(#_) {text-align:right!important;margin-left:auto!important;margin-right:0!important;}
+html[lang=he] body.ng-v2 main .ng-product-intro-copy>:is(.lc-kicker,.ht-kicker,.ht-eyebrow):not(#_) {left:auto!important;right:0!important;}
+html[lang=he] body.ng-v2 main :is(.ht-key-decisions,.lc-key-decisions,.ng-contribution-layout,.ng-ai-layout,.sc-next-steps,.sg-credits,.ad-asset-credit,.sg-generator-extension):not(#_) {text-align:right!important;}
+html[lang=he] body.ng-v2 main :is(.ht-key-decisions,.lc-key-decisions,.ng-contribution-intro,.ng-ai-intro,.sc-next-steps,.sg-credits,.ad-asset-credit,.sg-generator-extension)>:is(h2,h3,.ht-kicker,.lc-kicker,.ht-eyebrow):not(#_) {text-align:right!important;direction:rtl;}
+html[lang=he] body .sec-title:not(#_),html[lang=he] body #about .hello:not(#_) {direction:rtl;text-align:right;}
+/* Punctuation inherits the sentence direction, including text inside speech balloons. */
+html[lang=he] body :is(p,blockquote,dt,dd,li,h2,h3,h4,figcaption,.ad-pour-name,.sg-hello>span):not(#_) {unicode-bidi:plaintext;}
+html[lang=he] body :is(.sg-hello,.sg-hello>span):not(#_) {direction:rtl;unicode-bidi:isolate;}
+html[lang=he] body .sg-greeter .sg-hello>span:not(#_):not(#_) {font-family:'Assistant',Arial,sans-serif!important;font-weight:600!important;letter-spacing:normal!important;}
+html[lang=he] body .sg-content-part::after {content:'תפסו אותי';font-family:'Assistant',Arial,sans-serif;font-size:12px;direction:rtl;}
+/* Real spaces in heading markup work even when the heading wraps onto two lines. */
+html[lang=he] body :is(h2,h3) em {unicode-bidi:isolate;}
+/* Cyrillic/Latin-style display fonts have no matching Hebrew glyphs: use a true bold Hebrew weight. */
+html[lang=he] body.ad-case .ad-pour-copy h3:not(#_),html[lang=he] body.ad-case .ad-pour-copy h3 em:not(#_) {font-family:'Assistant',Arial,sans-serif!important;font-weight:800!important;font-style:normal!important;letter-spacing:normal!important;direction:rtl;unicode-bidi:isolate;}
+html[lang=he] body.ad-case .ad-choice-status strong:not(#_) {font-family:'Assistant',Arial,sans-serif!important;font-weight:800!important;letter-spacing:normal!important;direction:rtl;unicode-bidi:isolate;}
+html[lang=he] body .ad-choice-status:not(#_),html[lang=he] body .ad-pour-copy:not(#_) {direction:rtl;}
+html[lang=he] body .ad-pour-name:not(#_) {display:block;direction:rtl;unicode-bidi:isolate;text-align:right;font-family:'Assistant',Arial,sans-serif;}
+/* Text precedes its arrow in Hebrew reading order, so the arrow sits on the left. */
+html[lang=he] body a.ng-he-arrow-link:not(#_) {display:inline-flex;direction:rtl;align-items:center;gap:.45em;unicode-bidi:isolate;}
+html[lang=he] body .ng-he-link-arrow {display:inline-block;direction:ltr;flex:none;}
+html[lang=he] body .ng-copyright {display:inline-block;direction:rtl;unicode-bidi:isolate;white-space:nowrap;}
+html[lang=he] body .ng-copyright bdi {unicode-bidi:isolate;}
+/* Mobile stays in its existing vertical order. */
+@media(max-width:900px) {html[lang=he] body.ng-v2 main :is(.ng-intro-media,.ng-how-stage,.lc-fan):not(#_) {direction:ltr;}}
+/* A right-aligned line must also sit against the right edge of its text column. */
+html[lang=he] body.ng-landing #introText:not(#_):not(#_) {direction:rtl;justify-items:start!important;text-align:right!important;}
+html[lang=he] body.ng-landing #introText :is(h1,.lede,.hero-roles,.btns):not(#_):not(#_) {justify-self:start!important;text-align:right!important;}
+html[lang=he] body.ng-landing #introText h1:not(#_):not(#_) {margin-left:0!important;margin-right:0!important;}
+html[lang=he] body.ng-landing #introText :is(.ng-hero-line-mask,.ng-hero-line):not(#_) {text-align:right!important;}
+html[lang=he] body.ng-v2 main :is(.ht-kicker,.ht-eyebrow,.lc-kicker,.ng-fact-label,.ng-context-copy,.ad-note,.lc-description,.ng-feature-copy-full,.ng-feature-copy-mobile):not(#_):not(#_) {direction:rtl;text-align:right!important;}
+html[lang=he] body.ng-v2 main :is(.ng-context-note,.ng-context-copy,.ad-note,.ng-lc-copy,.ng-how-steps):not(#_) {direction:rtl;text-align:right!important;}
+html[lang=he] body.ng-v2 main :is(.ng-context-copy,.ad-note,.ng-how-step p,.lc-description):not(#_):not(#_) {margin-left:auto!important;margin-right:0!important;}

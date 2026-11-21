@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Drinks screen — 2 steps</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:wght@400;600;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#C6FF4A}a:hover{color:#DBFF8A}
+</style>
+</helmet>
+<div style="width: 1280px; height: 720px; box-sizing: border-box; padding: 36px 56px 36px; display: flex; flex-direction: column; gap: 22px; background: #0B0E14; font-family: 'Archivo', sans-serif; color: #F4F1EA; overflow: hidden">
+
+  <div style="display: flex; justify-content: space-between; align-items: flex-end">
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <span style="padding: 5px 10px; border-radius: 4px; background: #C6FF4A; color: #0B0E14; font-size: 12px; font-weight: 800; letter-spacing: 0.1em">STEP {{stepNo}} / 2</span>
+        <div aria-hidden="true" style="display: flex; gap: 6px">
+          <span style="width: {{dot1W}}; height: 8px; border-radius: 4px; background: {{dot1Bg}}"></span>
+          <span style="width: {{dot2W}}; height: 8px; border-radius: 4px; background: {{dot2Bg}}"></span>
+        </div>
+      </div>
+      <h1 style="margin: 0; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 54px; line-height: 1; letter-spacing: 0.01em">{{title}}</h1>
+      <p style="margin: 0; font-size: 15px; color: #9AA3B2">{{subtitle}}</p>
+    </div>
+    <a href="Main.dc.html" onClick="{{back}}" style="display: flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-decoration: none">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg>
+      <span>BACK</span>
+    </a>
+  </div>
+
+  <sc-if value="{{step1}}" hint-placeholder-val="{{ true }}">
+    <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px">
+      <sc-for list="{{items}}" as="item" hint-placeholder-count="5">
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 16px; border-radius: 16px; background: #151A23; border: {{item.border}}">
+          <div style="height: 128px; display: flex; align-items: flex-end; justify-content: center; border-radius: 10px; background: #1B2130">
+            <img src="{{item.img}}" alt="{{item.name}}" style="height: 112px; width: 100%; object-fit: contain; margin-bottom: 8px">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline">
+            <span style="font-family: 'Anton', sans-serif; font-size: 26px; letter-spacing: 0.02em">{{item.upper}}</span>
+            <span style="font-size: 13px; color: #9AA3B2">{{item.mlEach}}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <button aria-label="Remove one {{item.name}}" onClick="{{item.dec}}" disabled="{{item.minusOff}}" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid #3A4558; background: #0B0E14; color: #F4F1EA; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: {{item.minusOpacity}}">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14"></path></svg>
+            </button>
+            <span style="font-family: 'Anton', sans-serif; font-size: 34px; color: {{item.countColor}}">{{item.count}}</span>
+            <button aria-label="Add one {{item.name}}" onClick="{{item.inc}}" disabled="{{item.plusOff}}" style="width: 44px; height: 44px; border-radius: 12px; border: 0; background: #C6FF4A; color: #0B0E14; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: {{item.plusOpacity}}">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+            </button>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px">
+            <sc-for list="{{item.dots}}" as="dot" hint-placeholder-count="5">
+              <span style="height: 5px; border-radius: 3px; background: {{dot.bg}}"></span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 36px; padding: 20px 28px; border-radius: 18px; background: #151A23; border: 1px solid #262D3A">
+      <div style="display: flex; flex-direction: column; gap: 2px; width: 220px"><span style="font-size: 12px; font-weight: 800; letter-spacing: 0.22em; color: #9AA3B2">ALCOHOL LEVEL</span>
+        <span style="font-family: 'Anton', sans-serif; font-size: 58px; line-height: 1.05; color: {{zoneColor}}">{{bacText}}</span>
+        <span style="font-size: 13px; color: #9AA3B2">{{summary}}</span>
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 10px">
+        <div style="position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; height: 14px">
+          <sc-for list="{{zones}}" as="z" hint-placeholder-count="5">
+            <span style="border-radius: 4px; background: {{z.color}}; opacity: {{z.opacity}}"></span>
+          </sc-for>
+          <span aria-hidden="true" style="position: absolute; top: -7px; width: 4px; height: 28px; border-radius: 2px; background: #F4F1EA; left: {{markerLeft}}; box-shadow: 0 0 0 3px #151A23"></span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px">
+          <sc-for list="{{zones}}" as="z" hint-placeholder-count="5">
+            <div style="display: flex; flex-direction: column; gap: 2px">
+              <span style="font-size: 13px; font-weight: 800; color: {{z.textColor}}">{{z.label}}</span>
+              <span style="font-size: 12px; color: #9AA3B2">{{z.range}}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <sc-if value="{{hasDrinks}}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{toStep2}}" onMouseEnter="{{hoverGo}}" onMouseLeave="{{unhoverGo}}" onFocus="{{hoverGo}}" onBlur="{{unhoverGo}}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 200px; height: 64px; box-sizing: border-box; padding: 0 26px 0 32px; border: 0; border-radius: 18px; background: #C6FF4A; color: #0B0E14; font-family: 'Archivo', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: 0.04em; cursor: pointer; white-space: nowrap; outline: none; transition: transform 120ms ease, box-shadow 120ms ease; transform: {{goT}}; box-shadow: {{goS}}">
+          <span>NEXT</span>
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </button>
+      </sc-if>
+      <sc-if value="{{noDrinks}}" hint-placeholder-val="{{ false }}">
+        <span style="width: 230px; font-size: 14px; line-height: 1.4; color: #9AA3B2">Add at least one drink to continue.</span>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{step2}}" hint-placeholder-val="{{ false }}">
+    <div role="radiogroup" aria-label="When are you driving?" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+      <sc-for list="{{times}}" as="tm" hint-placeholder-count="3">
+        <button role="radio" aria-checked="{{tm.on}}" onClick="{{tm.pick}}" style="position: relative; display: flex; flex-direction: column; gap: 14px; padding: 12px 12px 18px; box-sizing: border-box; border-radius: 18px; border: {{tm.border}}; background: #151A23; color: #F4F1EA; font-family: 'Archivo', sans-serif; text-align: left; cursor: pointer; box-shadow: {{tm.shadow}}">
+          <img src="{{tm.img}}" alt="" style="width: 100%; height: 190px; object-fit: cover; border-radius: 12px; opacity: {{tm.imgOp}}">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px">
+            <div style="display: flex; flex-direction: column; gap: 4px">
+              <span style="font-family: 'Anton', sans-serif; font-size: 30px; line-height: 1; letter-spacing: 0.02em; color: {{tm.color}}">{{tm.label}}</span>
+              <span style="font-size: 14px; color: #9AA3B2">{{tm.desc}}</span>
+            </div>
+            <span aria-hidden="true" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: {{tm.radioBorder}}; background: {{tm.radioBg}}; color: #0B0E14">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="opacity: {{tm.checkOp}}"><path d="M5 12l5 5 9-10"></path></svg>
+            </span>
+          </div>
+        </button>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 36px; padding: 20px 28px; border-radius: 18px; background: #151A23; border: 1px solid #262D3A">
+      <div style="display: flex; align-items: center; gap: 20px">
+        <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.22em; color: #9AA3B2">ALCOHOL LEVEL</span>
+        <span style="font-family: 'Anton', sans-serif; font-size: 44px; line-height: 1; color: {{zoneColor}}">{{bacText}}</span>
+        <span style="padding: 5px 10px; border-radius: 6px; background: {{zoneChipBg}}; color: #0B0E14; font-size: 12px; font-weight: 800; letter-spacing: 0.06em">{{zoneLabel}}</span>
+      </div>
+      <div aria-hidden="true" style="width: 1px; height: 40px; background: rgba(244,241,234,0.25)"></div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 4px">
+        <span style="font-size: 13px; color: #9AA3B2">{{summary}}</span>
+        <span style="font-size: 15px; font-weight: 600">Driving in the <span style="color: #C6FF4A">{{timeWord}}</span></span>
+      </div>
+      <button onClick="{{go}}" onMouseEnter="{{hoverGo}}" onMouseLeave="{{unhoverGo}}" onFocus="{{hoverGo}}" onBlur="{{unhoverGo}}" style="display: flex; align-items: center; gap: 12px; height: 64px; padding: 0 26px 0 32px; border: 0; border-radius: 18px; background: #C6FF4A; color: #0B0E14; font-family: 'Archivo', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: 0.04em; cursor: pointer; white-space: nowrap; outline: none; transition: transform 120ms ease, box-shadow 120ms ease; transform: {{goT}}; box-shadow: {{goS}}">
+        <span>START DRIVING</span>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </button>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startStep":{"editor":"enum","options":["1","2"],"default":"1"},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { counts: { wine: 1, beer: 2, vodka: 0, whiskey: 0, cocktail: 0 }, step: null };
+  }
+  renderVals() {
+    const MAX = 5;
+    const drinks = [
+      { id: 'wine', name: 'Wine', ml: 14.2, img: './assets/da974d588d6474465bcb51056f571573.png' },
+      { id: 'beer', name: 'Beer', ml: 13.16, img: './assets/3586c913d4f8fbcbf167b3ce35dbcff8.png' },
+      { id: 'vodka', name: 'Vodka', ml: 15.8, img: './assets/b62ec03547e842ae053f43a00bc7cb69.png' },
+      { id: 'whiskey', name: 'Whiskey', ml: 15.8, img: './assets/e6c4966fc3d626941ba4a2b335ca1746.png' },
+      { id: 'cocktail', name: 'Cocktail', ml: 29.58, img: './assets/ab107e3bdce4bb600deaf1a04308bf5a.png' }
+    ];
+    const step = this.state.step || Number(this.props.startStep || 1);
+    const counts = this.state.counts;
+    const setCount = (id, n) => this.setState({ counts: Object.assign({}, counts, { [id]: Math.max(0, Math.min(MAX, n)) }) });
+    let totalMl = 0, totalDrinks = 0;
+    const items = drinks.map((d) => {
+      const c = counts[d.id] || 0;
+      totalMl += c * d.ml; totalDrinks += c;
+      const dots = [];
+      for (let i = 0; i < MAX; i++) dots.push({ bg: i < c ? '#C6FF4A' : '#2A3242' });
+      return {
+        name: d.name, upper: d.name.toUpperCase(), img: d.img,
+        mlEach: d.ml + ' ml', count: c, dots: dots,
+        border: c > 0 ? '1px solid #C6FF4A' : '1px solid #262D3A',
+        countColor: c > 0 ? '#C6FF4A' : '#5B6577',
+        minusOff: c === 0, plusOff: c === MAX,
+        minusOpacity: c === 0 ? 0.35 : 1, plusOpacity: c === MAX ? 0.35 : 1,
+        dec: () => setCount(d.id, c - 1), inc: () => setCount(d.id, c + 1)
+      };
+    });
+    const bac = totalMl / 80;
+    const zoneDefs = [
+      { lo: 0, label: 'No effects', range: 'Level 0 – 0.3', color: '#4A5A72' },
+      { lo: 0.3, label: 'Dim edges', range: 'Level 0.3 – 0.6', color: '#B8952E' },
+      { lo: 0.6, label: 'Shake + blur', range: 'Level 0.6 – 0.9', color: '#E08A1E' },
+      { lo: 0.9, label: 'Double vision', range: 'Level 0.9 – 1.2', color: '#EE5A2C' },
+      { lo: 1.2, label: 'Blackouts', range: 'Level 1.2+', color: '#FF4D4D' }
+    ];
+    let activeIdx = 0;
+    zoneDefs.forEach((z, i) => { if (bac >= z.lo) activeIdx = i; });
+    const zones = zoneDefs.map((z, i) => ({
+      label: z.label, range: z.range, color: z.color,
+      opacity: i <= activeIdx ? 1 : 0.25,
+      textColor: i === activeIdx ? '#F4F1EA' : '#6F7A8C'
+    }));
+    const pct = Math.min(bac / 1.5, 1) * 100;
+    const curTime = this.state.time || this.props.time || 'night';
+    const TIMES = [
+      { id: 'morning', label: 'MORNING', word: 'morning', desc: 'Daylight, clear view of the road.', img: './assets/bc9db980e6bd88d1d04ebc5c25296f87.jpg' },
+      { id: 'sunset', label: 'EVENING', word: 'evening', desc: 'Purple sky, street lights coming on.', img: './assets/6923392ced0b7ce0b592752793bb93e8.jpg' },
+      { id: 'night', label: 'NIGHT', word: 'night', desc: 'Dark streets, lit only by the lamps.', img: './assets/e3cccc54f8e8f7eec9db0c18ef3054b3.jpg' }
+    ];
+    const cur = TIMES.find((t) => t.id === curTime) || TIMES[2];
+    const times = TIMES.map((tm) => {
+      const on = tm.id === curTime;
+      return {
+        label: tm.label, desc: tm.desc, img: tm.img, on: on ? 'true' : 'false',
+        border: on ? '2px solid #C6FF4A' : '2px solid #262D3A',
+        shadow: on ? '4px 5px 0 rgba(0,0,0,0.65)' : 'none',
+        color: on ? '#C6FF4A' : '#F4F1EA', imgOp: on ? 1 : 0.6,
+        radioBorder: on ? '2px solid #C6FF4A' : '2px solid #3A4558',
+        radioBg: on ? '#C6FF4A' : 'transparent', checkOp: on ? 1 : 0,
+        pick: () => { this.setState({ time: tm.id }); if (this.props.onTime) this.props.onTime(tm.id); }
+      };
+    });
+    const isNoEffect = zoneDefs[activeIdx].color === '#4A5A72';
+    return {
+      step1: step === 1, step2: step === 2, stepNo: step,
+      dot1W: step === 1 ? '24px' : '8px', dot1Bg: step === 1 ? '#C6FF4A' : 'rgba(244,241,234,0.35)',
+      dot2W: step === 2 ? '24px' : '8px', dot2Bg: step === 2 ? '#C6FF4A' : 'rgba(244,241,234,0.35)',
+      title: step === 1 ? 'WHAT ARE YOU DRINKING TODAY?' : 'WHEN ARE YOU DRIVING?',
+      subtitle: step === 1 ? 'Tap + or − to add or remove a drink. Up to 5 of each.' : 'Pick the time of day for your drive.',
+      times: times, timeWord: cur.word,
+      items: items, zones: zones,
+      bacText: bac.toFixed(1),
+      zoneColor: totalDrinks > 0 && !isNoEffect ? zoneDefs[activeIdx].color : '#F4F1EA',
+      zoneLabel: zoneDefs[activeIdx].label.toUpperCase(),
+      zoneChipBg: isNoEffect ? '#9AA3B2' : zoneDefs[activeIdx].color,
+      summary: totalDrinks + (totalDrinks === 1 ? ' drink · ' : ' drinks · ') + totalMl.toFixed(2) + ' ml alcohol',
+      markerLeft: 'calc(' + pct.toFixed(1) + '% - 2px)',
+      hasDrinks: totalDrinks > 0, noDrinks: totalDrinks === 0,
+      goT: this.state.hovGo ? 'translate(4px, 5px)' : 'translate(0px, 0px)',
+      goS: this.state.hovGo ? 'inset 0 3px 0 rgba(0,0,0,0.28)' : '4px 5px 0 rgba(0,0,0,0.65)',
+      toStep2: () => this.setState({ step: 2, hovGo: false }),
+      back: (e) => {
+        if (step === 2) { if (e && e.preventDefault) e.preventDefault(); this.setState({ step: 1, hovGo: false }); return; }
+        if (this.props.onBack) { if (e && e.preventDefault) e.preventDefault(); this.props.onBack(); }
+      },
+      go: () => { if (this.props.onGo) this.props.onGo(Number(bac.toFixed(1))); },
+      hoverGo: () => this.setState({ hovGo: true }),
+      unhoverGo: () => this.setState({ hovGo: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

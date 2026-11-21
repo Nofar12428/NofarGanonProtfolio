@@ -1,0 +1,6 @@
+/* Prevent entrance animations and full-bleed decoration from adding sideways page scroll. */
+html{overflow-x:clip}
+@media(max-width:400px){
+html body.ng-v2 .ng-hd__tags:not(#_):not(#_){flex-wrap:wrap!important;justify-content:center;gap:8px!important;max-width:100%;width:100%;padding-inline:8px;box-sizing:border-box}
+html body.ng-v2 .ng-hd__tags li:not(#_):not(#_){flex:0 0 auto;max-width:100%;font-size:10px!important;padding:6px 10px!important}
+}

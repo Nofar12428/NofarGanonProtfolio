@@ -1,0 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,600;1,700&display=swap');
+/* Replace only the English display accent; retain the established palette and body font. */
+html:not([lang=he]) body {--f-serif:'Playfair Display',Georgia,serif;--ng-serif:'Playfair Display',Georgia,serif;}
+html:not([lang=he]) body :is(.intro .lede em,.about h2 em,.sec-title em,.ht-overview-heading em,.lc-overview-title em,.ng-contribution-intro h2 em,.ng-ai-intro h2 em,.sc-next-steps h2 em,.ht-key-decisions h2 em,.lc-key-decisions h2 em,.ng-end h2 em,.ng-fact-takeaway em):not(#_) {font-family:'Playfair Display',Georgia,serif!important;}
+html body .ng-hd__name em:not(#_) {font-family:'Playfair Display',Georgia,serif!important;}

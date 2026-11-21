@@ -1,0 +1,23 @@
+/* Line-by-line masked rise, in the portfolio's own typography and palette. */
+body.ng-landing #introText.ng-hero-reveal-pending :is(h1,.lede){visibility:hidden;}
+body.ng-landing #introText .later{opacity:1;transform:none;transition:none;}
+body.ng-landing #introText .ng-hero-line-mask{display:block;overflow:hidden;overflow:clip;padding-bottom:.16em;margin-bottom:-.16em;}
+body.ng-landing #introText .ng-hero-line{display:block;white-space:nowrap;animation:ng-hero-line-reveal 11s cubic-bezier(.2,.7,.1,1) var(--line-delay,0s) infinite both;will-change:transform,opacity;}
+body.ng-landing #introText .ng-hero-word{display:inline-block;}
+body.ng-landing #introText .ng-hero-measure{animation:none!important;transform:none!important;}
+body.ng-landing #introText.ng-hero-motion-paused .ng-hero-line{animation-play-state:paused;}
+body.ng-landing #introText.ng-hero-line-motion :is(.hero-roles,.btns){animation:ng-hero-controls-in .8s cubic-bezier(.2,.7,.1,1) .7s both;}
+.ng-hero-reader{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;user-select:none;}
+@keyframes ng-hero-line-reveal{
+ 0%{opacity:0;transform:translateY(112%)}
+ 9%,83%{opacity:1;transform:translateY(0)}
+ 92%,100%{opacity:0;transform:translateY(-112%)}
+}
+@keyframes ng-hero-controls-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+ body.ng-landing #introText .ng-hero-line,body.ng-landing #introText.ng-hero-line-motion :is(.hero-roles,.btns){animation:none!important;opacity:1!important;transform:none!important;will-change:auto;}
+}
+
+/* Requested role spacing and natural wrapping of the highlighted sentence. */
+body.ng-landing #introText p.hero-roles{margin:50px 0 0;}
+body.ng-landing #introText p.lede em{white-space:normal!important;}

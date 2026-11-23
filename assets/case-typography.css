@@ -1,0 +1,53 @@
+/* Shared editorial type scale for all case studies, in both languages.
+   Layered important declarations take precedence over the legacy unlayered
+   project rules without a specificity contest. Game storytelling and hero
+   wordmarks retain their deliberately distinct display typography. */
+body.ng-v2 {
+ --case-section-size:clamp(1.75rem,1.2rem + 2vw,2.75rem);
+ --case-item-size:clamp(1.375rem,1rem + 1.25vw,2rem);
+ --case-feature-size:clamp(1.375rem,1rem + 1.4vw,2.125rem);
+ --case-body-size:clamp(1rem,.94rem + .25vw,1.125rem);
+ --case-tab-size:clamp(.875rem,.82rem + .22vw,1rem);
+ --case-meta-size:clamp(.875rem,.82rem + .22vw,1rem);
+ --case-caption-size:clamp(.8125rem,.78rem + .14vw,.875rem);
+ --case-label-size:clamp(.75rem,.72rem + .12vw,.8125rem);
+ --case-number-size:clamp(2.75rem,2rem + 3vw,4.5rem);
+}
+@layer case-typography {
+ body.ng-v2 main h2 {
+  font-family:var(--ng-sans,"DM Sans"),sans-serif!important;font-size:var(--case-section-size)!important;line-height:1.18!important;font-weight:600!important;
+ }
+ body.ng-v2 main h2 em,body.ng-v2 main h2 em span {
+  font-size:inherit!important;line-height:inherit!important;
+ }
+ body.ng-v2 main :is(.ng-fact-takeaway,.ng-decision-takeaway,.aoc-next-take,.aoc-level h3,.ng-contribution-intro>h3,.btl-cross-intro h3) {
+  font-family:var(--ng-sans,"DM Sans"),sans-serif!important;font-size:var(--case-item-size)!important;line-height:1.3!important;font-weight:600!important;
+ }
+ body.ng-v2 main :is(.ng-how-step h3,.ng-lc-copy h3,.sg-step-copy h3,.ad-showcase-copy h3) {
+  font-family:var(--ng-sans,"DM Sans"),sans-serif!important;font-size:var(--case-feature-size)!important;line-height:1.25!important;font-weight:600!important;
+ }
+ body.ng-v2 main :is(.ng-fact-detail p,.ng-decision-copy p,.ng-contribution-layout p,.ng-contribution-layout li,.ng-contribution-list li,.ng-ai-layout p,.ng-ai-layout li,.ng-how-step p,.ng-lc-copy .lc-description,.sg-step-copy p,.ad-showcase-copy p,.ng-context-copy,.ng-project-context,.aoc-design-intro p,.aoc-design-outro,.aoc-level p:last-child,.btl-cross-intro p,.btl-cross-list li,.sg-credits p,.ad-asset-credit p,.sg-extension-copy p) {
+  font-family:var(--ng-sans,"DM Sans"),sans-serif!important;font-size:var(--case-body-size)!important;line-height:1.65!important;font-weight:400!important;
+ }
+ /* A takeaway stays a heading even where the markup uses a paragraph. */
+ body.ng-v2 main .ng-contribution-layout p.aoc-next-take {
+  font-family:var(--ng-sans,"DM Sans"),sans-serif!important;font-size:var(--case-item-size)!important;line-height:1.3!important;font-weight:600!important;
+ }
+ body.ng-v2 :is(.ht-decision-tabs,.lc-decision-tabs) button {
+  font-family:var(--ng-sans,"DM Sans"),sans-serif!important;font-size:var(--case-tab-size)!important;line-height:1.4!important;font-weight:500!important;min-height:44px!important;
+ }
+ body.ng-v2 :is(.ht-decision-tabs,.lc-decision-tabs) button[aria-selected=true] {font-weight:700!important;}
+ body.ng-v2 main :is(.ht-kicker,.ht-eyebrow,.lc-kicker,.ng-fact-label,.ad-ai-label,.ng-how-steps>.ht-kicker,.aoc-level-name),
+ body.ng-v2 main :is(.ht-meta,.lc-project-meta) dt {
+  font-family:var(--ng-sans,"DM Sans"),sans-serif!important;font-size:var(--case-label-size)!important;line-height:1.4!important;font-weight:600!important;
+ }
+ body.ng-v2 main :is(.ht-meta,.lc-project-meta) dd {
+  font-family:var(--ng-sans,"DM Sans"),sans-serif!important;font-size:var(--case-meta-size)!important;line-height:1.55!important;font-weight:400!important;
+ }
+ body.ng-v2 :is(.ng-decision-tag,.ng-decision-note>span,.ng-compare-labels,.ng-compare-tools,.ng-how-credit,.btl-how-credit,.btl-how-note,.btl-image-credit,.btl-rights-note,.ad-note,.aoc-compare-note,.lc-ai-note,.sg-card-hint) {
+  font-family:var(--ng-sans,"DM Sans"),sans-serif!important;font-size:var(--case-caption-size)!important;line-height:1.55!important;
+ }
+ body.ng-v2 :is(.ng-decision-number,.ng-how-num,.aoc-level-num) {
+  font-size:var(--case-number-size)!important;line-height:1!important;
+ }
+}

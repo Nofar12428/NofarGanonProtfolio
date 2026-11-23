@@ -21,3 +21,7 @@ body.ng-landing #introText.ng-hero-line-motion :is(.hero-roles,.btns){animation:
 /* Requested role spacing and natural wrapping of the highlighted sentence. */
 body.ng-landing #introText p.hero-roles{margin:50px 0 0;}
 body.ng-landing #introText p.lede em{white-space:normal!important;}
+
+/* Hebrew: the sentence rises word by word, like the English one, in reading order */
+html[lang=he] body.ng-landing #introText p.lede.ng-hero-he-words:not(#_):not(#_):not(#_):not(#_){direction:rtl!important;unicode-bidi:normal!important;text-align:right!important}
+html[lang=he] body.ng-landing #introText p.lede.ng-hero-he-words em:not(#_):not(#_):not(#_){display:inline!important;direction:inherit!important;unicode-bidi:normal!important}

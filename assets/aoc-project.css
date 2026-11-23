@@ -1,0 +1,77 @@
+/* The Art of Color: palette and the sections that differ from Between the Lines */
+body.pal-aoc{--bg-tint:#3a2630;--bg-base:#0d0a0c;--bg-l1:#f2a7b8;--bg-l2:#c76f86;--ng-accent:#f2a7b8;--study-accent:#f2a7b8;--unified-accent:#f2a7b8}
+html body.ng-v2.pal-aoc .ht-decision-tabs [aria-selected=true]{color:var(--ng-accent)!important}
+.pal-aoc .ng-end__next{--nx:#a9d3e8}
+
+/* Hebrew hero: the accent word keeps the Hebrew face */
+html[lang=he] body.aoc-case .ng-hd__name em:not(#_),html[lang=he] body.aoc-case .ng-hd__name em .w:not(#_){font-family:inherit!important;font-weight:inherit!important;font-style:normal!important;letter-spacing:inherit!important}
+
+/* About: the product statement carries a short description */
+html body.ng-v2 main .aoc-case .ng-fact-product .ng-fact-detail p:not(#_),html body.aoc-case.ng-v2 main .ng-fact-product .ng-fact-detail p:not(#_){margin-top:18px;max-width:60ch;color:var(--study-soft);font:400 18px/1.65 var(--ng-sans)}
+
+/* Challenge across the top, need and audience below */
+html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .aoc-brief-more:not(#_){grid-template-areas:"challenge challenge" "need audience"!important;row-gap:clamp(64px,9vh,110px)!important}
+html body.ng-v2 main .aoc-brief-more .aoc-fact-challenge:not(#_){grid-area:challenge}
+html body.ng-v2 main .aoc-brief-more .aoc-fact-need:not(#_){grid-area:need}
+html body.ng-v2 main .aoc-brief-more .aoc-fact-audience:not(#_){grid-area:audience}
+html body.ng-v2 main .aoc-brief-more .aoc-fact-challenge .ng-fact-takeaway:not(#_){max-width:26ch!important}
+@media(max-width:900px){html body.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .aoc-brief-more:not(#_){grid-template-areas:"challenge" "need" "audience"!important;row-gap:56px!important}}
+
+/* Instructional design: three learning levels as rising steps */
+html body.ng-v2 main .aoc-design{display:grid;gap:clamp(40px,6vh,72px)}
+html body.ng-v2 main .aoc-design-intro{max-width:760px}
+html body.ng-v2 main .aoc-design-intro .ht-kicker{color:var(--study-accent);font:600 12px/1.4 var(--ng-sans)!important;letter-spacing:.14em;text-transform:uppercase}
+html body.ng-v2 main .aoc-design-intro h2{margin:14px 0 18px}
+html body.ng-v2 main .aoc-design-intro h2 em{color:var(--study-accent)}
+html body.ng-v2 main .aoc-design-intro p,html body.ng-v2 main .aoc-design-outro{margin:0;max-width:62ch;color:var(--study-soft);font:400 18px/1.7 var(--ng-sans)}
+html body.ng-v2 main .aoc-levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:end;gap:clamp(16px,2vw,28px);margin:0;padding:0;list-style:none}
+html body.ng-v2 main .aoc-level{position:relative;display:flex;flex-direction:column;gap:10px;padding:28px 26px 30px;border:1px solid rgba(255,255,255,.14);border-top:3px solid var(--study-accent);border-radius:18px;background:rgba(255,255,255,.03);transition:background .3s,transform .3s}
+html body.ng-v2 main .aoc-level:nth-child(1){min-height:190px}
+html body.ng-v2 main .aoc-level:nth-child(2){min-height:230px}
+html body.ng-v2 main .aoc-level:nth-child(3){min-height:270px}
+html body.ng-v2 main .aoc-level:hover{background:rgba(242,167,184,.07);transform:translateY(-4px)}
+html body.ng-v2 main .aoc-level-num{color:var(--study-accent);font:italic 500 44px/1 var(--ng-serif,Georgia,serif)}
+html body.ng-v2 main .aoc-level-name{margin:6px 0 0;color:var(--study-accent);font:600 12px/1.4 var(--ng-sans);letter-spacing:.14em;text-transform:uppercase}
+html body.ng-v2 main .aoc-level h3{margin:0;color:#fff;font:600 clamp(20px,1.1vw + 10px,26px)/1.3 var(--ng-sans)}
+html body.ng-v2 main .aoc-level p:last-child{margin:0;color:var(--study-soft);font:400 16px/1.6 var(--ng-sans)}
+html[dir=rtl] body.ng-v2 main .aoc-design :is(.aoc-design-intro,.aoc-level,.aoc-design-outro){text-align:right}
+@media(max-width:900px){
+html body.ng-v2 main .aoc-levels{grid-template-columns:minmax(0,1fr)}
+html body.ng-v2 main .aoc-level:nth-child(n){min-height:0}
+}
+
+/* Key decisions: desktop course screens */
+html body.ng-v2 main .aoc-decision-figure img:not(#_):not(#_){width:100%;height:auto;max-height:none;border-radius:14px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+
+/* What's next: the takeaway reads as a heading */
+html body.ng-v2 main .aoc-next .aoc-next-take:not(#_){margin:14px 0 10px!important;color:#fff;font:600 clamp(20px,1.1vw + 10px,26px)/1.35 var(--ng-sans)!important}
+html body.ng-v2 main .aoc-closing .ng-contribution-intro p:not(#_){max-width:68ch}
+/* Section titles match the other section titles on the page */
+html body.ng-v2 main .aoc-design-intro h2:not(#_){font:600 clamp(30px,2.3vw + 8px,41px)/1.12 var(--ng-sans,"DM Sans"),sans-serif!important;letter-spacing:-.035em!important;color:#fff}
+html:not([lang=he]) body.ng-v2 main .aoc-design-intro h2 em:not(#_){font-family:"Playfair Display",Georgia,serif!important;font-weight:500!important;font-style:italic!important}
+html[lang=he] body.ng-v2 main .aoc-design-intro h2:not(#_){font-family:Assistant,Arial,sans-serif!important;letter-spacing:normal!important}
+html[lang=he] body.ng-v2 main .aoc-design-intro h2 em:not(#_){font-family:inherit!important;font-weight:700!important;font-style:normal!important}
+html body.ng-v2 main .aoc-closing .aoc-next:not(#_){margin-top:clamp(56px,8vh,96px)!important}
+/* Hebrew: steps and closing line follow the reading direction */
+html[dir=rtl] body.ng-v2 main .aoc-design .aoc-levels:not(#_){direction:rtl}
+html[dir=rtl] body.ng-v2 main .aoc-design .aoc-design-outro:not(#_){margin-left:auto;margin-right:0;direction:rtl}
+html[dir=rtl] body.ng-v2 main .aoc-design .aoc-design-intro:not(#_){margin-left:auto;margin-right:0;direction:rtl}
+html[lang=he] body.aoc-case .ng-hd__name em:not(#_):not(#_):not(#_),html[lang=he] body.aoc-case .ng-hd__name em .w:not(#_):not(#_):not(#_){font-style:normal!important;font-family:inherit!important;font-weight:inherit!important;letter-spacing:inherit!important}
+html[lang=he] body.aoc-case .ng-hd__name em:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html[lang=he] body.aoc-case .ng-hd__name em *:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-family:inherit!important;font-style:normal!important;font-weight:inherit!important;letter-spacing:inherit!important}
+/* Decision 02: the sequence before and after, compared with the slider */
+html body.ng-v2 main .aoc-compare:not(#_){--compare-ratio:0.857;--split:100%}
+html body.ng-v2 main .aoc-compare .aoc-compare-note:not(#_){margin:14px auto 0;max-width:46ch;color:var(--study-soft);font:400 13px/1.55 var(--ng-sans);text-align:center}
+/* key decisions: course clips in place of a still */
+html body.ng-v2 main .aoc-decision-video video:not(#_):not(#_){display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:14px;box-shadow:0 20px 40px rgba(0,0,0,.35);background:#fcf4ea}
+
+/* Mobile course preview: use more of the available width, with room for the dots. */
+@media(max-width:900px){
+ html body.aoc-case.ng-v2 .aoc-how[data-view=desktop] .ng-how-desk:not(#_):not(#_):not(#_){width:calc(100% - 34px)!important;margin-inline:0 34px!important;padding:7px}
+ html[lang=he] body.aoc-case.ng-v2 .aoc-how[data-view=desktop] .ng-how-desk:not(#_):not(#_):not(#_){margin-inline:34px 0!important}
+ html body.aoc-case.ng-v2.ng-v2.ng-v2.ng-v2 main .aoc-design:not(#_):not(#_){margin-top:calc(-10svh)!important;padding-top:32px!important}
+}
+@media(max-width:900px){
+ html body.aoc-case.ng-v2 .ht-decision-tabs button{font-size:14px!important;min-height:44px}
+ html body.aoc-case.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .aoc-closing:not(#_):not(#_){margin-top:48px!important;padding-top:0!important}
+ html body.aoc-case.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2.ng-v2 main .aoc-closing>.ng-contribution-layout:first-child:not(#_):not(#_){margin-top:0!important}
+}
